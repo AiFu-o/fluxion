@@ -1,0 +1,33 @@
+{
+	"name": "fluxion",
+	"version": "0.0.1",
+	"private": true,
+	"description": "A lightweight UI framework",
+	"type": "module",
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"dev": "node build/dev.mjs",
+		"build": "node build/build.mjs",
+		"build:esm": "node build/build.mjs --formats esm",
+		"build:iife": "node build/build.mjs --formats iife",
+		"build:all": "node build/build.mjs --formats esm,iife",
+		"lint": "eslint packages --ext .ts,.js",
+		"test": "vitest"
+	},
+	"devDependencies": {
+		"@rollup/plugin-alias": "^5.1.1",
+		"@rollup/plugin-commonjs": "^25.0.7",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-replace": "^5.0.5",
+		"@rollup/plugin-terser": "^0.4.4",
+		"@rollup/plugin-typescript": "^11.1.6",
+		"minimist": "^1.2.8",
+		"rollup": "^4.9.6",
+		"rollup-plugin-dts": "^6.1.0",
+		"tslib": "^2.8.1",
+		"typescript": "^5.3.3",
+		"vitest": "^1.2.2"
+	}
+}

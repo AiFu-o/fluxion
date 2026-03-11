@@ -1,0 +1,39 @@
+{
+	"compilerOptions": {
+		"target": "ES2020",
+		"module": "ESNext",
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"allowJs": false,
+		"checkJs": false,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"declaration": true,
+		"declarationDir": "./dist",
+		"outDir": "./dist",
+		"baseUrl": ".",
+		"paths": {
+			"@fluxion/shared": ["./packages/shared/src"],
+			"@fluxion/reactivity": ["./packages/reactivity/src"],
+			"@fluxion/runtime-core": ["./packages/runtime-core/src"],
+			"@fluxion/runtime-dom": ["./packages/runtime-dom/src"],
+			"@fluxion/compiler-core": ["./packages/compiler-core/src"],
+			"@fluxion/compiler-dom": ["./packages/compiler-dom/src"],
+			"@fluxion/compiler-nui": ["./packages/compiler-nui/src"],
+			"fluxion": ["./packages/fluxion/src"]
+		}
+	},
+	"include": [
+		"packages/*/src/**/*.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"**/dist"
+	]
+}

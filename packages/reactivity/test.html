@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reactivity Test</title>
+  <style>
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Reactivity Test</h1>
+  <div>
+    <p>Signal Count: <span id="signal-count"></span></p>
+    <button id="signal-inc">Increment Signal</button>
+  </div>
+  <div>
+    <p>Reactive Count: <span id="reactive-count"></span></p>
+    <button id="reactive-inc">Increment Reactive</button>
+  </div>
+
+  <script type="module">
+    import { createSignal, reactive, effect } from './dist/reactivity.js';
+
+    // --- Signal 测试 ---
+    const countSignal = createSignal(0);
+
+    const signalEl = document.getElementById('signal-count');
+    effect(() => {
+      signalEl.textContent = countSignal();  // 自动更新
+    });
+
+    document.getElementById('signal-inc').addEventListener('click', () => {
+      countSignal.update(prev => prev + 1);
+    });
+
+    // --- Reactive 测试 ---
+    const state = reactive({ count: 0 });
+    const reactiveEl = document.getElementById('reactive-count');
+
+    effect(() => {
+      reactiveEl.textContent = state.count;
+    });
+
+    document.getElementById('reactive-inc').addEventListener('click', () => {
+      state.count++;
+    });
+  </script>
+</body>
+</html>

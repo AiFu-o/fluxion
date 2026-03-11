@@ -1,0 +1,22 @@
+{
+	"name": "@fluxion/reactivity",
+	"version": "0.0.1",
+	"description": "Fluxion reactivity system",
+	"type": "module",
+	"main": "./dist/reactivity.cjs",
+	"module": "./dist/reactivity.js",
+	"types": "./dist/reactivity.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/reactivity.js",
+			"require": "./dist/reactivity.cjs",
+			"types": "./dist/reactivity.d.ts"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"@fluxion/shared": "workspace:*"
+	}
+}

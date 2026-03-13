@@ -18,6 +18,29 @@ import {
 // 使用 runtime-dom 包（提供 DOM 渲染器）
 import { createApp, render, patchStyle, normalizeStyle, hyphenate, camelize } from '@fluxion/runtime-dom'
 
+// 使用 compiler-core 包（编译器核心）
+import {
+    // AST 创建
+    createRoot,
+    createElementNode,
+    createTextNode,
+    createInterpolationNode,
+    createDirectiveNode,
+    createIfNode,
+    createIfBranchNode,
+    createForNode,
+    createSimpleExpression,
+    // 转换
+    transform,
+    // 转换插件
+    transformIf,
+    transformFor,
+    transformElement,
+    transformText,
+    // 代码生成
+    generate
+} from '@fluxion/compiler-core'
+
 // ==================== Signal 示例 ====================
 console.log('=== Signal 示例 ===')
 
@@ -559,6 +582,190 @@ unmountAppBtn.addEventListener('click', () => {
     console.log('App unmounted')
 })
 
+// ==================== Compiler-Core 示例 ====================
+console.log('=== Compiler-Core 示例 ===')
+
+const compilerDisplayEl = document.getElementById('compiler-display')!
+const compilerCodeEl = document.getElementById('compiler-code')! as HTMLElement
+const createAstBtn = document.getElementById('create-ast')!
+const transformAstBtn = document.getElementById('transform-ast')!
+const generateCodeBtn = document.getElementById('generate-code')!
+const compilerFullBtn = document.getElementById('compiler-full')!
+
+// 当前 AST 状态
+let currentAst: any = null
+
+// 节点类型名称映射
+const nodeTypeNames: Record<number, string> = {
+    0: 'ROOT',
+    1: 'ELEMENT',
+    2: 'TEXT',
+    3: 'INTERPOLATION',
+    4: 'ATTRIBUTE',
+    5: 'DIRECTIVE',
+    6: 'IF',
+    7: 'IF_BRANCH',
+    8: 'FOR',
+    9: 'SIMPLE_EXPRESSION',
+    10: 'COMPOUND_EXPRESSION',
+    11: 'JS_CALL_EXPRESSION',
+    12: 'JS_OBJECT_EXPRESSION',
+    13: 'JS_ARRAY_EXPRESSION',
+    14: 'JS_FUNCTION_EXPRESSION',
+    15: 'JS_CONDITIONAL_EXPRESSION'
+}
+
+// 显示 AST 结构
+function displayAst(ast: any, _title: string) {
+    function formatNode(node: any, indent: number = 0): string {
+        if (!node) return 'null'
+        const prefix = '  '.repeat(indent)
+        const typeName = nodeTypeNames[node.type] || `Unknown(${node.type})`
+        let result = `${prefix}${typeName}`
+
+        if (node.tag) result += ` (${node.tag})`
+        if (node.content !== undefined && typeof node.content === 'string') {
+            result += `: "${node.content}"`
+        } else if (node.content && node.content.content) {
+            result += `: {${node.content.content}}`
+        }
+
+        if (node.children && node.children.length > 0) {
+            result += '\n' + node.children.map((c: any) => formatNode(c, indent + 1)).join('\n')
+        }
+        if (node.branches && node.branches.length > 0) {
+            result += '\n' + node.branches.map((b: any) => formatNode(b, indent + 1)).join('\n')
+        }
+
+        return result
+    }
+
+    compilerDisplayEl.innerHTML = `<pre style="margin: 0; white-space: pre-wrap;">${formatNode(ast)}</pre>`
+    compilerCodeEl.textContent = JSON.stringify(ast, null, 2)
+    compilerCodeEl.style.display = 'block'
+}
+
+// 创建 AST 按钮
+createAstBtn.addEventListener('click', () => {
+    // 创建一个简单的 AST
+    // 模拟: div > p "Count: {count}" + button @click=increment
+    const ast = createRoot([
+        createElementNode('div', [], [
+            createTextNode('Count: '),
+            createInterpolationNode('count'),
+            createElementNode(
+                'button',
+                [createDirectiveNode('click', 'increment')],
+                [createTextNode('+1')]
+            )
+        ])
+    ])
+
+    currentAst = ast
+    displayAst(ast, 'AST 已创建')
+    console.log('Created AST:', ast)
+})
+
+// 转换 AST 按钮
+transformAstBtn.addEventListener('click', () => {
+    if (!currentAst) {
+        compilerDisplayEl.innerHTML = '<p style="color: #ef5350;">请先创建 AST</p>'
+        return
+    }
+
+    // 执行转换
+    transform(currentAst, {
+        nodeTransforms: [
+            transformIf,
+            transformFor,
+            transformElement,
+            transformText
+        ]
+    })
+
+    displayAst(currentAst, 'AST 已转换')
+    console.log('Transformed AST:', currentAst)
+})
+
+// 生成代码按钮
+generateCodeBtn.addEventListener('click', () => {
+    if (!currentAst) {
+        compilerDisplayEl.innerHTML = '<p style="color: #ef5350;">请先创建并转换 AST</p>'
+        return
+    }
+
+    // 生成代码
+    const result = generate(currentAst)
+
+    compilerDisplayEl.innerHTML = '<p style="color: #66bb6a;">代码生成完成！查看下方生成的代码。</p>'
+    compilerCodeEl.textContent = result.code
+    compilerCodeEl.style.display = 'block'
+
+    console.log('Generated code:', result.code)
+})
+
+// 完整编译演示
+compilerFullBtn.addEventListener('click', () => {
+    // 模拟完整的编译流程
+    // 输入: 一个包含 if/else 和 for 的模板
+
+    // 1. 创建 AST
+    // 模拟:
+    // div
+    //   if loading
+    //     p "Loading..."
+    //   else
+    //     p "Loaded"
+    //   for user in users
+    //     div {user.name}
+
+    const ifBranch = createIfBranchNode(
+        [createElementNode('p', [], [createTextNode('Loading...')])],
+        createSimpleExpression('loading', false)
+    )
+    const elseBranch = createIfBranchNode(
+        [createElementNode('p', [], [createTextNode('Loaded')])]
+    )
+
+    const ast = createRoot([
+        createElementNode('div', [], [
+            createIfNode([ifBranch, elseBranch]),
+            createForNode(
+                createSimpleExpression('users', false),
+                'user',
+                [
+                    createElementNode('div', [], [
+                        createInterpolationNode('user.name')
+                    ])
+                ]
+            )
+        ])
+    ])
+
+    compilerDisplayEl.innerHTML = '<p style="color: #4fc3f7;">步骤 1: AST 创建完成</p>'
+
+    // 2. 执行转换
+    transform(ast, {
+        nodeTransforms: [
+            transformIf,
+            transformFor,
+            transformElement,
+            transformText
+        ]
+    })
+
+    compilerDisplayEl.innerHTML = '<p style="color: #ffcc80;">步骤 2: AST 转换完成</p>'
+
+    // 3. 生成代码
+    const result = generate(ast)
+
+    compilerDisplayEl.innerHTML = '<p style="color: #66bb6a;">步骤 3: 代码生成完成！</p>'
+    compilerCodeEl.textContent = result.code
+    compilerCodeEl.style.display = 'block'
+
+    console.log('Full compilation result:', result)
+})
+
 // ==================== 初始化日志 ====================
 console.log('=== Playground 初始化完成 ===')
 console.log('Signal:', count())
@@ -567,3 +774,9 @@ console.log('Reactive:', state.name)
 console.log('VNode API:', { createVNode, h })
 console.log('Scheduler API:', { nextTick, queueJob, getQueueStatus })
 console.log('Runtime-DOM API:', { createApp, render, patchStyle, normalizeStyle, hyphenate, camelize })
+console.log('Compiler-Core API:', {
+    createRoot,
+    createElementNode,
+    transform,
+    generate
+})

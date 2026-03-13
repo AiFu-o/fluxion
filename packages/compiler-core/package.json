@@ -1,0 +1,22 @@
+{
+	"name": "@fluxion/compiler-core",
+	"version": "0.0.1",
+	"description": "Fluxion compiler core - platform-independent AST transforms and codegen",
+	"type": "module",
+	"main": "./dist/compiler-core.cjs",
+	"module": "./dist/compiler-core.js",
+	"types": "./dist/compiler-core.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/compiler-core.js",
+			"require": "./dist/compiler-core.cjs",
+			"types": "./dist/compiler-core.d.ts"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"@fluxion/shared": "workspace:*"
+	}
+}

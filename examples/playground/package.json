@@ -10,7 +10,8 @@
     "dependencies": {
        "@fluxion/reactivity": "workspace:*",
        "@fluxion/runtime-core": "workspace:*",
-       "@fluxion/runtime-dom": "workspace:*"
+       "@fluxion/runtime-dom": "workspace:*",
+       "@fluxion/compiler-core": "workspace:*"
     },
     "devDependencies": {
         "vite": "^5.0.0"

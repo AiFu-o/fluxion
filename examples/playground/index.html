@@ -258,6 +258,21 @@
                 <button class="btn btn-danger" id="unmount-app">卸载应用</button>
             </div>
         </div>
+
+        <!-- Compiler-Core 示例 -->
+        <div class="card">
+            <h2>Compiler-Core 示例 (AST + 转换 + 代码生成)</h2>
+            <div id="compiler-display" class="info" style="min-height: 120px;">
+                <p style="color: #81d4fa;">点击按钮查看编译流程演示</p>
+            </div>
+            <div style="text-align: center; margin-top: 16px;">
+                <button class="btn" id="create-ast">创建 AST</button>
+                <button class="btn btn-success" id="transform-ast">转换 AST</button>
+                <button class="btn" id="generate-code">生成代码</button>
+                <button class="btn btn-danger" id="compiler-full">完整编译</button>
+            </div>
+            <div id="compiler-code" style="margin-top: 12px; padding: 12px; background: #0d1b2a; border-radius: 8px; font-family: monospace; font-size: 12px; white-space: pre-wrap; overflow-x: auto; display: none;"></div>
+        </div>
     </div>
 
     <script type="module" src="/src/main.ts"></script>

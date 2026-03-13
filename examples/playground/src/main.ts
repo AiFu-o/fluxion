@@ -12,9 +12,11 @@ import {
     nextTick,
     queueJob,
     getQueueStatus,
-    clearQueue,
-    createRenderer
+    clearQueue
 } from '@fluxion/runtime-core'
+
+// 使用 runtime-dom 包（提供 DOM 渲染器）
+import { createApp, render, patchStyle, normalizeStyle, hyphenate, camelize } from '@fluxion/runtime-dom'
 
 // ==================== Signal 示例 ====================
 console.log('=== Signal 示例 ===')
@@ -398,6 +400,83 @@ clearQueueBtn.addEventListener('click', () => {
     addSchedulerLog('队列已清空')
 })
 
+// ==================== Style 示例 (patchStyle) ====================
+console.log('=== Style 示例 (patchStyle) ===')
+
+const styleDemoBox = document.getElementById('style-demo-box')! as HTMLElement
+const styleLogEl = document.getElementById('style-log')!
+const styleStringBtn = document.getElementById('style-string')!
+const styleObjectBtn = document.getElementById('style-object')!
+const styleUpdateBtn = document.getElementById('style-update')!
+const styleClearBtn = document.getElementById('style-clear')!
+
+// 记录当前样式状态
+let currentStyle: any = null
+
+function addStyleLog(message: string): void {
+    const time = new Date().toLocaleTimeString()
+    styleLogEl.textContent = `[${time}] ${message}`
+}
+
+// 字符串形式样式
+styleStringBtn.addEventListener('click', () => {
+    const styleString = 'color: #4fc3f7; font-size: 18px; font-weight: bold; background: #1e3a5f; border: 2px solid #4fc3f7;'
+    patchStyle(styleDemoBox, styleString, currentStyle)
+    currentStyle = styleString
+
+    // 演示 normalizeStyle
+    const normalized = normalizeStyle(styleString)
+    console.log('normalizeStyle 结果:', normalized)
+    addStyleLog(`字符串样式: "${styleString.slice(0, 50)}..."`)
+})
+
+// 对象形式样式
+styleObjectBtn.addEventListener('click', () => {
+    const styleObject = {
+        color: '#ffcc80',
+        fontSize: '20px',
+        background: 'linear-gradient(135deg, #2a4a7f 0%, #4a2a7f 100%)',
+        borderRadius: '12px',
+        padding: '20px',
+        transform: 'scale(1.02)'
+    }
+    patchStyle(styleDemoBox, styleObject, currentStyle)
+    currentStyle = styleObject
+
+    addStyleLog(`对象样式: ${JSON.stringify(styleObject, null, 2).slice(0, 80)}...`)
+})
+
+// 更新样式（增量更新）
+styleUpdateBtn.addEventListener('click', () => {
+    const newStyle = {
+        color: '#66bb6a',
+        fontSize: 24,  // 数值会自动添加 px
+        background: '#1a4a1a',
+        borderRadius: '16px',
+        boxShadow: '0 4px 20px rgba(102, 187, 106, 0.3)'
+    }
+    patchStyle(styleDemoBox, newStyle, currentStyle)
+    currentStyle = newStyle
+
+    // 演示 hyphenate 和 camelize
+    console.log('hyphenate("fontSize"):', hyphenate('fontSize')) // font-size
+    console.log('camelize("background-color"):', camelize('background-color')) // backgroundColor
+
+    addStyleLog(`更新样式（数值自动加px）: fontSize: 24 → "24px"`)
+})
+
+// 清空样式
+styleClearBtn.addEventListener('click', () => {
+    patchStyle(styleDemoBox, null, currentStyle)
+    currentStyle = null
+
+    // 重置为初始样式
+    styleDemoBox.style.cssText = 'padding: 16px; background: #2a4a7f; border-radius: 8px; text-align: center; transition: all 0.3s;'
+    styleDemoBox.textContent = '样式演示区域'
+
+    addStyleLog('样式已清空，重置为初始状态')
+})
+
 // ==================== createApp 示例 ====================
 console.log('=== createApp 示例 ===')
 
@@ -405,63 +484,8 @@ const appDisplayEl = document.getElementById('app-display')!
 const mountAppBtn = document.getElementById('mount-app')!
 const unmountAppBtn = document.getElementById('unmount-app')!
 
-// 创建简单的 DOM 渲染器
-const domRenderer = createRenderer({
-    createElement(tag: string): Element {
-        return document.createElement(tag)
-    },
-    createText(text: string): Text {
-        return document.createTextNode(text)
-    },
-    createComment(text: string): Comment {
-        return document.createComment(text)
-    },
-    insert(child: Node, parent: Node, anchor?: Node | null): void {
-        parent.insertBefore(child, anchor || null)
-    },
-    remove(child: Node): void {
-        const parent = child.parentNode
-        if (parent) parent.removeChild(child)
-    },
-    setElementText(el: Element, text: string): void {
-        el.textContent = text
-    },
-    patchProp(el: Element, key: string, value: any, _prevValue: any): void {
-        if (key === 'class') {
-            el.className = value || ''
-        } else if (key === 'style') {
-            if (typeof value === 'string') {
-                el.setAttribute('style', value)
-            } else if (value) {
-                for (const k in value) {
-                    (el as any).style[k] = value[k]
-                }
-            }
-        } else if (key.startsWith('on')) {
-            const eventName = key.slice(2).toLowerCase()
-            if (value) {
-                el.addEventListener(eventName, value)
-            }
-        } else if (value == null) {
-            el.removeAttribute(key)
-        } else {
-            el.setAttribute(key, value)
-        }
-    },
-    parentNode(node: Node): Node | null {
-        return node.parentNode
-    },
-    nextSibling(node: Node): Node | null {
-        return node.nextSibling
-    },
-    setText(node: Text, text: string): void {
-        node.textContent = text
-    }
-})
-
-// 计数器组件
+// 计数器组件 - 使用 runtime-dom 的 createApp
 const appCount = signal(0)
-let appInstance: ReturnType<typeof domRenderer.createApp> | null = null
 
 const CounterApp = {
     name: 'CounterApp',
@@ -477,7 +501,7 @@ const CounterApp = {
                 textAlign: 'center'
             }
         }, [
-            h('h3', { style: { color: '#4fc3f7', marginBottom: '16px' } }, 'createApp 计数器'),
+            h('h3', { style: { color: '#4fc3f7', marginBottom: '16px' } }, 'createApp 计数器 (runtime-dom)'),
             h('div', {
                 style: { fontSize: '48px', color: '#4fc3f7', marginBottom: '16px' }
             }, String(appCount())),
@@ -496,9 +520,12 @@ const CounterApp = {
     }
 }
 
+// 应用实例
+let isAppMounted = false
+
 // 挂载应用
 mountAppBtn.addEventListener('click', () => {
-    if (appInstance) {
+    if (isAppMounted) {
         appDisplayEl.innerHTML = '<p style="color: #ffcc80;">应用已挂载，请先卸载</p>'
         return
     }
@@ -507,22 +534,26 @@ mountAppBtn.addEventListener('click', () => {
     appDisplayEl.innerHTML = '<div id="app-container" style="min-height: 100px;"></div>'
     const container = document.getElementById('app-container')!
 
-    // 创建并挂载应用
-    appInstance = domRenderer.createApp(CounterApp)
-    appInstance.mount(container)
+    // 使用 runtime-dom 的 createApp 创建并挂载应用
+    createApp(CounterApp).mount(container)
+    isAppMounted = true
 
-    console.log('App mounted:', appInstance)
+    console.log('App mounted using runtime-dom')
 })
 
 // 卸载应用
 unmountAppBtn.addEventListener('click', () => {
-    if (!appInstance) {
+    if (!isAppMounted) {
         appDisplayEl.innerHTML = '<p style="color: #ffcc80;">没有已挂载的应用</p>'
         return
     }
 
-    appInstance.unmount()
-    appInstance = null
+    // 渲染 null 来清空容器
+    const container = document.getElementById('app-container')
+    if (container) {
+        render(null, container)
+    }
+    isAppMounted = false
     appDisplayEl.innerHTML = '<p style="color: #66bb6a;">应用已卸载</p>'
 
     console.log('App unmounted')
@@ -535,4 +566,4 @@ console.log('Computed:', double(), triple())
 console.log('Reactive:', state.name)
 console.log('VNode API:', { createVNode, h })
 console.log('Scheduler API:', { nextTick, queueJob, getQueueStatus })
-console.log('Renderer API:', { createRenderer })
+console.log('Runtime-DOM API:', { createApp, render, patchStyle, normalizeStyle, hyphenate, camelize })

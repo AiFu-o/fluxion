@@ -1,0 +1,30 @@
+{
+    "name": "@fluxion/runtime-dom",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "./dist/runtime-dom.cjs",
+    "module": "./dist/runtime-dom.js",
+    "types": "./dist/runtime-dom.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/runtime-dom.js",
+            "require": "./dist/runtime-dom.cjs",
+            "types": "./dist/runtime-dom.d.ts"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "rollup -c ../../build/rollup.config.js --configPlugin typescript",
+        "test": "vitest run",
+        "test:watch": "vitest"
+    },
+    "dependencies": {
+        "@fluxion/runtime-core": "workspace:*",
+        "@fluxion/shared": "workspace:*"
+    },
+    "devDependencies": {
+        "@fluxion/reactivity": "workspace:*"
+    }
+}

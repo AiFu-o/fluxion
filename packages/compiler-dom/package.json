@@ -1,0 +1,26 @@
+{
+	"name": "@fluxion/compiler-dom",
+	"version": "0.0.1",
+	"description": "Fluxion compiler for DOM - DOM-specific compilation transforms",
+	"type": "module",
+	"main": "./dist/compiler-dom.cjs",
+	"module": "./dist/compiler-dom.js",
+	"types": "./dist/compiler-dom.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/compiler-dom.js",
+			"require": "./dist/compiler-dom.cjs",
+			"types": "./dist/compiler-dom.d.ts"
+		}
+	},
+	"files": ["dist"],
+	"scripts": {
+		"build": "rollup -c ../../build/rollup.config.js --configPlugin typescript",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"@fluxion/compiler-core": "workspace:*",
+		"@fluxion/shared": "workspace:*"
+	}
+}

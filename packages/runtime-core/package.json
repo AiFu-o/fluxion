@@ -1,0 +1,23 @@
+{
+	"name": "@fluxion/runtime-core",
+	"version": "0.0.1",
+	"description": "Fluxion platform-independent runtime core",
+	"type": "module",
+	"main": "./dist/runtime-core.cjs",
+	"module": "./dist/runtime-core.js",
+	"types": "./dist/runtime-core.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/runtime-core.js",
+			"require": "./dist/runtime-core.cjs",
+			"types": "./dist/runtime-core.d.ts"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"@fluxion/reactivity": "workspace:*",
+		"@fluxion/shared": "workspace:*"
+	}
+}

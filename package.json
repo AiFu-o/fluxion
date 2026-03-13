@@ -4,9 +4,6 @@
 	"private": true,
 	"description": "A lightweight UI framework",
 	"type": "module",
-	"workspaces": [
-		"packages/*"
-	],
 	"scripts": {
 		"dev": "node build/dev.mjs",
 		"build": "node build/build.mjs",

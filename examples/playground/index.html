@@ -209,6 +209,38 @@
                 <button class="btn" id="trigger-effect">触发 Effect</button>
             </div>
         </div>
+
+        <!-- VNode 示例 -->
+        <div class="card">
+            <h2>VNode 示例 (runtime-core)</h2>
+            <div id="vnode-display" class="info" style="font-family: monospace; white-space: pre-wrap;"></div>
+            <div style="text-align: center; margin-top: 16px;">
+                <button class="btn" id="create-vnode">创建 VNode</button>
+                <button class="btn btn-success" id="create-h">使用 h() 函数</button>
+            </div>
+        </div>
+
+        <!-- 调度器示例 -->
+        <div class="card">
+            <h2>调度器示例 (Scheduler)</h2>
+            <div id="scheduler-log" class="info" style="font-family: monospace; white-space: pre-wrap;"></div>
+            <div style="text-align: center; margin-top: 16px;">
+                <button class="btn" id="queue-jobs">队列任务</button>
+                <button class="btn btn-danger" id="clear-queue">清空队列</button>
+            </div>
+        </div>
+
+        <!-- createApp 示例 -->
+        <div class="card">
+            <h2>createApp 示例</h2>
+            <div id="app-display" class="info" style="min-height: 80px;">
+                <p style="color: #81d4fa;">点击 "挂载应用" 创建并挂载 Fluxion 应用</p>
+            </div>
+            <div style="text-align: center; margin-top: 16px;">
+                <button class="btn btn-success" id="mount-app">挂载应用</button>
+                <button class="btn btn-danger" id="unmount-app">卸载应用</button>
+            </div>
+        </div>
     </div>
 
     <script type="module" src="/src/main.ts"></script>

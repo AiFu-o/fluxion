@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-设计文档.md
-CLAUDE.md
-.claude/
-memory/
+# 设计文档.md
+# CLAUDE.md
+# .claude/
+# memory/

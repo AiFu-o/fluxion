@@ -1,5 +1,10 @@
 # Fluxion 文档
 
+[![GitHub stars](https://img.shields.io/github/stars/AiFu-o/fluxion?style=social)](https://github.com/AiFu-o/fluxion)
+[![star](https://gitee.com/wang-weichen/fluxion/badge/star.svg?theme=dark)](https://gitee.com/wang-weichen/fluxion/stargazers)
+
+仓库地址：[GitHub](https://github.com/AiFu-o/fluxion) | [Gitee](https://gitee.com/wang-weichen/fluxion)
+
 Fluxion 是一个轻量级 JavaScript UI 框架，设计目标：
 
 - **AI友好**：低 token 使用，易于理解

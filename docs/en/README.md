@@ -1,5 +1,10 @@
 # Fluxion Documentation
 
+[![GitHub stars](https://img.shields.io/github/stars/AiFu-o/fluxion?style=social)](https://github.com/AiFu-o/fluxion)
+[![star](https://gitee.com/wang-weichen/fluxion/badge/star.svg?theme=dark)](https://gitee.com/wang-weichen/fluxion/stargazers)
+
+Repository: [GitHub](https://github.com/AiFu-o/fluxion) | [Gitee](https://gitee.com/wang-weichen/fluxion)
+
 Fluxion is a lightweight JavaScript UI framework designed with two goals:
 
 - **AI-friendly**: Low token usage, easy to understand

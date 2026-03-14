@@ -8,5 +8,7 @@ function test() {
 
 view
 	div
-		h1 {title}
+		p Count:
+		h1 class="123"
+			qq:
 		Counter

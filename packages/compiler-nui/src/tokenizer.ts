@@ -326,6 +326,25 @@ function readNumber(state: TokenizerState): Token {
 }
 
 /**
+ * 检查字符是否是 Unicode 字母（包括中文）
+ * Unicode 字母范围：
+ * - \u4E00-\u9FFF: CJK 统一汉字
+ * - \u3400-\u4DBF: CJK 扩展 A
+ * - \u20000-\u2A6DF: CJK 扩展 B (需要代理对)
+ * - \u2A700-\u2B73F: CJK 扩展 C
+ * - \u2B740-\u2B81F: CJK 扩展 D
+ * - \u2B820-\u2CEAF: CJK 扩展 E
+ * - \u3040-\u30FF: 日文假名
+ * - \uAC00-\uD7AF: 韩文
+ * - 其他 Unicode 字母（通过 \p{L} 匹配）
+ */
+function isUnicodeLetter(char: string): boolean {
+	// 使用正则表达式匹配 Unicode 字母
+	// \p{L} 匹配所有 Unicode 字母类别
+	return /^[\p{L}]$/u.test(char)
+}
+
+/**
  * 读取标识符或关键词
  */
 function readIdentifier(state: TokenizerState): Token {
@@ -339,13 +358,14 @@ function readIdentifier(state: TokenizerState): Token {
 		const char = currentChar(state)
 		if (char === null) break
 
-		// 标识符可以包含字母、数字、下划线、$
+		// 标识符可以包含字母、数字、下划线、$、Unicode 字母（包括中文）
 		if (
 			(char >= 'a' && char <= 'z') ||
 			(char >= 'A' && char <= 'Z') ||
 			(char >= '0' && char <= '9') ||
 			char === '_' ||
-			char === '$'
+			char === '$' ||
+			isUnicodeLetter(char)
 		) {
 			value += advance(state)
 		} else {
@@ -656,12 +676,13 @@ export function tokenize(source: string): {
 					break
 				}
 
-				// 标识符或关键词
+				// 标识符或关键词（包括 Unicode 字母，如中文）
 				if (
 					(char >= 'a' && char <= 'z') ||
 					(char >= 'A' && char <= 'Z') ||
 					char === '_' ||
-					char === '$'
+					char === '$' ||
+					isUnicodeLetter(char)
 				) {
 					state.tokens.push(readIdentifier(state))
 					break

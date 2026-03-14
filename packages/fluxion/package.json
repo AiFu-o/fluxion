@@ -1,0 +1,47 @@
+{
+    "name": "fluxion",
+    "version": "0.0.1",
+    "type": "module",
+    "description": "A lightweight AI-friendly UI framework",
+    "main": "./dist/fluxion.cjs",
+    "module": "./dist/fluxion.js",
+    "types": "./dist/fluxion.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/fluxion.js",
+            "require": "./dist/fluxion.cjs",
+            "types": "./dist/fluxion.d.ts"
+        },
+        "./runtime": {
+            "import": "./dist/runtime.js",
+            "require": "./dist/runtime.cjs",
+            "types": "./dist/runtime.d.ts"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "rollup -c ../../build/rollup.config.js --configPlugin typescript",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "@fluxion/runtime-dom": "workspace:*",
+        "@fluxion/runtime-core": "workspace:*",
+        "@fluxion/reactivity": "workspace:*",
+        "@fluxion/shared": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/anthropics/fluxion"
+    },
+    "keywords": [
+        "ui",
+        "framework",
+        "reactive",
+        "signal",
+        "ai-friendly"
+    ],
+    "author": "Fluxion Team",
+    "license": "MIT"
+}

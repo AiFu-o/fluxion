@@ -149,33 +149,33 @@ function isComponent(type: VNodeType): type is Component {
  * 判断是否为元素 VNode
  */
 export function isElementVNode(vnode: VNode): boolean {
-    return vnode.shapeFlag & ShapeFlags.ELEMENT
+    return !!(vnode.shapeFlag & ShapeFlags.ELEMENT)
 }
 
 /**
  * 判断是否为组件 VNode
  */
 export function isComponentVNode(vnode: VNode): boolean {
-    return vnode.shapeFlag & ShapeFlags.STATEFUL_COMPONENT
+    return !!(vnode.shapeFlag & ShapeFlags.STATEFUL_COMPONENT)
 }
 
 /**
  * 判断 children 是否为文本
  */
 export function isTextChildren(vnode: VNode): boolean {
-    return vnode.shapeFlag & ShapeFlags.TEXT_CHILDREN
+    return !!(vnode.shapeFlag & ShapeFlags.TEXT_CHILDREN)
 }
 
 /**
  * 判断 children 是否为数组
  */
 export function isArrayChildren(vnode: VNode): boolean {
-    return vnode.shapeFlag & ShapeFlags.ARRAY_CHILDREN
+    return !!(vnode.shapeFlag & ShapeFlags.ARRAY_CHILDREN)
 }
 
 /**
  * 判断 children 是否为插槽
  */
 export function isSlotsChildren(vnode: VNode): boolean {
-    return vnode.shapeFlag & ShapeFlags.SLOTS_CHILDREN
+    return !!(vnode.shapeFlag & ShapeFlags.SLOTS_CHILDREN)
 }

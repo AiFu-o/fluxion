@@ -209,4 +209,47 @@ view
 			expect(result.ast.view!.children).toHaveLength(1)
 		})
 	})
+
+	describe('Style 块', () => {
+		it('应该解析 style 块', () => {
+			const source = `view
+	div
+
+style
+	button {
+		width: 20px;
+	}`
+			const result = parse(source)
+
+			expect(result.ast.style).not.toBeNull()
+			expect(result.ast.style!.content).toContain('button')
+			expect(result.ast.style!.content).toContain('width: 20px')
+		})
+
+		it('应该编译 style 块为注入代码', () => {
+			const source = `view
+	div
+
+style
+	button {
+		width: 20px;
+	}`
+			const result = compile(source)
+
+			expect(result.code).toContain('document.createElement(\'style\')')
+			expect(result.code).toContain('width: 20px')
+			expect(result.code).toContain('document.head.appendChild')
+		})
+
+		it('应该处理空的 style 块', () => {
+			const source = `view
+	div
+
+style`
+			const result = parse(source)
+
+			// style 块存在但内容为空
+			expect(result.ast.style).not.toBeNull()
+		})
+	})
 })

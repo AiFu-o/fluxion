@@ -71,7 +71,10 @@ import {
 	NuiCompileResult,
 	NuiNodeTypes,
 	ViewBlock,
-	StyleBlock
+	StyleBlock,
+	Token,
+	TokenType,
+	NuiCompilerError
 } from './types'
 import { tokenize } from './tokenizer'
 import { parseStatements, parseViewBlock } from './parser'
@@ -97,8 +100,8 @@ export function parse(source: string, options: NuiParseOptions = {}): NuiParseRe
 	// 3. 解析 view 块
 	const viewResult = parseViewBlock(tokens)
 
-	// 4. 解析 style 块（暂未实现）
-	let style: StyleBlock | null = null
+	// 4. 解析 style 块
+	const styleResult = parseStyleBlock(source, tokens)
 
 	// 5. 构建 AST
 	const ast: NuiRootNode = {
@@ -107,7 +110,7 @@ export function parse(source: string, options: NuiParseOptions = {}): NuiParseRe
 		signals: statementResult.signals,
 		functions: statementResult.functions,
 		view: viewResult.view,
-		style,
+		style: styleResult.style,
 		loc: createSourceLocation(
 			{ offset: 0, line: 1, column: 1 } as Position,
 			{ offset: source.length, line: 1, column: 1 } as Position,
@@ -120,10 +123,82 @@ export function parse(source: string, options: NuiParseOptions = {}): NuiParseRe
 	const errors = [
 		...tokenErrors,
 		...statementResult.errors,
-		...viewResult.errors
+		...viewResult.errors,
+		...styleResult.errors
 	]
 
 	return { ast, errors }
+}
+
+/**
+ * 解析 style 块
+ * 从源码中提取 style 块的内容
+ */
+function parseStyleBlock(source: string, tokens: Token[]): {
+	style: StyleBlock | null
+	errors: NuiCompilerError[]
+} {
+	// 找到 STYLE token
+	let styleToken: Token | null = null
+	for (const token of tokens) {
+		if (token.type === TokenType.STYLE) {
+			styleToken = token
+			break
+		}
+	}
+
+	if (!styleToken) {
+		return { style: null, errors: [] }
+	}
+
+	// 从 style 关键字后面开始，找到缩进后的内容
+	// style 关键字的位置
+	const styleStart = styleToken.loc.start.offset
+
+	// 找到 style 后的换行符
+	let contentStart = styleStart + 5 // 'style'.length
+	while (contentStart < source.length && source[contentStart] !== '\n') {
+		contentStart++
+	}
+	contentStart++ // 跳过换行
+
+	// 跳过缩进（第一个 tab）
+	if (contentStart < source.length && source[contentStart] === '\t') {
+		contentStart++
+	}
+
+	// 提取 style 内容直到文件末尾
+	// 需要处理缩进：移除每行开头的 tab
+	let content = ''
+	let i = contentStart
+	let lineStart = true
+
+	while (i < source.length) {
+		const char = source[i]
+
+		if (char === '\n') {
+			content += char
+			i++
+			lineStart = true
+		} else if (lineStart && char === '\t') {
+			// 跳过行首的 tab（缩进）
+			i++
+			lineStart = false
+		} else {
+			content += char
+			i++
+			lineStart = false
+		}
+	}
+
+	// 创建 style 块
+	const styleBlock: StyleBlock = {
+		type: NuiNodeTypes.STYLE_BLOCK,
+		content: content.trim(),
+		loc: styleToken.loc
+	}
+
+	return { style: styleBlock, errors: [] }
 }
 
 /**

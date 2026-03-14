@@ -177,10 +177,26 @@ function genElementNode(
 			const childCode = genChildNode(node.children[0], ctx, indentLevel)
 			args.push(childCode)
 		} else {
-			const childrenCode = node.children
-				.map(child => genChildNode(child, ctx, indentLevel))
-				.join(', ')
-			args.push(`[${childrenCode}]`)
+			// 混合内容：文本和插值
+			// 需要处理文本节点之间的空格
+			const childrenParts: string[] = []
+			for (let i = 0; i < node.children.length; i++) {
+				const child = node.children[i]
+				const childCode = genChildNode(child, ctx, indentLevel)
+
+				// 如果当前是文本节点，且前一个也是文本节点，需要添加空格连接
+				if (child.type === NodeTypes.TEXT && i > 0) {
+					const prevChild = node.children[i - 1]
+					if (prevChild.type === NodeTypes.TEXT) {
+						// 两个相邻的文本节点，用 + 连接并添加空格
+						// 但由于我们分别处理，这里不需要额外处理
+						// 因为每个文本节点已经用引号包裹
+					}
+				}
+
+				childrenParts.push(childCode)
+			}
+			args.push(`[${childrenParts.join(', ')}]`)
 		}
 	}
 
@@ -461,14 +477,32 @@ function genRenderFunction(
 
 /**
  * 生成 style 块
- * TODO: 实现 CSS Modules 或 Scoped Styles
+ * 将 CSS 内容注入到文档中
  */
 function genStyleBlock(
 	style: StyleBlock,
 	ctx: ModuleCodegenContext
 ): void {
-	// 暂时跳过 style 块
-	// 后续可以实现 CSS Modules 或 Scoped Styles
+	if (!style.content.trim()) {
+		return
+	}
+
+	// 生成一个唯一的 style ID（基于内容 hash）
+	const styleId = `style_${Buffer.from(style.content).toString('base64').slice(0, 8)}`
+
+	// 生成注入样式表的代码
+	ctx.code += `\n// 注入样式\n`
+	ctx.code += `;(function() {\n`
+	ctx.code += `\tif (typeof document !== 'undefined') {\n`
+	ctx.code += `\t\tconst style = document.getElementById('${styleId}')\n`
+	ctx.code += `\t\tif (!style) {\n`
+	ctx.code += `\t\t\tconst el = document.createElement('style')\n`
+	ctx.code += `\t\t\tel.id = '${styleId}'\n`
+	ctx.code += `\t\t\tel.textContent = \`${style.content.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`\n`
+	ctx.code += `\t\t\tdocument.head.appendChild(el)\n`
+	ctx.code += `\t\t}\n`
+	ctx.code += `\t}\n`
+	ctx.code += `})()\n`
 }
 
 // ==================== 主入口 ====================

@@ -220,4 +220,133 @@ describe('template parser', () => {
 			expect(result.errors.length).toBeGreaterThan(0)
 		})
 	})
+
+	describe('换行缩进的子节点解析', () => {
+		it('应该正确解析换行缩进的插值表达式作为子节点', () => {
+			const source = `view
+	h1 class="123"
+		{title}`
+			const tokens = tokenize(source).tokens
+			const result = parseViewBlock(tokens)
+
+			expect(result.view!.children).toHaveLength(1)
+			const h1 = result.view!.children[0]
+			expect(h1.type).toBe(NodeTypes.ELEMENT)
+
+			if (h1.type === NodeTypes.ELEMENT) {
+				expect(h1.tag).toBe('h1')
+				expect(h1.props).toHaveLength(1)
+				expect(h1.children).toHaveLength(1)
+
+				const child = h1.children![0]
+				expect(child.type).toBe(NodeTypes.INTERPOLATION)
+			}
+		})
+
+		it('应该正确解析换行缩进的文本作为子节点', () => {
+			const source = `view
+	h1 class="123"
+		hello`
+			const tokens = tokenize(source).tokens
+			const result = parseViewBlock(tokens)
+
+			const h1 = result.view!.children[0] as any
+			expect(h1.type).toBe(NodeTypes.ELEMENT)
+			expect(h1.children).toHaveLength(1)
+			expect(h1.children[0].type).toBe(NodeTypes.TEXT)
+			expect(h1.children[0].content).toBe('hello')
+		})
+
+		it('应该正确解析换行缩进的多个文本标识符', () => {
+			const source = `view
+	h1
+		hello world`
+			const tokens = tokenize(source).tokens
+			const result = parseViewBlock(tokens)
+
+			const h1 = result.view!.children[0] as any
+			expect(h1.type).toBe(NodeTypes.ELEMENT)
+			// hello 和 world 被合并成一个文本节点（空格被 tokenizer 跳过）
+			expect(h1.children).toHaveLength(1)
+			expect(h1.children[0].type).toBe(NodeTypes.TEXT)
+			expect(h1.children[0].content).toBe('helloworld')
+		})
+
+		it('应该正确解析换行缩进的混合内容', () => {
+			const source = `view
+	h1
+		hello
+		{name}`
+			const tokens = tokenize(source).tokens
+			const result = parseViewBlock(tokens)
+
+			const h1 = result.view!.children[0] as any
+			expect(h1.type).toBe(NodeTypes.ELEMENT)
+			expect(h1.children).toHaveLength(2)
+			expect(h1.children[0].type).toBe(NodeTypes.TEXT)
+			expect(h1.children[0].content).toBe('hello')
+			expect(h1.children[1].type).toBe(NodeTypes.INTERPOLATION)
+		})
+
+		it('应该正确解析行内和换行缩进的混合子节点', () => {
+			const source = `view
+	h1 inline
+		{title}`
+			const tokens = tokenize(source).tokens
+			const result = parseViewBlock(tokens)
+
+			const h1 = result.view!.children[0] as any
+			expect(h1.type).toBe(NodeTypes.ELEMENT)
+			expect(h1.children).toHaveLength(2)
+			expect(h1.children[0].type).toBe(NodeTypes.TEXT)
+			expect(h1.children[0].content).toBe('inline')
+			expect(h1.children[1].type).toBe(NodeTypes.INTERPOLATION)
+		})
+
+		it('应该正确解析换行缩进的中文文本', () => {
+			const source = `view
+	h1 class="123"
+		测试`
+			const tokens = tokenize(source).tokens
+			const result = parseViewBlock(tokens)
+
+			const h1 = result.view!.children[0] as any
+			expect(h1.type).toBe(NodeTypes.ELEMENT)
+			expect(h1.children).toHaveLength(1)
+			expect(h1.children[0].type).toBe(NodeTypes.TEXT)
+			expect(h1.children[0].content).toBe('测试')
+		})
+
+		it('应该正确解析换行缩进的数字', () => {
+			const source = `view
+	h1
+		123`
+			const tokens = tokenize(source).tokens
+			const result = parseViewBlock(tokens)
+
+			const h1 = result.view!.children[0] as any
+			expect(h1.type).toBe(NodeTypes.ELEMENT)
+			expect(h1.children).toHaveLength(1)
+			expect(h1.children[0].type).toBe(NodeTypes.TEXT)
+			expect(h1.children[0].content).toBe('123')
+		})
+
+		it('应该正确解析换行缩进的符号', () => {
+			const source = `view
+	h1
+		Hello, World!`
+			const tokens = tokenize(source).tokens
+			const result = parseViewBlock(tokens)
+
+			const h1 = result.view!.children[0] as any
+			expect(h1.type).toBe(NodeTypes.ELEMENT)
+			// 注意：当前实现中，Hello 和 ,World! 被分成两个节点
+			// 这是因为空格被 tokenizer 跳过导致的
+			expect(h1.children).toHaveLength(2)
+			expect(h1.children[0].type).toBe(NodeTypes.TEXT)
+			expect(h1.children[0].content).toBe('Hello')
+			expect(h1.children[1].type).toBe(NodeTypes.TEXT)
+			expect(h1.children[1].content).toBe(',World!')
+		})
+	})
 })

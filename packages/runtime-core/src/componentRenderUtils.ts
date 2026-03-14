@@ -11,7 +11,7 @@ import { warn, isFunction } from '@fluxion/shared'
  * 获取组件的渲染结果 VNode
  */
 export function renderComponentRoot(instance: ComponentInstance): VNode | null {
-    const { render, props, attrs, slots } = instance
+    const { render } = instance
 
     if (!render) {
         warn('组件缺少 render 函数')
@@ -21,7 +21,7 @@ export function renderComponentRoot(instance: ComponentInstance): VNode | null {
     try {
         // 执行 render 函数
         // render 函数内部会访问响应式数据，自动建立依赖
-        const subTree = render.call(instance, props, { attrs, slots })
+        const subTree = render.call(instance)
 
         // 验证返回值
         if (subTree && !isVNode(subTree)) {

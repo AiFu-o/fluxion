@@ -521,6 +521,19 @@ function parseForStatement(
 function parseInlineContent(state: ParserState): Array<TextNode | InterpolationNode> {
 	const nodes: Array<TextNode | InterpolationNode> = []
 
+	// 收集连续的文本内容
+	let currentText = ''
+	let currentTextLoc: any = null
+
+	// 辅助函数：将收集的文本推送到 nodes
+	const flushText = () => {
+		if (currentText) {
+			nodes.push(createTextNode(currentText, currentTextLoc))
+			currentText = ''
+			currentTextLoc = null
+		}
+	}
+
 	while (currentToken(state) && !isTokenType(state, TokenType.EOF)) {
 		// 遇到换行、缩进、结束插值，停止
 		if (
@@ -536,6 +549,9 @@ function parseInlineContent(state: ParserState): Array<TextNode | InterpolationN
 
 		// 插值表达式 {expr}
 		if (token.type === TokenType.LBRACE) {
+			// 先刷新已收集的文本
+			flushText()
+
 			advance(state) // 跳过 {
 
 			// 读取插值内容
@@ -566,23 +582,20 @@ function parseInlineContent(state: ParserState): Array<TextNode | InterpolationN
 			continue
 		}
 
-		// 标识符作为文本
-		if (token.type === TokenType.IDENTIFIER) {
-			nodes.push(createTextNode(token.value, token.loc))
-			advance(state)
-			continue
-		}
-
-		// 字符串作为文本
-		if (token.type === TokenType.STRING) {
-			nodes.push(createTextNode(token.value, token.loc))
-			advance(state)
-			continue
-		}
-
-		// 数字作为文本
-		if (token.type === TokenType.NUMBER) {
-			nodes.push(createTextNode(token.value, token.loc))
+		// 文本类 token：收集到 currentText
+		if (
+			token.type === TokenType.IDENTIFIER ||
+			token.type === TokenType.STRING ||
+			token.type === TokenType.NUMBER ||
+			token.type === TokenType.COMMA ||
+			token.type === TokenType.OPERATOR ||
+			token.type === TokenType.DOT
+		) {
+			// 记录起始位置
+			if (!currentTextLoc) {
+				currentTextLoc = token.loc
+			}
+			currentText += token.value
 			advance(state)
 			continue
 		}
@@ -590,6 +603,9 @@ function parseInlineContent(state: ParserState): Array<TextNode | InterpolationN
 		// 其他 token 跳过
 		advance(state)
 	}
+
+	// 刷新剩余的文本
+	flushText()
 
 	return nodes
 }
@@ -701,6 +717,74 @@ function parseChildren(
 				// 收集同一行的所有文本内容
 				const textNodes = parseInlineContent(state)
 				children.push(...textNodes)
+			}
+			continue
+		}
+
+		// 插值表达式 {expr} 作为独立的子节点
+		if (token.type === TokenType.LBRACE) {
+			advance(state) // 跳过 {
+
+			// 读取插值内容
+			let expr = ''
+			while (
+				currentToken(state) &&
+				!isTokenType(state, TokenType.RBRACE) &&
+				!isTokenType(state, TokenType.NEWLINE) &&
+				!isTokenType(state, TokenType.EOF)
+			) {
+				const t = currentToken(state)!
+				expr += t.value
+				advance(state)
+			}
+
+			// 期望 }
+			if (isTokenType(state, TokenType.RBRACE)) {
+				advance(state)
+			}
+
+			// 创建插值节点
+			if (expr) {
+				children.push(createInterpolationNode(
+					createSimpleExpression(expr, false),
+					token.loc
+				))
+			}
+			continue
+		}
+
+		// 文本类 token：收集连续的文本
+		if (
+			token.type === TokenType.IDENTIFIER ||
+			token.type === TokenType.NUMBER ||
+			token.type === TokenType.STRING ||
+			token.type === TokenType.COMMA ||
+			token.type === TokenType.OPERATOR ||
+			token.type === TokenType.DOT
+		) {
+			let textContent = ''
+			let textLoc: any = token.loc
+
+			// 收集连续的文本 token
+			while (currentToken(state)) {
+				const t = currentToken(state)!
+				if (
+					t.type === TokenType.IDENTIFIER ||
+					t.type === TokenType.NUMBER ||
+					t.type === TokenType.STRING ||
+					t.type === TokenType.COMMA ||
+					t.type === TokenType.OPERATOR ||
+					t.type === TokenType.DOT
+				) {
+					textContent += t.value
+					advance(state)
+				} else {
+					break
+				}
+			}
+
+			if (textContent) {
+				children.push(createTextNode(textContent, textLoc))
 			}
 			continue
 		}

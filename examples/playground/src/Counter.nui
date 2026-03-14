@@ -14,12 +14,12 @@ function decrement() {
 }
 
 function reset() {
-	count.set(0)
+	count.set(1)
 }
 
 view
 	div class="test"
-		p count: {count}
+		p "count: " {count}
 		button @click=decrement
 			1
 		button @click=increment

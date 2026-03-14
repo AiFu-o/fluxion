@@ -62,7 +62,8 @@ import Button from "./Button.nui"`
 			const result = parseStatements(tokens)
 
 			expect(result.signals).toHaveLength(1)
-			expect(result.signals[0].initExpression).toBe('test')
+			// initExpression 保留引号以便正确生成代码
+			expect(result.signals[0].initExpression).toBe('"test"')
 		})
 
 		it('应该正确解析多个 signal', () => {

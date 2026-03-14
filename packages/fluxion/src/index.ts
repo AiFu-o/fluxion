@@ -106,7 +106,6 @@ export {
     warn,
     error,
     isString,
-    isNumber,
     isObject,
     isArray,
     isFunction,

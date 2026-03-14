@@ -83,8 +83,76 @@ function createError(
 // ==================== 属性解析 ====================
 
 /**
+ * 读取完整的表达式（支持函数调用）
+ * 例如：switchTab("counter") 或 reset 或 counter + 1
+ */
+function readExpression(state: ParserState): string {
+	let expr = ''
+	let parenDepth = 0 // 括号嵌套深度
+
+	while (currentToken(state) && !isTokenType(state, TokenType.NEWLINE)) {
+		const token = currentToken(state)!
+
+		// 遇到 INDENT 或 DEDENT 停止
+		if (token.type === TokenType.INDENT || token.type === TokenType.DEDENT) {
+			break
+		}
+
+		// 跟踪括号深度
+		if (token.type === TokenType.LPAREN) {
+			parenDepth++
+		} else if (token.type === TokenType.RPAREN) {
+			parenDepth--
+		}
+
+		// 如果括号深度为 0 且遇到逗号，可能是下一个属性的分隔符
+		if (parenDepth === 0 && token.type === TokenType.COMMA) {
+			break
+		}
+
+		// 将 token 值添加到表达式
+		// 字符串 token 需要加引号
+		if (token.type === TokenType.STRING) {
+			// 在函数参数中需要加引号
+			expr += `"${token.value}"`
+		} else {
+			expr += token.value
+		}
+		advance(state)
+
+		// 如果括号深度归零且遇到某些 token，检查是否应该停止
+		if (parenDepth === 0) {
+			// 检查下一个 token，如果是属性开始符号（@ 或标识符后跟 =），停止
+			const next = currentToken(state)
+			if (next) {
+				if (next.type === TokenType.AT) {
+					// 下一个是 @event 指令，停止
+					break
+				}
+				if (next.type === TokenType.IDENTIFIER) {
+					// 检查是否是 name=value 形式的属性
+					const savedIndex = state.index
+					advance(state)
+					if (isTokenType(state, TokenType.EQUALS)) {
+						// 这是一个新属性，回退并停止
+						state.index = savedIndex
+						state.currentToken = next
+						break
+					}
+					// 不是属性，继续，但需要恢复状态
+					state.index = savedIndex
+					state.currentToken = next
+				}
+			}
+		}
+	}
+
+	return expr.trim()
+}
+
+/**
  * 解析元素属性
- * 支持：name=value, name="value", @event=handler
+ * 支持：name=value, name="value", @event=handler, @event=func(arg)
  */
 function parseElementProps(
 	state: ParserState
@@ -96,6 +164,7 @@ function parseElementProps(
 
 		// @event=handler 指令
 		if (token.type === TokenType.AT) {
+			const atToken = token
 			advance(state) // 跳过 @
 
 			// 读取事件名
@@ -121,8 +190,10 @@ function parseElementProps(
 			}
 			advance(state)
 
-			// 读取处理函数名
-			if (!isTokenType(state, TokenType.IDENTIFIER)) {
+			// 读取完整的处理函数表达式（支持函数调用）
+			const handler = readExpression(state)
+
+			if (!handler) {
 				state.errors.push(createError(
 					NuiErrorCodes.INVALID_VIEW_SYNTAX,
 					'事件指令需要指定处理函数',
@@ -130,8 +201,6 @@ function parseElementProps(
 				))
 				break
 			}
-			const handler = currentToken(state)!.value
-			advance(state)
 
 			// 创建指令节点
 			props.push(createDirectiveNode(
@@ -139,7 +208,7 @@ function parseElementProps(
 				handler,
 				eventName,
 				[],
-				token.loc
+				atToken.loc
 			))
 			continue
 		}
@@ -153,14 +222,16 @@ function parseElementProps(
 			if (isTokenType(state, TokenType.EQUALS)) {
 				advance(state) // 跳过 '='
 
-				// 读取属性值
+				// 检查第一个 token 是否是字符串
+				const firstToken = currentToken(state)
+				const isStaticValue = firstToken?.type === TokenType.STRING
+
+				// 读取属性值（只读一个 token）
 				let attrValue = ''
-				let isStaticValue = false
 				const valueToken = currentToken(state)
 
 				if (valueToken?.type === TokenType.STRING) {
 					attrValue = valueToken.value
-					isStaticValue = true
 					advance(state)
 				} else if (valueToken?.type === TokenType.IDENTIFIER) {
 					attrValue = valueToken.value

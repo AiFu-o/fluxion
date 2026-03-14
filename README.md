@@ -1,5 +1,7 @@
 # Fluxion 文档
 
+[![npm version](https://img.shields.io/npm/v/@fluxion-ui/fluxion?color=blue)](https://www.npmjs.com/package/@fluxion-ui/fluxion)
+[![npm downloads](https://img.shields.io/npm/dm/@fluxion-ui/fluxion)](https://www.npmjs.com/package/@fluxion-ui/fluxion)
 [![GitHub stars](https://img.shields.io/github/stars/AiFu-o/fluxion?style=social)](https://github.com/AiFu-o/fluxion)
 [![star](https://gitee.com/wang-weichen/fluxion/badge/star.svg?theme=dark)](https://gitee.com/wang-weichen/fluxion/stargazers)
 
@@ -20,11 +22,11 @@ Fluxion 是一个轻量级 JavaScript UI 框架，设计目标：
 ## 快速开始
 
 ```bash
-# 安装
-pnpm add fluxion
+# 安装核心包
+pnpm add @fluxion-ui/fluxion
 
 # 安装 Vite 插件
-pnpm add -D vite-plugin-fluxion
+pnpm add -D @fluxion-ui/vite-plugin-fluxion
 ```
 
 ## 文档目录

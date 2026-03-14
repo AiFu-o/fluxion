@@ -78,6 +78,19 @@ pnpm add -D vite-plugin-fluxion
 
 本项目所有文档及代码均由 **GLM5 + Claude Code** 协助编写，展示了 AI 辅助开发的能力。
 
+## 项目状态
+
+⚠️ **当前版本为初始发布版本**，可能存在一些问题。如果您在使用过程中遇到任何 Bug 或有改进建议，欢迎在 [Issues](https://github.com/AiFu-o/fluxion/issues) 中提出，我们会及时响应和修复。
+
+## 后续计划
+
+Fluxion 正在积极开发中，以下功能正在规划中：
+
+- 🧭 **fluxion-router** - 官方路由解决方案
+- 🎨 **fluxion-ui** - 官方 UI 组件库
+- ⚡ **更好的 Vite 支持** - HMR 优化、更快的编译速度
+- 📦 **更多示例和模板** - 开箱即用的项目模板
+
 ## 致谢
 
 Fluxion 的设计和实现深受 [Vue.js](https://vuejs.org/) 的启发。以下核心概念借鉴了 Vue 的优秀设计：
@@ -94,7 +107,7 @@ Fluxion 的设计和实现深受 [Vue.js](https://vuejs.org/) 的启发。以下
 
 ## License
 
-MIT
+[MIT](../../LICENSE)
 
 ---
 

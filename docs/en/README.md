@@ -78,6 +78,19 @@ pnpm add -D vite-plugin-fluxion
 
 All documentation and code in this project were created with the assistance of **GLM5 + Claude Code**, demonstrating the capabilities of AI-assisted development.
 
+## Project Status
+
+⚠️ **This is the initial release version**, which may have some issues. If you encounter any bugs or have suggestions for improvement, please feel free to submit them in [Issues](https://github.com/AiFu-o/fluxion/issues), and we will respond and fix them promptly.
+
+## Roadmap
+
+Fluxion is under active development. The following features are being planned:
+
+- 🧭 **fluxion-router** - Official routing solution
+- 🎨 **fluxion-ui** - Official UI component library
+- ⚡ **Better Vite Support** - HMR optimization, faster compilation
+- 📦 **More Examples & Templates** - Ready-to-use project templates
+
 ## Acknowledgments
 
 Fluxion's design and implementation are deeply inspired by [Vue.js](https://vuejs.org/). The following core concepts borrow from Vue's excellent design:
@@ -94,7 +107,7 @@ Thanks to [Evan You](https://github.com/yyx990803) and the Vue.js team for creat
 
 ## License
 
-MIT
+[MIT](../../LICENSE)
 
 ---
 

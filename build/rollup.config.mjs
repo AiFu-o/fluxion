@@ -1,7 +1,7 @@
 import { defineConfig } from 'rollup'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import typescript from '@rollup/plugin-typescript'
+import esbuild from 'rollup-plugin-esbuild'
 import terser from '@rollup/plugin-terser'
 import replace from '@rollup/plugin-replace'
 import alias from '@rollup/plugin-alias'
@@ -31,7 +31,7 @@ const entries = packages.map(name => ({
 }))
 
 // 通用插件
-const createPlugins = (isProduction, packageName) => [
+const createPlugins = (isProduction) => [
   alias({
     entries: [
       { find: '@fluxion/shared', replacement: path.resolve(__dirname, 'packages/shared/src') },
@@ -55,10 +55,10 @@ const createPlugins = (isProduction, packageName) => [
     __VUE_PROD_DEVTOOLS__: false,
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false
   }),
-  typescript({
+  esbuild({
     tsconfig: './tsconfig.json',
-    declaration: true,
-    declarationDir: path.resolve(__dirname, `packages/${packageName}/dist`)
+    sourceMap: true,
+    minify: false
   }),
   isProduction && terser({
     compress: {
@@ -80,7 +80,7 @@ const createEsmConfig = (packageName) => defineConfig({
     format: 'esm',
     sourcemap: true
   },
-  plugins: createPlugins(true, packageName),
+  plugins: createPlugins(true),
   external: [
     /@fluxion\//,
     /^vue$/
@@ -96,7 +96,7 @@ const createCjsConfig = (packageName) => defineConfig({
     sourcemap: true,
     exports: 'named'
   },
-  plugins: createPlugins(true, packageName),
+  plugins: createPlugins(true),
   external: [
     /@fluxion\//,
     /^vue$/
@@ -121,7 +121,7 @@ const createIifeConfig = (packageName) => defineConfig({
       'vue': 'Vue'
     }
   },
-  plugins: createPlugins(true, packageName),
+  plugins: createPlugins(true),
   external: [
     /^vue$/
   ],
@@ -158,7 +158,7 @@ const createFluxionConfig = (format) => {
       name: 'Fluxion',
       sourcemap: true
     },
-    plugins: createPlugins(true, 'fluxion'),
+    plugins: createPlugins(true),
     external: format !== 'iife' ? [/@fluxion\//] : [],
     inlineDynamicImports: format === 'iife'
   }))
@@ -172,7 +172,7 @@ const createFluxionConfig = (format) => {
       name: 'Fluxion',
       sourcemap: true
     },
-    plugins: createPlugins(true, 'fluxion'),
+    plugins: createPlugins(true),
     external: format !== 'iife' ? [/@fluxion\//] : [],
     inlineDynamicImports: format === 'iife'
   }))

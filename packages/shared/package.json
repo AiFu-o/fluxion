@@ -15,5 +15,16 @@
 	},
 	"files": [
 		"dist"
-	]
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AiFu-o/fluxion"
+	},
+	"keywords": [
+		"fluxion",
+		"shared",
+		"utilities"
+	],
+	"author": "Fluxion Team",
+	"license": "MIT"
 }

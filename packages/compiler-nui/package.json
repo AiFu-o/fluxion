@@ -13,12 +13,21 @@
 			"types": "./dist/compiler-nui.d.ts"
 		}
 	},
-	"files": ["dist"],
-	"scripts": {
-		"build": "rollup -c ../../build/rollup.config.mjs --configPlugin typescript",
-		"test": "vitest run",
-		"test:watch": "vitest"
+	"files": [
+		"dist"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AiFu-o/fluxion"
 	},
+	"keywords": [
+		"fluxion",
+		"compiler",
+		"nui",
+		"dsl"
+	],
+	"author": "Fluxion Team",
+	"license": "MIT",
 	"dependencies": {
 		"@fluxion/compiler-core": "workspace:*",
 		"@fluxion/compiler-dom": "workspace:*",

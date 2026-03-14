@@ -21,10 +21,6 @@
     "files": [
         "dist"
     ],
-    "scripts": {
-        "build": "rollup -c ../../build/rollup.config.mjs --configPlugin typescript",
-        "test": "vitest run"
-    },
     "dependencies": {
         "@fluxion/runtime-dom": "workspace:*",
         "@fluxion/runtime-core": "workspace:*",
@@ -33,7 +29,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/anthropics/fluxion"
+        "url": "https://github.com/AiFu-o/fluxion"
     },
     "keywords": [
         "ui",

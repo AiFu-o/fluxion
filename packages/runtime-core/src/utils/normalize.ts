@@ -54,10 +54,42 @@ export function normalizeChildren(vnode: VNode, children: unknown): void {
  * 规范化 VNode
  * 将可能的值转换为 VNode
  */
-export function normalizeVNode(child: VNode | string | number): VNode {
+export function normalizeVNode(child: VNode | string | number | null | undefined | any[]): VNode {
     // 如果已经是 VNode，直接返回
-    if ((child as VNode).__v_isVNode) {
+    if ((child as VNode)?.__v_isVNode) {
         return child as VNode
+    }
+
+    // null 或 undefined 返回空文本节点
+    if (child == null) {
+        return {
+            __v_isVNode: true,
+            type: Symbol.for('Text'),
+            props: null,
+            children: '',
+            shapeFlag: 0,
+            component: null,
+            el: null,
+            anchor: null,
+            key: null,
+            patchFlag: 0
+        }
+    }
+
+    // 数组返回 Fragment（简化处理：创建包含数组的文本节点）
+    if (isArray(child)) {
+        return {
+            __v_isVNode: true,
+            type: Symbol.for('Fragment'),
+            props: null,
+            children: child as any[],
+            shapeFlag: ShapeFlags.ARRAY_CHILDREN,
+            component: null,
+            el: null,
+            anchor: null,
+            key: null,
+            patchFlag: 0
+        } as VNode
     }
 
     // 将字符串和数字转换为文本 VNode

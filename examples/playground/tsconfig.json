@@ -8,6 +8,7 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "noEmit": true,
+        "types": ["node"],
         "baseUrl": ".",
         "paths": {
             "@fluxion/shared": ["../../packages/shared/src"],
@@ -17,8 +18,14 @@
             "@fluxion/compiler-core": ["../../packages/compiler-core/src"],
             "@fluxion/compiler-dom": ["../../packages/compiler-dom/src"],
             "@fluxion/compiler-nui": ["../../packages/compiler-nui/src"],
-            "fluxion": ["../../packages/fluxion/src"]
+            "@fluxion/vite-plugin-fluxion": ["../../packages/vite-plugin-fluxion/src"],
+            "fluxion": ["../../packages/fluxion/src"],
+            "fluxion-runtime": ["../../packages/runtime-dom/src"]
         }
     },
-    "include": ["src/**/*.ts"]
+    "include": [
+        "src/**/*.ts",
+        "vite.config.ts",
+        "../../packages/vite-plugin-fluxion/src/nui.d.ts"
+    ]
 }

@@ -39,7 +39,7 @@ export interface VNode {
     patchFlag: number
 }
 
-export type VNodeType = string | Component
+export type VNodeType = string | Component | symbol
 export type VNodeProps = Record<string, any>
 export type VNodeChildren = string | VNode[] | null
 

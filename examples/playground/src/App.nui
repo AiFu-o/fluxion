@@ -1,0 +1,12 @@
+import Counter from "./Counter.nui"
+
+title = signal("Hello Fluxion")
+
+function test() {
+	console.log("clicked")
+}
+
+view
+	div
+		h1 {title}
+		Counter

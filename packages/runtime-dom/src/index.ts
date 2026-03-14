@@ -54,6 +54,24 @@ export {
     isInSVG
 } from './modules/svg'
 
+// ==================== reactivity 重导出 ====================
+// .nui 文件编译后需要从 fluxion-runtime 导入 signal 等 API
+export {
+    signal,
+    asyncSignal,
+    computed,
+    watch,
+    watchEffect,
+    reactive,
+    effect
+} from '@fluxion/reactivity'
+
+export type {
+    Signal,
+    Computed,
+    Effect
+} from '@fluxion/reactivity'
+
 // ==================== runtime-core 重导出 ====================
 // 为了方便使用，重导出 runtime-core 的常用 API
 export {

@@ -1,0 +1,29 @@
+{
+	"name": "@fluxion/vite-plugin-fluxion",
+	"version": "0.0.1",
+	"description": "Vite plugin for Fluxion framework - compile .nui files",
+	"type": "module",
+	"main": "./dist/vite-plugin-fluxion.cjs",
+	"module": "./dist/vite-plugin-fluxion.js",
+	"types": "./dist/vite-plugin-fluxion.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/vite-plugin-fluxion.js",
+			"require": "./dist/vite-plugin-fluxion.cjs",
+			"types": "./dist/vite-plugin-fluxion.d.ts"
+		}
+	},
+	"files": ["dist"],
+	"scripts": {
+		"build": "rollup -c ../../build/rollup.config.mjs --configPlugin typescript",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"@fluxion/compiler-nui": "workspace:*",
+		"@fluxion/shared": "workspace:*"
+	},
+	"peerDependencies": {
+		"vite": "^5.0.0"
+	}
+}

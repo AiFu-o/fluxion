@@ -11,7 +11,9 @@
        "@fluxion/reactivity": "workspace:*",
        "@fluxion/runtime-core": "workspace:*",
        "@fluxion/runtime-dom": "workspace:*",
-       "@fluxion/compiler-core": "workspace:*"
+       "@fluxion/compiler-core": "workspace:*",
+       "@fluxion/compiler-nui": "workspace:*",
+       "@fluxion/vite-plugin-fluxion": "workspace:*"
     },
     "devDependencies": {
         "vite": "^5.0.0"

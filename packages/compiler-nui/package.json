@@ -1,0 +1,27 @@
+{
+	"name": "@fluxion/compiler-nui",
+	"version": "0.0.1",
+	"description": "Fluxion compiler for NUI DSL - .nui file parser and compiler",
+	"type": "module",
+	"main": "./dist/compiler-nui.cjs",
+	"module": "./dist/compiler-nui.js",
+	"types": "./dist/compiler-nui.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/compiler-nui.js",
+			"require": "./dist/compiler-nui.cjs",
+			"types": "./dist/compiler-nui.d.ts"
+		}
+	},
+	"files": ["dist"],
+	"scripts": {
+		"build": "rollup -c ../../build/rollup.config.mjs --configPlugin typescript",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"@fluxion/compiler-core": "workspace:*",
+		"@fluxion/compiler-dom": "workspace:*",
+		"@fluxion/shared": "workspace:*"
+	}
+}

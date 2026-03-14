@@ -1,0 +1,45 @@
+/**
+ * TodoList.nui - 待办事项列表组件
+ * 演示列表渲染和条件渲染
+ */
+
+todos = signal([
+	{ id: 1, text: "学习 Fluxion", completed: false },
+	{ id: 2, text: "编写示例", completed: true }
+])
+
+newTodo = signal("")
+
+function addTodo() {
+	if newTodo() {
+		todos.update(list => [
+			...list,
+			{ id: Date.now(), text: newTodo(), completed: false }
+		])
+		newTodo.set("")
+	}
+}
+
+function toggleTodo(id) {
+	todos.update(list =>
+		list.map(todo =>
+			todo.id === id
+				? { ...todo, completed: !todo.completed }
+				: todo
+		)
+	)
+}
+
+function removeTodo(id) {
+	todos.update(list => list.filter(todo => todo.id !== id))
+}
+
+view
+	div
+		for todo in todos
+			div
+				input type="checkbox" checked={todo.completed} @change=toggleTodo(todo.id)
+				span {todo.text}
+				button @click=removeTodo(todo.id)
+		input placeholder="添加新任务..." value={newTodo}
+		button @click=addTodo

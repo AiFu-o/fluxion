@@ -8,7 +8,8 @@ import {
     Renderer,
     VNode,
     ShapeFlags,
-    ComponentInstance
+    ComponentInstance,
+    Component
 } from './types'
 import {
     createComponentInstance,
@@ -19,7 +20,7 @@ import { renderComponentRoot } from './componentRenderUtils'
 import { effect, Effect } from '@fluxion/reactivity'
 import { queueJob, nextTick } from './scheduler'
 import { warn, isString, isArray, isFunction } from '@fluxion/shared'
-import { isElementVNode, isComponentVNode, createTextVNode } from './vnode'
+import { normalizeVNode } from './utils/normalize'
 
 /**
  * 创建渲染器
@@ -62,7 +63,7 @@ export function createRenderer(options: RendererOptions): Renderer {
     /**
      * 创建应用
      */
-    const createApp = (rootComponent: any): any => {
+    const createApp = (rootComponent: Component): any => {
         return {
             mount(container: Element | string) {
                 const containerEl = isString(container)
@@ -273,13 +274,10 @@ export function createRenderer(options: RendererOptions): Renderer {
         } else if (isArray(children)) {
             for (let i = 0; i < children.length; i++) {
                 const child = children[i]
-                if (isString(child)) {
-                    const textNode = createTextVNode(child)
-                    children[i] = textNode
-                    patch(null, textNode, container)
-                } else {
-                    patch(null, child, container)
-                }
+                // 使用 normalizeVNode 处理所有类型（字符串、数字、VNode、数组等）
+                const vnode = normalizeVNode(child as any)
+                children[i] = vnode
+                patch(null, vnode, container)
             }
         }
     }

@@ -1,0 +1,33 @@
+/**
+ * Counter.nui - 计数器组件
+ * 演示基本的 signal 和事件处理
+ */
+
+count = signal(0)
+
+function increment() {
+	count.update(c => c + 1)
+}
+
+function decrement() {
+	count.update(c => c - 1)
+}
+
+function reset() {
+	count.set(0)
+}
+
+view
+	div class="test"
+		p count: {count}
+		button @click=decrement
+			1
+		button @click=increment
+			2
+		button @click=reset
+			3
+
+style
+	button {
+		width: 20px;
+	}

@@ -74,6 +74,28 @@ pnpm add -D vite-plugin-fluxion
 - [Complete Examples](examples/complete-examples.md) - Complete application examples
 - [Debugging Tips](examples/debugging.md) - Debugging and troubleshooting
 
+## Documentation Note
+
+All documentation and code in this project were created with the assistance of **GLM5 + Claude Code**, demonstrating the capabilities of AI-assisted development.
+
+## Acknowledgments
+
+Fluxion's design and implementation are deeply inspired by [Vue.js](https://vuejs.org/). The following core concepts borrow from Vue's excellent design:
+
+- **Reactivity System**: Signal-based fine-grained reactivity, inspired by Vue 3's Reactivity System
+- **Virtual DOM**: VNode design and Diff algorithm reference Vue's implementation
+- **Compiler Architecture**: Plugin-based AST transformation and code generation design
+- **Component System**: setup function, lifecycle hooks, props/emits concepts
+- **Custom Renderer**: Platform-agnostic renderer abstraction
+
+Thanks to [Evan You](https://github.com/yyx990803) and the Vue.js team for creating such an excellent frontend framework, providing valuable design insights and best practices for the community.
+
+---
+
+## License
+
+MIT
+
 ---
 
 English | [中文](../zh/README.md)

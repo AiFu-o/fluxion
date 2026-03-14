@@ -25,22 +25,22 @@ pnpm add -D vite-plugin-fluxion
 ## 文档目录
 
 ### 快速开始
-- [安装与配置](getting-started/installation.md) - 安装 Fluxion 并配置项目
-- [第一个应用](getting-started/first-app.md) - 创建你的第一个 Fluxion 应用
+- [安装与配置](./docs/getting-started/installation.md) - 安装 Fluxion 并配置项目
+- [第一个应用](./docs/getting-started/first-app.md) - 创建你的第一个 Fluxion 应用
 
 ### 核心概念
-- [.nui 文件结构](core-concepts/nui-file-structure.md) - 了解 .nui 文件的组成部分
-- [Signal 响应式状态](core-concepts/signal.md) - 响应式状态管理基础
-- [组件基础](core-concepts/component-basics.md) - 组件的定义与使用
-- [模板语法概览](core-concepts/template-syntax.md) - 模板语法快速入门
+- [.nui 文件结构](./docs/core-concepts/nui-file-structure.md) - 了解 .nui 文件的组成部分
+- [Signal 响应式状态](./docs/core-concepts/signal.md) - 响应式状态管理基础
+- [组件基础](./docs/core-concepts/component-basics.md) - 组件的定义与使用
+- [模板语法概览](./docs/core-concepts/template-syntax.md) - 模板语法快速入门
 
 ### 响应式系统
-- [Signal API](reactivity/signal-api.md) - Signal 完整 API 参考
-- [Computed 计算属性](reactivity/computed.md) - 派生状态
-- [Effect 副作用](reactivity/effect.md) - 响应式副作用
-- [Watch 监听器](reactivity/watch.md) - 状态监听
-- [Reactive 对象](reactivity/reactive.md) - 响应式对象
-- [AsyncSignal 异步数据](reactivity/async-signal.md) - 异步数据处理
+- [Signal API](./docs/reactivity/signal-api.md) - Signal 完整 API 参考
+- [Computed 计算属性](./docs/reactivity/computed.md) - 派生状态
+- [Effect 副作用](./docs/reactivity/effect.md) - 响应式副作用
+- [Watch 监听器](./docs/reactivity/watch.md) - 状态监听
+- [Reactive 对象](./docs/reactivity/reactive.md) - 响应式对象
+- [AsyncSignal 异步数据](./docs/reactivity/async-signal.md) - 异步数据处理
 
 ### 组件系统
 - [组件定义](./docs/components/definition.md) - 组件的详细定义方式
@@ -73,6 +73,10 @@ pnpm add -D vite-plugin-fluxion
 - [常见模式](./docs/examples/patterns.md) - 常见开发模式
 - [完整示例](./docs/examples/complete-examples.md) - 完整应用示例
 - [调试技巧](./docs/examples/debugging.md) - 调试与问题排查
+
+## 文档说明
+
+本项目所有文档及代码均由 **GLM5 + Claude Code** 协助编写，展示了 AI 辅助开发的能力。
 
 ## 致谢
 

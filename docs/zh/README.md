@@ -74,6 +74,28 @@ pnpm add -D vite-plugin-fluxion
 - [完整示例](examples/complete-examples.md) - 完整应用示例
 - [调试技巧](examples/debugging.md) - 调试与问题排查
 
+## 文档说明
+
+本项目所有文档及代码均由 **GLM5 + Claude Code** 协助编写，展示了 AI 辅助开发的能力。
+
+## 致谢
+
+Fluxion 的设计和实现深受 [Vue.js](https://vuejs.org/) 的启发。以下核心概念借鉴了 Vue 的优秀设计：
+
+- **响应式系统**：基于 Signal 的细粒度响应式，灵感来源于 Vue 3 的 Reactivity System
+- **虚拟 DOM**：VNode 设计和 Diff 算法参考了 Vue 的实现
+- **编译器架构**：AST 转换和代码生成的插件化设计
+- **组件系统**：setup 函数、生命周期钩子、props/emits 等概念
+- **自定义渲染器**：平台无关的渲染器抽象
+
+感谢 [尤雨溪 (Evan You)](https://github.com/yyx990803) 和 Vue.js 团队创建了一个如此优秀的前端框架，为社区提供了宝贵的设计思路和最佳实践。
+
+---
+
+## License
+
+MIT
+
 ---
 
 [English](../en/README.md) | 中文

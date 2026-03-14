@@ -47,7 +47,7 @@ pnpm add -D vite-plugin-fluxion
 - [Props 传递](./docs/components/props.md) - 组件属性传递
 - [事件发射](./docs/components/events.md) - 组件事件系统
 - [插槽](./docs/components/slots.md) - 内容分发
-- [生命周期](c./docs/omponents/lifecycle.md) - 组件生命周期钩子
+- [生命周期](./docs/omponents/lifecycle.md) - 组件生命周期钩子
 
 ### 模板语法
 - [元素与属性](./docs/template/elements.md) - HTML/SVG 元素与属性绑定

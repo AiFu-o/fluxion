@@ -43,7 +43,7 @@ for item in items().filter(item => item.active)
 ### 3. Batch Updates
 
 ```javascript
-import { signal, nextTick } from 'fluxion'
+import { signal, nextTick } from '@fluxion-ui/fluxion'
 
 const firstName = signal('John')
 const lastName = signal('Doe')
@@ -64,7 +64,7 @@ async function updateUser(user) {
 ### 4. Use shallowReactive to Reduce Deep Proxying
 
 ```javascript
-import { shallowReactive } from 'fluxion'
+import { shallowReactive } from '@fluxion-ui/fluxion'
 
 // When you only need to track first-level property changes
 const state = shallowReactive({
@@ -143,7 +143,7 @@ apiUrl = signal('/api')  // Unnecessary
 ### 4. Use readonlySignal
 
 ```javascript
-import { readonlySignal } from 'fluxion'
+import { readonlySignal } from '@fluxion-ui/fluxion'
 
 // For constant values, use readonlySignal to prevent accidental modification
 const MAX_ITEMS = readonlySignal(100)
@@ -212,7 +212,7 @@ const MyComponent = {
 ### 1. Use cachedAsyncSignal to Cache Requests
 
 ```javascript
-import { cachedAsyncSignal, clearAsyncSignalCache } from 'fluxion'
+import { cachedAsyncSignal, clearAsyncSignalCache } from '@fluxion-ui/fluxion'
 
 // Cache API requests
 const users = cachedAsyncSignal('users', () =>
@@ -232,7 +232,7 @@ clearAsyncSignalCache()
 ### 2. Cancel Unneeded Requests
 
 ```javascript
-import { asyncSignal } from 'fluxion'
+import { asyncSignal } from '@fluxion-ui/fluxion'
 
 // Create cancellable async signal
 const data = asyncSignal(() => fetchData())
@@ -251,7 +251,7 @@ onUnmounted(() => {
 ### 3. Use lazyAsyncSignal for Lazy Loading
 
 ```javascript
-import { lazyAsyncSignal } from 'fluxion'
+import { lazyAsyncSignal } from '@fluxion-ui/fluxion'
 
 // Lazily create async signal
 const lazyData = lazyAsyncSignal(() => fetchData())
@@ -267,7 +267,7 @@ const data = lazyData()
 ### 1. Clean Up Effects
 
 ```javascript
-import { effect, signal } from 'fluxion'
+import { effect, signal } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -287,7 +287,7 @@ dispose.stop()
 ### 2. Stop Watches
 
 ```javascript
-import { watch, signal } from 'fluxion'
+import { watch, signal } from '@fluxion-ui/fluxion'
 
 const data = signal({})
 
@@ -329,7 +329,7 @@ const MyComponent = {
 ### 1. Use nextTick to Measure Update Time
 
 ```javascript
-import { signal, nextTick } from 'fluxion'
+import { signal, nextTick } from '@fluxion-ui/fluxion'
 
 const items = signal([])
 
@@ -348,7 +348,7 @@ async function measureUpdate() {
 ### 2. Monitor Queue Status
 
 ```javascript
-import { getQueueStatus } from 'fluxion'
+import { getQueueStatus } from '@fluxion-ui/fluxion'
 
 // Check update queue status
 const status = getQueueStatus()

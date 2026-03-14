@@ -9,7 +9,7 @@
 一个功能完整的 Todo 应用，包含添加、删除、完成标记、过滤等功能。
 
 ```nui
-import { signal, computed } from 'fluxion'
+import { signal, computed } from '@fluxion-ui/fluxion'
 
 // 状态
 todos = signal([])
@@ -173,7 +173,7 @@ style
 一个用户管理 CRUD 应用，展示异步数据操作。
 
 ```nui
-import { asyncSignal, signal, computed } from 'fluxion'
+import { asyncSignal, signal, computed } from '@fluxion-ui/fluxion'
 
 // 用户数据
 users = asyncSignal(() =>
@@ -386,7 +386,7 @@ style
 展示博客文章列表，支持搜索和分类过滤。
 
 ```nui
-import { asyncSignal, signal, computed } from 'fluxion'
+import { asyncSignal, signal, computed } from '@fluxion-ui/fluxion'
 
 // 文章数据
 posts = asyncSignal(() =>

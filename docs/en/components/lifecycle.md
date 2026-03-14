@@ -25,7 +25,7 @@ Unmount Phase
 Called after component is mounted:
 
 ```javascript
-import { onMounted } from 'fluxion'
+import { onMounted } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -43,7 +43,7 @@ export default {
 Called after component updates:
 
 ```javascript
-import { onUpdated } from 'fluxion'
+import { onUpdated } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -59,7 +59,7 @@ export default {
 Called before component unmounts:
 
 ```javascript
-import { onUnmounted } from 'fluxion'
+import { onUnmounted } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -76,7 +76,7 @@ export default {
 Called before component mounts:
 
 ```javascript
-import { onBeforeMount } from 'fluxion'
+import { onBeforeMount } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -92,7 +92,7 @@ export default {
 Called before component updates:
 
 ```javascript
-import { onBeforeUpdate } from 'fluxion'
+import { onBeforeUpdate } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -108,7 +108,7 @@ export default {
 Called before component unmounts:
 
 ```javascript
-import { onBeforeUnmount } from 'fluxion'
+import { onBeforeUnmount } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -122,7 +122,7 @@ export default {
 ## Using in .nui Files
 
 ```nui
-import { onMounted, onUnmounted } from 'fluxion'
+import { onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 // This code runs during setup phase
 console.log('Setup')
@@ -149,7 +149,7 @@ div
 ### DOM Operations
 
 ```javascript
-import { onMounted } from 'fluxion'
+import { onMounted } from '@fluxion-ui/fluxion'
 
 setup() {
     onMounted(() => {
@@ -163,7 +163,7 @@ setup() {
 ### Data Fetching
 
 ```javascript
-import { signal, onMounted } from 'fluxion'
+import { signal, onMounted } from '@fluxion-ui/fluxion'
 
 setup() {
     const data = signal(null)
@@ -185,7 +185,7 @@ setup() {
 ### Timer Management
 
 ```javascript
-import { signal, onMounted, onUnmounted } from 'fluxion'
+import { signal, onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     const time = signal(new Date())
@@ -209,7 +209,7 @@ setup() {
 ### Event Listening
 
 ```javascript
-import { onMounted, onUnmounted } from 'fluxion'
+import { onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     function handleResize() {
@@ -229,7 +229,7 @@ setup() {
 ### Subscription Management
 
 ```javascript
-import { signal, onMounted, onUnmounted } from 'fluxion'
+import { signal, onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     const messages = signal([])
@@ -323,7 +323,7 @@ On unmount:
 ### Clean Up Side Effects
 
 ```javascript
-import { onMounted, onUnmounted } from 'fluxion'
+import { onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     onMounted(() => {
@@ -342,7 +342,7 @@ setup() {
 ### Avoid Memory Leaks
 
 ```javascript
-import { onMounted, onUnmounted } from 'fluxion'
+import { onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     const resources = []
@@ -362,7 +362,7 @@ setup() {
 ### Conditional Initialization
 
 ```javascript
-import { onMounted } from 'fluxion'
+import { onMounted } from '@fluxion-ui/fluxion'
 
 setup(props) {
     onMounted(() => {

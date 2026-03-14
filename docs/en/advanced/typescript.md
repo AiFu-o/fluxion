@@ -18,9 +18,9 @@ Fluxion is written in TypeScript and provides complete type definitions, support
 Fluxion includes built-in type definitions, no additional installation needed:
 
 ```bash
-npm install fluxion
+npm install @fluxion-ui/fluxion
 # or
-pnpm add fluxion
+pnpm add @fluxion-ui/fluxion
 ```
 
 ---
@@ -30,7 +30,7 @@ pnpm add fluxion
 ### Signal Types
 
 ```typescript
-import { signal, Signal } from 'fluxion'
+import { signal, Signal } from '@fluxion-ui/fluxion'
 
 // Automatic type inference
 const count = signal(0)              // Signal<number>
@@ -53,7 +53,7 @@ count.update(n => n + 1)             // Callback parameter type is number
 ### Computed Types
 
 ```typescript
-import { computed, Computed } from 'fluxion'
+import { computed, Computed } from '@fluxion-ui/fluxion'
 
 // Automatic type inference
 const double = computed(() => count() * 2)  // Computed<number>
@@ -72,7 +72,7 @@ const formattedUser = computed<User>(() => {
 ### Reactive Types
 
 ```typescript
-import { reactive, isReactive, toRaw } from 'fluxion'
+import { reactive, isReactive, toRaw } from '@fluxion-ui/fluxion'
 
 interface User {
     name: string
@@ -100,7 +100,7 @@ const rawUser: User = toRaw(user)
 ### AsyncSignal Types
 
 ```typescript
-import { asyncSignal, AsyncSignal } from 'fluxion'
+import { asyncSignal, AsyncSignal } from '@fluxion-ui/fluxion'
 
 interface ApiResponse {
     data: User[]
@@ -128,7 +128,7 @@ const error: Error | null = users.error()
 ### Component Definition
 
 ```typescript
-import { Component, ComponentContext, VNode } from 'fluxion'
+import { Component, ComponentContext, VNode } from '@fluxion-ui/fluxion'
 
 interface MyComponentProps {
     title: string
@@ -158,7 +158,7 @@ const MyComponent: Component<MyComponentProps> = {
 ### Props Type Definition
 
 ```typescript
-import { PropOption } from 'fluxion'
+import { PropOption } from '@fluxion-ui/fluxion'
 
 // Define Props options
 const propsOptions = {
@@ -218,7 +218,7 @@ import {
     onBeforeUpdate,
     onUpdated,
     onUnmounted
-} from 'fluxion'
+} from '@fluxion-ui/fluxion'
 
 const MyComponent = {
     setup() {
@@ -256,7 +256,7 @@ import {
     VNode,
     VNodeProps,
     createVNode
-} from 'fluxion'
+} from '@fluxion-ui/fluxion'
 
 // h function automatically infers types
 const div: VNode = h('div')                         // Element VNode
@@ -282,7 +282,7 @@ const props: VNodeProps = {
 ## Watch Types
 
 ```typescript
-import { watch, watchEffect, WatchCallback, WatchSource } from 'fluxion'
+import { watch, watchEffect, WatchCallback, WatchSource } from '@fluxion-ui/fluxion'
 
 // watch automatically infers types
 const count = signal(0)
@@ -318,7 +318,7 @@ const dispose = watchEffect(() => {
 ## Effect Types
 
 ```typescript
-import { effect, Effect } from 'fluxion'
+import { effect, Effect } from '@fluxion-ui/fluxion'
 
 // Create effect
 const dispose: Effect = effect(() => {
@@ -341,7 +341,7 @@ dispose.stop()
 ### Creating Generic Components
 
 ```typescript
-import { Component, signal, Signal } from 'fluxion'
+import { Component, signal, Signal } from '@fluxion-ui/fluxion'
 
 // Generic list component
 interface ListProps<T> {
@@ -376,7 +376,7 @@ const UserList = createListComponent<User>()
 ### Generic Utility Functions
 
 ```typescript
-import { Signal, computed } from 'fluxion'
+import { Signal, computed } from '@fluxion-ui/fluxion'
 
 // Generic selector
 function createSelector<T, R>(
@@ -409,7 +409,7 @@ const theme = createSelector(state, s => s.settings.theme) // Signal<string>
 
 ```typescript
 // types/fluxion.d.ts
-declare module 'fluxion' {
+declare module '@fluxion-ui/fluxion' {
     // Extend component types
     interface ComponentCustomProperties {
         $router?: Router
@@ -428,7 +428,7 @@ declare module 'fluxion' {
 ```typescript
 // types/nui.d.ts
 declare module '*.nui' {
-    import { Component } from 'fluxion'
+    import { Component } from '@fluxion-ui/fluxion'
     const component: Component
     export default component
 }
@@ -448,8 +448,8 @@ declare module '*.nui' {
         "moduleResolution": "bundler",
         "strict": true,
         "jsx": "react-jsx",
-        "jsxImportSource": "fluxion",
-        "types": ["fluxion"]
+        "jsxImportSource": "@fluxion-ui/fluxion",
+        "types": ["@fluxion-ui/fluxion"]
     },
     "include": [
         "src/**/*",

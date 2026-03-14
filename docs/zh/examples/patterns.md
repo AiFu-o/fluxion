@@ -83,7 +83,7 @@ form @submit=handleSubmit
 ### 带验证的表单
 
 ```nui
-import { computed } from 'fluxion'
+import { computed } from '@fluxion-ui/fluxion'
 
 username = signal("")
 email = signal("")
@@ -247,7 +247,7 @@ div.list-manager
 ### 数据获取
 
 ```nui
-import { asyncSignal } from 'fluxion'
+import { asyncSignal } from '@fluxion-ui/fluxion'
 
 users = asyncSignal(() =>
     fetch('/api/users').then(r => r.json())
@@ -277,7 +277,7 @@ div.user-list
 ### 分页加载
 
 ```nui
-import { asyncSignal, signal, computed } from 'fluxion'
+import { asyncSignal, signal, computed } from '@fluxion-ui/fluxion'
 
 page = signal(1)
 pageSize = signal(10)
@@ -329,7 +329,7 @@ div.paginated-list
 
 ```nui
 // store.nui
-import { signal, computed } from 'fluxion'
+import { signal, computed } from '@fluxion-ui/fluxion'
 
 // 全局状态
 user = signal(null)
@@ -496,7 +496,7 @@ form
 ## 防抖和节流模式
 
 ```nui
-import { signal, computed } from 'fluxion'
+import { signal, computed } from '@fluxion-ui/fluxion'
 
 searchTerm = signal("")
 debouncedSearch = signal("")

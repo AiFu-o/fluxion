@@ -43,7 +43,7 @@ for item in items().filter(item => item.active)
 ### 3. 批量更新
 
 ```javascript
-import { signal, nextTick } from 'fluxion'
+import { signal, nextTick } from '@fluxion-ui/fluxion'
 
 const firstName = signal('John')
 const lastName = signal('Doe')
@@ -64,7 +64,7 @@ async function updateUser(user) {
 ### 4. 使用 shallowReactive 减少深层代理
 
 ```javascript
-import { shallowReactive } from 'fluxion'
+import { shallowReactive } from '@fluxion-ui/fluxion'
 
 // 当只需要监听第一层属性变化时
 const state = shallowReactive({
@@ -143,7 +143,7 @@ apiUrl = signal('/api')  // 不必要的
 ### 4. 使用 readonlySignal
 
 ```javascript
-import { readonlySignal } from 'fluxion'
+import { readonlySignal } from '@fluxion-ui/fluxion'
 
 // 对于常量值，使用 readonlySignal 避免意外修改
 const MAX_ITEMS = readonlySignal(100)
@@ -212,7 +212,7 @@ const MyComponent = {
 ### 1. 使用 cachedAsyncSignal 缓存请求
 
 ```javascript
-import { cachedAsyncSignal, clearAsyncSignalCache } from 'fluxion'
+import { cachedAsyncSignal, clearAsyncSignalCache } from '@fluxion-ui/fluxion'
 
 // 缓存 API 请求
 const users = cachedAsyncSignal('users', () =>
@@ -232,7 +232,7 @@ clearAsyncSignalCache()
 ### 2. 取消不需要的请求
 
 ```javascript
-import { asyncSignal } from 'fluxion'
+import { asyncSignal } from '@fluxion-ui/fluxion'
 
 // 创建可取消的异步信号
 const data = asyncSignal(() => fetchData())
@@ -251,7 +251,7 @@ onUnmounted(() => {
 ### 3. 使用 lazyAsyncSignal 延迟加载
 
 ```javascript
-import { lazyAsyncSignal } from 'fluxion'
+import { lazyAsyncSignal } from '@fluxion-ui/fluxion'
 
 // 延迟创建异步信号
 const lazyData = lazyAsyncSignal(() => fetchData())
@@ -267,7 +267,7 @@ const data = lazyData()
 ### 1. 清理 Effect
 
 ```javascript
-import { effect, signal } from 'fluxion'
+import { effect, signal } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -287,7 +287,7 @@ dispose.stop()
 ### 2. 停止 Watch
 
 ```javascript
-import { watch, signal } from 'fluxion'
+import { watch, signal } from '@fluxion-ui/fluxion'
 
 const data = signal({})
 
@@ -329,7 +329,7 @@ const MyComponent = {
 ### 1. 使用 nextTick 测量更新时间
 
 ```javascript
-import { signal, nextTick } from 'fluxion'
+import { signal, nextTick } from '@fluxion-ui/fluxion'
 
 const items = signal([])
 
@@ -348,7 +348,7 @@ async function measureUpdate() {
 ### 2. 监控队列状态
 
 ```javascript
-import { getQueueStatus } from 'fluxion'
+import { getQueueStatus } from '@fluxion-ui/fluxion'
 
 // 检查更新队列状态
 const status = getQueueStatus()

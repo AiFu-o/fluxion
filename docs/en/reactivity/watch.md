@@ -9,7 +9,7 @@ Watch is used to monitor reactive state changes and execute callback functions w
 Watch changes to a specified data source:
 
 ```javascript
-import { signal, watch } from 'fluxion'
+import { signal, watch } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -30,7 +30,7 @@ count.set(1)
 Auto-track dependencies without specifying data source:
 
 ```javascript
-import { signal, watchEffect } from 'fluxion'
+import { signal, watchEffect } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 const name = signal('Fluxion')
@@ -50,7 +50,7 @@ count.set(1)
 Deep watch all nested properties of an object:
 
 ```javascript
-import { reactive, watchDeep } from 'fluxion'
+import { reactive, watchDeep } from '@fluxion-ui/fluxion'
 
 const user = reactive({
     name: 'John',
@@ -74,7 +74,7 @@ user.address.city = 'Boston'
 ## Watching Multiple Sources
 
 ```javascript
-import { signal, watch } from 'fluxion'
+import { signal, watch } from '@fluxion-ui/fluxion'
 
 const firstName = signal('John')
 const lastName = signal('Doe')
@@ -90,7 +90,7 @@ watch(
 ## Watching Object Properties
 
 ```javascript
-import { reactive, watch } from 'fluxion'
+import { reactive, watch } from '@fluxion-ui/fluxion'
 
 const user = reactive({
     name: 'John',
@@ -199,7 +199,7 @@ stop()
 ## Batch Cleanup
 
 ```javascript
-import { watch, disposeAllWatches } from 'fluxion'
+import { watch, disposeAllWatches } from '@fluxion-ui/fluxion'
 
 watch(() => count(), callback1)
 watch(() => name(), callback2)

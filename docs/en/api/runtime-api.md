@@ -11,7 +11,7 @@ import {
   createVNode,
   render,
   nextTick
-} from 'fluxion'
+} from '@fluxion-ui/fluxion'
 ```
 
 ---
@@ -53,7 +53,7 @@ Returns an application instance.
 **Example**
 
 ```javascript
-import { createApp, signal, h } from 'fluxion'
+import { createApp, signal, h } from '@fluxion-ui/fluxion'
 
 // Define root component
 const App = {
@@ -201,7 +201,7 @@ Returns a VNode object.
 **Example**
 
 ```javascript
-import { createVNode } from 'fluxion'
+import { createVNode } from '@fluxion-ui/fluxion'
 
 // Create element VNode
 const divVNode = createVNode('div', { id: 'app' }, 'Hello')
@@ -340,7 +340,7 @@ function h(type: Component, props: VNodeProps | null): VNode
 **Example**
 
 ```javascript
-import { h } from 'fluxion'
+import { h } from '@fluxion-ui/fluxion'
 
 // Simple element
 h('div')
@@ -395,7 +395,7 @@ function render(vnode: VNode | null, container: Element): void
 **Example**
 
 ```javascript
-import { h, render } from 'fluxion'
+import { h, render } from '@fluxion-ui/fluxion'
 
 // Mount
 const vnode = h('div', { id: 'app' }, 'Hello')
@@ -445,7 +445,7 @@ interface Renderer {
 **Example**
 
 ```javascript
-import { createRenderer } from 'fluxion'
+import { createRenderer } from '@fluxion-ui/fluxion'
 
 // Create custom renderer (e.g., Canvas renderer)
 const canvasRenderer = createRenderer({
@@ -497,7 +497,7 @@ Returns a Promise that can be used with async/await.
 **Example**
 
 ```javascript
-import { signal, nextTick } from 'fluxion'
+import { signal, nextTick } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -537,7 +537,7 @@ interface SchedulerJob {
 **Example**
 
 ```javascript
-import { queueJob } from 'fluxion'
+import { queueJob } from '@fluxion-ui/fluxion'
 
 // Add update job
 queueJob(() => {
@@ -604,7 +604,7 @@ function getCurrentInstance(): ComponentInstance | null
 **Example**
 
 ```javascript
-import { getCurrentInstance } from 'fluxion'
+import { getCurrentInstance } from '@fluxion-ui/fluxion'
 
 const MyComponent = {
     setup() {
@@ -686,7 +686,7 @@ function emit(
 **Example**
 
 ```javascript
-import { emit } from 'fluxion'
+import { emit } from '@fluxion-ui/fluxion'
 
 // Emit event inside component
 const MyComponent = {

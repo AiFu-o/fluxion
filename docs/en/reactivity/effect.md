@@ -7,7 +7,7 @@ Effect is used to create reactive side effect functions that automatically execu
 ### Creating Effects
 
 ```javascript
-import { signal, effect } from 'fluxion'
+import { signal, effect } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -46,7 +46,7 @@ b.set(4)
 Effect functions can return a cleanup function that's called before the next execution or when stopped:
 
 ```javascript
-import { signal, effect } from 'fluxion'
+import { signal, effect } from '@fluxion-ui/fluxion'
 
 const userId = signal(1)
 
@@ -75,7 +75,7 @@ userId.set(2)
 Stop the effect function's tracking:
 
 ```javascript
-import { signal, effect, stop } from 'fluxion'
+import { signal, effect, stop } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -124,7 +124,7 @@ effect(() => {
 Execute after DOM updates:
 
 ```javascript
-import { signal, effectPost } from 'fluxion'
+import { signal, effectPost } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -141,7 +141,7 @@ effectPost(() => {
 Execute synchronously (not recommended, may cause performance issues):
 
 ```javascript
-import { signal, effectSync } from 'fluxion'
+import { signal, effectSync } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -156,7 +156,7 @@ effectSync(() => {
 ### pauseEffect / resumeEffect
 
 ```javascript
-import { signal, effect, pauseEffect, resumeEffect } from 'fluxion'
+import { signal, effect, pauseEffect, resumeEffect } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 

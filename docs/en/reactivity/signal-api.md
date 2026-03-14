@@ -192,7 +192,7 @@ function unsubscribe<T>(signal: Signal<T>, effect: () => void): void
 ### Examples
 
 ```javascript
-import { signal, effect, unsubscribe } from 'fluxion'
+import { signal, effect, unsubscribe } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -322,7 +322,7 @@ div
 Signal fully supports TypeScript type inference:
 
 ```typescript
-import { signal } from 'fluxion'
+import { signal } from '@fluxion-ui/fluxion'
 
 // Automatic type inference
 const count = signal(0)        // Signal<number>

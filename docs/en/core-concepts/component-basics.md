@@ -32,7 +32,7 @@ button {
 You can also define components using JavaScript objects:
 
 ```javascript
-import { signal, h } from 'fluxion'
+import { signal, h } from '@fluxion-ui/fluxion'
 
 export const Button = {
     name: 'Button',
@@ -252,7 +252,7 @@ div class="app"
 
 ```javascript
 // withLoading.js
-import { signal } from 'fluxion'
+import { signal } from '@fluxion-ui/fluxion'
 
 export function withLoading(Component) {
     return {
@@ -305,7 +305,7 @@ div
 ### Cleaning Up Effects
 
 ```javascript
-import { signal, effect, onUnmounted } from 'fluxion'
+import { signal, effect, onUnmounted } from '@fluxion-ui/fluxion'
 
 // Using in component
 const timer = effect(() => {

@@ -192,7 +192,7 @@ function unsubscribe<T>(signal: Signal<T>, effect: () => void): void
 ### 示例
 
 ```javascript
-import { signal, effect, unsubscribe } from 'fluxion'
+import { signal, effect, unsubscribe } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -322,7 +322,7 @@ div
 Signal 完全支持 TypeScript 类型推断：
 
 ```typescript
-import { signal } from 'fluxion'
+import { signal } from '@fluxion-ui/fluxion'
 
 // 类型自动推断
 const count = signal(0)        // Signal<number>

@@ -18,7 +18,7 @@ div
 ### src/main.js
 
 ```javascript
-import { createApp } from 'fluxion'
+import { createApp } from '@fluxion-ui/fluxion'
 import App from './App.nui'
 
 createApp(App).mount('#app')

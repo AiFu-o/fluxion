@@ -68,7 +68,7 @@ Suitable when more control is needed:
 ### setup Function
 
 ```javascript
-import { signal, h } from 'fluxion'
+import { signal, h } from '@fluxion-ui/fluxion'
 
 export const Counter = {
     name: 'Counter',
@@ -96,7 +96,7 @@ export const Counter = {
 ### render Function
 
 ```javascript
-import { h } from 'fluxion'
+import { h } from '@fluxion-ui/fluxion'
 
 export const HelloWorld = {
     name: 'HelloWorld',
@@ -110,7 +110,7 @@ export const HelloWorld = {
 ### Complete Component Definition
 
 ```javascript
-import { signal, h } from 'fluxion'
+import { signal, h } from '@fluxion-ui/fluxion'
 
 export const UserProfile = {
     name: 'UserProfile',

@@ -25,7 +25,7 @@ setup() 执行
 组件挂载完成后调用：
 
 ```javascript
-import { onMounted } from 'fluxion'
+import { onMounted } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -43,7 +43,7 @@ export default {
 组件更新后调用：
 
 ```javascript
-import { onUpdated } from 'fluxion'
+import { onUpdated } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -59,7 +59,7 @@ export default {
 组件卸载前调用：
 
 ```javascript
-import { onUnmounted } from 'fluxion'
+import { onUnmounted } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -76,7 +76,7 @@ export default {
 组件挂载前调用：
 
 ```javascript
-import { onBeforeMount } from 'fluxion'
+import { onBeforeMount } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -92,7 +92,7 @@ export default {
 组件更新前调用：
 
 ```javascript
-import { onBeforeUpdate } from 'fluxion'
+import { onBeforeUpdate } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -108,7 +108,7 @@ export default {
 组件卸载前调用：
 
 ```javascript
-import { onBeforeUnmount } from 'fluxion'
+import { onBeforeUnmount } from '@fluxion-ui/fluxion'
 
 export default {
     setup() {
@@ -122,7 +122,7 @@ export default {
 ## 在 .nui 文件中使用
 
 ```nui
-import { onMounted, onUnmounted } from 'fluxion'
+import { onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 // 这里的代码在 setup 阶段执行
 console.log('Setup')
@@ -149,7 +149,7 @@ div
 ### DOM 操作
 
 ```javascript
-import { onMounted } from 'fluxion'
+import { onMounted } from '@fluxion-ui/fluxion'
 
 setup() {
     onMounted(() => {
@@ -163,7 +163,7 @@ setup() {
 ### 数据获取
 
 ```javascript
-import { signal, onMounted } from 'fluxion'
+import { signal, onMounted } from '@fluxion-ui/fluxion'
 
 setup() {
     const data = signal(null)
@@ -185,7 +185,7 @@ setup() {
 ### 定时器管理
 
 ```javascript
-import { signal, onMounted, onUnmounted } from 'fluxion'
+import { signal, onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     const time = signal(new Date())
@@ -209,7 +209,7 @@ setup() {
 ### 事件监听
 
 ```javascript
-import { onMounted, onUnmounted } from 'fluxion'
+import { onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     function handleResize() {
@@ -229,7 +229,7 @@ setup() {
 ### 订阅管理
 
 ```javascript
-import { signal, onMounted, onUnmounted } from 'fluxion'
+import { signal, onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     const messages = signal([])
@@ -323,7 +323,7 @@ function onBeforeUnmount(callback: () => void): void
 ### 清理副作用
 
 ```javascript
-import { onMounted, onUnmounted } from 'fluxion'
+import { onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     onMounted(() => {
@@ -342,7 +342,7 @@ setup() {
 ### 避免内存泄漏
 
 ```javascript
-import { onMounted, onUnmounted } from 'fluxion'
+import { onMounted, onUnmounted } from '@fluxion-ui/fluxion'
 
 setup() {
     const resources = []
@@ -362,7 +362,7 @@ setup() {
 ### 条件初始化
 
 ```javascript
-import { onMounted } from 'fluxion'
+import { onMounted } from '@fluxion-ui/fluxion'
 
 setup(props) {
     onMounted(() => {

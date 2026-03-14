@@ -196,7 +196,7 @@ Table columns={columns} data={data}
 ### 在 JavaScript 中访问插槽
 
 ```javascript
-import { h } from 'fluxion'
+import { h } from '@fluxion-ui/fluxion'
 
 export const Card = {
     setup(props, { slots }) {

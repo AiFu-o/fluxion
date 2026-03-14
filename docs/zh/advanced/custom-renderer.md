@@ -19,7 +19,7 @@ Fluxion 的运行时设计为平台无关的。通过 `createRenderer` 函数，
 ### 基本签名
 
 ```typescript
-import { createRenderer } from 'fluxion'
+import { createRenderer } from '@fluxion-ui/fluxion'
 
 const renderer = createRenderer(options)
 
@@ -287,7 +287,7 @@ nextSibling(node: any): any | null
 ## 完整示例：Canvas 渲染器
 
 ```javascript
-import { createRenderer, h } from 'fluxion'
+import { createRenderer, h } from '@fluxion-ui/fluxion'
 
 // 创建 Canvas 渲染器
 const canvasRenderer = createRenderer({
@@ -430,7 +430,7 @@ drawCanvas(ctx, container.children[0])
 ## 完整示例：终端渲染器
 
 ```javascript
-import { createRenderer, h } from 'fluxion'
+import { createRenderer, h } from '@fluxion-ui/fluxion'
 
 // 终端渲染器
 const terminalRenderer = createRenderer({
@@ -523,7 +523,7 @@ console.log(renderTerminal(container.children[0]))
 ## 完整示例：测试渲染器
 
 ```javascript
-import { createRenderer, h } from 'fluxion'
+import { createRenderer, h } from '@fluxion-ui/fluxion'
 
 // 轻量级测试渲染器
 export function createTestRenderer() {

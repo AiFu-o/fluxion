@@ -9,7 +9,7 @@ Reactive provides a way to create reactive objects, implemented based on Proxy, 
 Create reactive objects:
 
 ```javascript
-import { reactive } from 'fluxion'
+import { reactive } from '@fluxion-ui/fluxion'
 
 const user = reactive({
     name: 'John',
@@ -68,7 +68,7 @@ state.user.profile.settings.theme = 'light'
 Only the first level of properties is reactive:
 
 ```javascript
-import { shallowReactive } from 'fluxion'
+import { shallowReactive } from '@fluxion-ui/fluxion'
 
 const state = shallowReactive({
     name: 'John',
@@ -88,7 +88,7 @@ state.address.city = 'Boston' // NOT reactive!
 Create readonly reactive objects:
 
 ```javascript
-import { readonly } from 'fluxion'
+import { readonly } from '@fluxion-ui/fluxion'
 
 const original = reactive({ count: 0 })
 const readOnly = readonly(original)
@@ -101,7 +101,7 @@ readOnly.count = 1  // Warning: Cannot modify readonly object
 Only first level properties are readonly:
 
 ```javascript
-import { shallowReadonly } from 'fluxion'
+import { shallowReadonly } from '@fluxion-ui/fluxion'
 
 const state = shallowReadonly({
     count: 0,
@@ -119,7 +119,7 @@ state.nested.value = 2  // Allowed (not recommended)
 Check if it's a reactive object:
 
 ```javascript
-import { reactive, isReactive } from 'fluxion'
+import { reactive, isReactive } from '@fluxion-ui/fluxion'
 
 const state = reactive({ count: 0 })
 
@@ -132,7 +132,7 @@ console.log(isReactive({}))     // false
 Check if it's a readonly object:
 
 ```javascript
-import { readonly, isReadonly } from 'fluxion'
+import { readonly, isReadonly } from '@fluxion-ui/fluxion'
 
 const state = readonly({ count: 0 })
 
@@ -144,7 +144,7 @@ console.log(isReadonly(state))  // true
 Check if it's a Proxy object:
 
 ```javascript
-import { reactive, readonly, isProxy } from 'fluxion'
+import { reactive, readonly, isProxy } from '@fluxion-ui/fluxion'
 
 const state = reactive({})
 const readOnly = readonly({})
@@ -161,7 +161,7 @@ console.log(isProxy({}))        // false
 Get the raw object from a Proxy:
 
 ```javascript
-import { reactive, toRaw } from 'fluxion'
+import { reactive, toRaw } from '@fluxion-ui/fluxion'
 
 const state = reactive({ count: 0 })
 const raw = toRaw(state)
@@ -175,7 +175,7 @@ raw.count = 1               // NOT reactive!
 Convert a value to reactive:
 
 ```javascript
-import { toReactive } from 'fluxion'
+import { toReactive } from '@fluxion-ui/fluxion'
 
 const raw = { count: 0 }
 const reactive = toReactive(raw)
@@ -188,7 +188,7 @@ reactive.count = 1  // Reactive
 Create a ref for a specific object property:
 
 ```javascript
-import { reactive, toRef } from 'fluxion'
+import { reactive, toRef } from '@fluxion-ui/fluxion'
 
 const state = reactive({ count: 0, name: 'John' })
 
@@ -326,7 +326,7 @@ const state = reactive({ count: 0, name: 'John' })
 const { count, name } = state
 
 // ✅ Use toRef
-import { toRef } from 'fluxion'
+import { toRef } from '@fluxion-ui/fluxion'
 const countRef = toRef(state, 'count')
 ```
 

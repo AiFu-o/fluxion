@@ -9,7 +9,7 @@ This section provides several complete Fluxion application examples.
 A fully functional Todo application with add, delete, completion marking, and filtering.
 
 ```nui
-import { signal, computed } from 'fluxion'
+import { signal, computed } from '@fluxion-ui/fluxion'
 
 // State
 todos = signal([])
@@ -173,7 +173,7 @@ style
 A user management CRUD application demonstrating async data operations.
 
 ```nui
-import { asyncSignal, signal, computed } from 'fluxion'
+import { asyncSignal, signal, computed } from '@fluxion-ui/fluxion'
 
 // User data
 users = asyncSignal(() =>
@@ -386,7 +386,7 @@ style
 Displaying blog post list with search and category filtering.
 
 ```nui
-import { asyncSignal, signal, computed } from 'fluxion'
+import { asyncSignal, signal, computed } from '@fluxion-ui/fluxion'
 
 // Post data
 posts = asyncSignal(() =>

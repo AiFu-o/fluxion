@@ -68,7 +68,7 @@ span {
 ### setup 函数
 
 ```javascript
-import { signal, h } from 'fluxion'
+import { signal, h } from '@fluxion-ui/fluxion'
 
 export const Counter = {
     name: 'Counter',
@@ -96,7 +96,7 @@ export const Counter = {
 ### render 函数
 
 ```javascript
-import { h } from 'fluxion'
+import { h } from '@fluxion-ui/fluxion'
 
 export const HelloWorld = {
     name: 'HelloWorld',
@@ -110,7 +110,7 @@ export const HelloWorld = {
 ### 完整组件定义
 
 ```javascript
-import { signal, h } from 'fluxion'
+import { signal, h } from '@fluxion-ui/fluxion'
 
 export const UserProfile = {
     name: 'UserProfile',

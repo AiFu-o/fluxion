@@ -58,7 +58,7 @@ debug('User action:', action)
 ### Monitoring Effect Execution
 
 ```javascript
-import { effect, signal } from 'fluxion'
+import { effect, signal } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -78,7 +78,7 @@ count.set(1)
 ### Tracking Dependencies
 
 ```javascript
-import { signal, computed, effect } from 'fluxion'
+import { signal, computed, effect } from '@fluxion-ui/fluxion'
 
 const firstName = signal('John')
 const lastName = signal('Doe')
@@ -101,7 +101,7 @@ firstName.set('Jane')
 ### Checking Signal State
 
 ```javascript
-import { signal, getQueueStatus } from 'fluxion'
+import { signal, getQueueStatus } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -121,7 +121,7 @@ console.log(getQueueStatus())
 ### Viewing Component Instance
 
 ```javascript
-import { getCurrentInstance } from 'fluxion'
+import { getCurrentInstance } from '@fluxion-ui/fluxion'
 
 const MyComponent = {
     setup(props) {
@@ -144,7 +144,7 @@ import {
     onBeforeUpdate,
     onUpdated,
     onUnmounted
-} from 'fluxion'
+} from '@fluxion-ui/fluxion'
 
 const MyComponent = {
     setup() {
@@ -357,7 +357,7 @@ emit('update:item', { ...props.item, name: 'new name' })
 ### Detecting Unnecessary Renders
 
 ```javascript
-import { effect } from 'fluxion'
+import { effect } from '@fluxion-ui/fluxion'
 
 let renderCount = 0
 
@@ -371,7 +371,7 @@ effect(() => {
 ### Using Performance API
 
 ```javascript
-import { signal, nextTick } from 'fluxion'
+import { signal, nextTick } from '@fluxion-ui/fluxion'
 
 const items = signal([])
 
@@ -445,7 +445,7 @@ const ErrorBoundary = {
 ### Creating Debug Signal
 
 ```javascript
-import { signal } from 'fluxion'
+import { signal } from '@fluxion-ui/fluxion'
 
 function createDebugSignal(initialValue, name) {
     const s = signal(initialValue)
@@ -468,7 +468,7 @@ count.set(5)  // [count] Setting: 5
 ### Tracking Signal Reads
 
 ```javascript
-import { effect } from 'fluxion'
+import { effect } from '@fluxion-ui/fluxion'
 
 function trackSignalDeps(signal, name) {
     const deps = new Set()

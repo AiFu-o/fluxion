@@ -9,19 +9,19 @@ This section covers how to install Fluxion and configure your project environmen
 Recommended installation using pnpm:
 
 ```bash
-pnpm add fluxion
+pnpm add @fluxion-ui/fluxion
 ```
 
 Or using npm:
 
 ```bash
-npm install fluxion
+npm install @fluxion-ui/fluxion
 ```
 
 Or using yarn:
 
 ```bash
-yarn add fluxion
+yarn add @fluxion-ui/fluxion
 ```
 
 ### Vite Plugin Installation
@@ -29,7 +29,7 @@ yarn add fluxion
 If using Vite for your project, install the Vite plugin:
 
 ```bash
-pnpm add -D vite-plugin-fluxion
+pnpm add -D @fluxion-ui/vite-plugin-fluxion
 ```
 
 ## Project Configuration
@@ -40,7 +40,7 @@ Add the Fluxion plugin to your `vite.config.js`:
 
 ```javascript
 import { defineConfig } from 'vite'
-import { fluxionPlugin } from 'vite-plugin-fluxion'
+import { fluxionPlugin } from '@fluxion-ui/vite-plugin-fluxion'
 
 export default defineConfig({
   plugins: [
@@ -62,7 +62,7 @@ Example:
 
 ```javascript
 import { defineConfig } from 'vite'
-import { fluxionPlugin } from 'vite-plugin-fluxion'
+import { fluxionPlugin } from '@fluxion-ui/vite-plugin-fluxion'
 
 export default defineConfig({
   plugins: [
@@ -82,7 +82,7 @@ To add type declarations for `.nui` files, create a `fluxion.d.ts`:
 
 ```typescript
 declare module '*.nui' {
-  import { Component } from 'fluxion'
+  import { Component } from '@fluxion-ui/fluxion'
   const component: Component
   export default component
 }
@@ -101,7 +101,7 @@ You can use Fluxion directly in the browser via CDN:
 </head>
 <body>
   <div id="app"></div>
-  <script src="https://unpkg.com/fluxion/dist/fluxion.iife.js"></script>
+  <script src="https://unpkg.com/@fluxion-ui/fluxion/dist/fluxion.iife.js"></script>
   <script>
     const { createApp, signal, h } = Fluxion
 
@@ -154,7 +154,7 @@ my-fluxion-app/
 ### src/main.js
 
 ```javascript
-import { createApp } from 'fluxion'
+import { createApp } from '@fluxion-ui/fluxion'
 import App from './App.nui'
 
 createApp(App).mount('#app')
@@ -203,11 +203,11 @@ button:hover {
     "preview": "vite preview"
   },
   "dependencies": {
-    "fluxion": "latest"
+    "@fluxion-ui/fluxion": "latest"
   },
   "devDependencies": {
     "vite": "^5.0.0",
-    "vite-plugin-fluxion": "latest"
+    "@fluxion-ui/vite-plugin-fluxion": "latest"
   }
 }
 ```

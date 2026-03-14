@@ -18,9 +18,9 @@ Fluxion 使用 TypeScript 编写，提供了完整的类型定义，支持：
 Fluxion 包含内置类型定义，无需额外安装：
 
 ```bash
-npm install fluxion
+npm install @fluxion-ui/fluxion
 # 或
-pnpm add fluxion
+pnpm add @fluxion-ui/fluxion
 ```
 
 ---
@@ -30,7 +30,7 @@ pnpm add fluxion
 ### Signal 类型
 
 ```typescript
-import { signal, Signal } from 'fluxion'
+import { signal, Signal } from '@fluxion-ui/fluxion'
 
 // 类型自动推断
 const count = signal(0)              // Signal<number>
@@ -53,7 +53,7 @@ count.update(n => n + 1)             // 回调参数类型为 number
 ### Computed 类型
 
 ```typescript
-import { computed, Computed } from 'fluxion'
+import { computed, Computed } from '@fluxion-ui/fluxion'
 
 // 类型自动推断
 const double = computed(() => count() * 2)  // Computed<number>
@@ -72,7 +72,7 @@ const formattedUser = computed<User>(() => {
 ### Reactive 类型
 
 ```typescript
-import { reactive, isReactive, toRaw } from 'fluxion'
+import { reactive, isReactive, toRaw } from '@fluxion-ui/fluxion'
 
 interface User {
     name: string
@@ -100,7 +100,7 @@ const rawUser: User = toRaw(user)
 ### AsyncSignal 类型
 
 ```typescript
-import { asyncSignal, AsyncSignal } from 'fluxion'
+import { asyncSignal, AsyncSignal } from '@fluxion-ui/fluxion'
 
 interface ApiResponse {
     data: User[]
@@ -128,7 +128,7 @@ const error: Error | null = users.error()
 ### 组件定义
 
 ```typescript
-import { Component, ComponentContext, VNode } from 'fluxion'
+import { Component, ComponentContext, VNode } from '@fluxion-ui/fluxion'
 
 interface MyComponentProps {
     title: string
@@ -158,7 +158,7 @@ const MyComponent: Component<MyComponentProps> = {
 ### Props 类型定义
 
 ```typescript
-import { PropOption } from 'fluxion'
+import { PropOption } from '@fluxion-ui/fluxion'
 
 // 定义 Props 选项
 const propsOptions = {
@@ -218,7 +218,7 @@ import {
     onBeforeUpdate,
     onUpdated,
     onUnmounted
-} from 'fluxion'
+} from '@fluxion-ui/fluxion'
 
 const MyComponent = {
     setup() {
@@ -256,7 +256,7 @@ import {
     VNode,
     VNodeProps,
     createVNode
-} from 'fluxion'
+} from '@fluxion-ui/fluxion'
 
 // h 函数自动推断类型
 const div: VNode = h('div')                         // 元素 VNode
@@ -282,7 +282,7 @@ const props: VNodeProps = {
 ## Watch 类型
 
 ```typescript
-import { watch, watchEffect, WatchCallback, WatchSource } from 'fluxion'
+import { watch, watchEffect, WatchCallback, WatchSource } from '@fluxion-ui/fluxion'
 
 // watch 自动推断类型
 const count = signal(0)
@@ -318,7 +318,7 @@ const dispose = watchEffect(() => {
 ## Effect 类型
 
 ```typescript
-import { effect, Effect } from 'fluxion'
+import { effect, Effect } from '@fluxion-ui/fluxion'
 
 // 创建 effect
 const dispose: Effect = effect(() => {
@@ -341,7 +341,7 @@ dispose.stop()
 ### 创建泛型组件
 
 ```typescript
-import { Component, signal, Signal } from 'fluxion'
+import { Component, signal, Signal } from '@fluxion-ui/fluxion'
 
 // 泛型列表组件
 interface ListProps<T> {
@@ -376,7 +376,7 @@ const UserList = createListComponent<User>()
 ### 泛型工具函数
 
 ```typescript
-import { Signal, computed } from 'fluxion'
+import { Signal, computed } from '@fluxion-ui/fluxion'
 
 // 泛型选择器
 function createSelector<T, R>(
@@ -409,7 +409,7 @@ const theme = createSelector(state, s => s.settings.theme) // Signal<string>
 
 ```typescript
 // types/fluxion.d.ts
-declare module 'fluxion' {
+declare module '@fluxion-ui/fluxion' {
     // 扩展组件类型
     interface ComponentCustomProperties {
         $router?: Router
@@ -428,7 +428,7 @@ declare module 'fluxion' {
 ```typescript
 // types/nui.d.ts
 declare module '*.nui' {
-    import { Component } from 'fluxion'
+    import { Component } from '@fluxion-ui/fluxion'
     const component: Component
     export default component
 }
@@ -448,8 +448,8 @@ declare module '*.nui' {
         "moduleResolution": "bundler",
         "strict": true,
         "jsx": "react-jsx",
-        "jsxImportSource": "fluxion",
-        "types": ["fluxion"]
+        "jsxImportSource": "@fluxion-ui/fluxion",
+        "types": ["@fluxion-ui/fluxion"]
     },
     "include": [
         "src/**/*",

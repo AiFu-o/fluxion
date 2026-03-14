@@ -19,7 +19,7 @@ Fluxion's runtime is designed to be platform-agnostic. With the `createRenderer`
 ### Basic Signature
 
 ```typescript
-import { createRenderer } from 'fluxion'
+import { createRenderer } from '@fluxion-ui/fluxion'
 
 const renderer = createRenderer(options)
 
@@ -287,7 +287,7 @@ nextSibling(node: any): any | null
 ## Complete Example: Canvas Renderer
 
 ```javascript
-import { createRenderer, h } from 'fluxion'
+import { createRenderer, h } from '@fluxion-ui/fluxion'
 
 // Create Canvas renderer
 const canvasRenderer = createRenderer({
@@ -430,7 +430,7 @@ drawCanvas(ctx, container.children[0])
 ## Complete Example: Terminal Renderer
 
 ```javascript
-import { createRenderer, h } from 'fluxion'
+import { createRenderer, h } from '@fluxion-ui/fluxion'
 
 // Terminal renderer
 const terminalRenderer = createRenderer({
@@ -523,7 +523,7 @@ console.log(renderTerminal(container.children[0]))
 ## Complete Example: Test Renderer
 
 ```javascript
-import { createRenderer, h } from 'fluxion'
+import { createRenderer, h } from '@fluxion-ui/fluxion'
 
 // Lightweight test renderer
 export function createTestRenderer() {

@@ -171,7 +171,7 @@ function refresh<T>(computed: Computed<T>): void
 #### Examples
 
 ```nui
-import { signal, computed, refresh } from 'fluxion'
+import { signal, computed, refresh } from '@fluxion-ui/fluxion'
 
 timestamp = signal(Date.now())
 timeDisplay = computed(() => new Date(timestamp()).toLocaleTimeString())
@@ -203,7 +203,7 @@ function computedSet<T>(getter: () => T, setter: (value: T) => void): Computed<T
 #### Examples
 
 ```nui
-import { signal, computedSet } from 'fluxion'
+import { signal, computedSet } from '@fluxion-ui/fluxion'
 
 firstName = signal("John")
 lastName = signal("Doe")

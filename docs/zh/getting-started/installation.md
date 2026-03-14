@@ -9,19 +9,19 @@
 推荐使用 pnpm 安装：
 
 ```bash
-pnpm add fluxion
+pnpm add @fluxion-ui/fluxion
 ```
 
 或使用 npm：
 
 ```bash
-npm install fluxion
+npm install @fluxion-ui/fluxion
 ```
 
 或使用 yarn：
 
 ```bash
-yarn add fluxion
+yarn add @fluxion-ui/fluxion
 ```
 
 ### Vite 插件安装
@@ -29,7 +29,7 @@ yarn add fluxion
 如果使用 Vite 构建项目，需要安装 Vite 插件：
 
 ```bash
-pnpm add -D vite-plugin-fluxion
+pnpm add -D @fluxion-ui/vite-plugin-fluxion
 ```
 
 ## 项目配置
@@ -40,7 +40,7 @@ pnpm add -D vite-plugin-fluxion
 
 ```javascript
 import { defineConfig } from 'vite'
-import { fluxionPlugin } from 'vite-plugin-fluxion'
+import { fluxionPlugin } from '@fluxion-ui/vite-plugin-fluxion'
 
 export default defineConfig({
   plugins: [
@@ -62,7 +62,7 @@ interface FluxionPluginOptions {
 
 ```javascript
 import { defineConfig } from 'vite'
-import { fluxionPlugin } from 'vite-plugin-fluxion'
+import { fluxionPlugin } from '@fluxion-ui/vite-plugin-fluxion'
 
 export default defineConfig({
   plugins: [
@@ -82,7 +82,7 @@ Fluxion 提供 TypeScript 类型定义，无需额外配置即可获得类型提
 
 ```typescript
 declare module '*.nui' {
-  import { Component } from 'fluxion'
+  import { Component } from '@fluxion-ui/fluxion'
   const component: Component
   export default component
 }
@@ -101,7 +101,7 @@ declare module '*.nui' {
 </head>
 <body>
   <div id="app"></div>
-  <script src="https://unpkg.com/fluxion/dist/fluxion.iife.js"></script>
+  <script src="https://unpkg.com/@fluxion-ui/fluxion/dist/fluxion.iife.js"></script>
   <script>
     const { createApp, signal, h } = Fluxion
 
@@ -154,7 +154,7 @@ my-fluxion-app/
 ### src/main.js
 
 ```javascript
-import { createApp } from 'fluxion'
+import { createApp } from '@fluxion-ui/fluxion'
 import App from './App.nui'
 
 createApp(App).mount('#app')
@@ -203,11 +203,11 @@ button:hover {
     "preview": "vite preview"
   },
   "dependencies": {
-    "fluxion": "latest"
+    "@fluxion-ui/fluxion": "latest"
   },
   "devDependencies": {
     "vite": "^5.0.0",
-    "vite-plugin-fluxion": "latest"
+    "@fluxion-ui/vite-plugin-fluxion": "latest"
   }
 }
 ```

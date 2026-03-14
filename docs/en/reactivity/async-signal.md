@@ -7,7 +7,7 @@ AsyncSignal is a special type of Signal designed for handling async data fetchin
 ### Creating AsyncSignal
 
 ```javascript
-import { asyncSignal } from 'fluxion'
+import { asyncSignal } from '@fluxion-ui/fluxion'
 
 // Simple usage
 const users = asyncSignal(() => fetch('/api/users').then(r => r.json()))
@@ -126,7 +126,7 @@ async function handleData() {
 Lazy loading, only starts fetching on first access:
 
 ```javascript
-import { lazyAsyncSignal } from 'fluxion'
+import { lazyAsyncSignal } from '@fluxion-ui/fluxion'
 
 const users = lazyAsyncSignal(() => fetchUsers())
 
@@ -142,7 +142,7 @@ const data = users()
 Data fetching with caching:
 
 ```javascript
-import { cachedAsyncSignal, clearAsyncSignalCache } from 'fluxion'
+import { cachedAsyncSignal, clearAsyncSignalCache } from '@fluxion-ui/fluxion'
 
 // Use cache
 const users = cachedAsyncSignal('users-key', () => fetchUsers())
@@ -159,7 +159,7 @@ clearAsyncSignalCache()
 ### User List
 
 ```nui
-import { asyncSignal } from 'fluxion'
+import { asyncSignal } from '@fluxion-ui/fluxion'
 
 users = asyncSignal(() =>
     fetch('/api/users').then(r => r.json())
@@ -187,7 +187,7 @@ div
 ### Search Feature
 
 ```nui
-import { signal, watch, asyncSignal } from 'fluxion'
+import { signal, watch, asyncSignal } from '@fluxion-ui/fluxion'
 
 searchTerm = signal('')
 searchResults = asyncSignal(() =>
@@ -225,7 +225,7 @@ div
 ### Parallel Requests
 
 ```nui
-import { asyncSignal } from 'fluxion'
+import { asyncSignal } from '@fluxion-ui/fluxion'
 
 users = asyncSignal(() => fetch('/api/users').then(r => r.json()))
 posts = asyncSignal(() => fetch('/api/posts').then(r => r.json()))

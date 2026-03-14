@@ -11,7 +11,7 @@ import {
   createVNode,
   render,
   nextTick
-} from 'fluxion'
+} from '@fluxion-ui/fluxion'
 ```
 
 ---
@@ -53,7 +53,7 @@ interface Component {
 **示例**
 
 ```javascript
-import { createApp, signal, h } from 'fluxion'
+import { createApp, signal, h } from '@fluxion-ui/fluxion'
 
 // 定义根组件
 const App = {
@@ -201,7 +201,7 @@ interface VNode {
 **示例**
 
 ```javascript
-import { createVNode } from 'fluxion'
+import { createVNode } from '@fluxion-ui/fluxion'
 
 // 创建元素 VNode
 const divVNode = createVNode('div', { id: 'app' }, 'Hello')
@@ -340,7 +340,7 @@ function h(type: Component, props: VNodeProps | null): VNode
 **示例**
 
 ```javascript
-import { h } from 'fluxion'
+import { h } from '@fluxion-ui/fluxion'
 
 // 简单元素
 h('div')
@@ -395,7 +395,7 @@ function render(vnode: VNode | null, container: Element): void
 **示例**
 
 ```javascript
-import { h, render } from 'fluxion'
+import { h, render } from '@fluxion-ui/fluxion'
 
 // 挂载
 const vnode = h('div', { id: 'app' }, 'Hello')
@@ -445,7 +445,7 @@ interface Renderer {
 **示例**
 
 ```javascript
-import { createRenderer } from 'fluxion'
+import { createRenderer } from '@fluxion-ui/fluxion'
 
 // 创建自定义渲染器（例如 Canvas 渲染器）
 const canvasRenderer = createRenderer({
@@ -497,7 +497,7 @@ function nextTick(fn?: () => void): Promise<void>
 **示例**
 
 ```javascript
-import { signal, nextTick } from 'fluxion'
+import { signal, nextTick } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -537,7 +537,7 @@ interface SchedulerJob {
 **示例**
 
 ```javascript
-import { queueJob } from 'fluxion'
+import { queueJob } from '@fluxion-ui/fluxion'
 
 // 添加更新任务
 queueJob(() => {
@@ -604,7 +604,7 @@ function getCurrentInstance(): ComponentInstance | null
 **示例**
 
 ```javascript
-import { getCurrentInstance } from 'fluxion'
+import { getCurrentInstance } from '@fluxion-ui/fluxion'
 
 const MyComponent = {
     setup() {
@@ -686,7 +686,7 @@ function emit(
 **示例**
 
 ```javascript
-import { emit } from 'fluxion'
+import { emit } from '@fluxion-ui/fluxion'
 
 // 在组件内部触发事件
 const MyComponent = {

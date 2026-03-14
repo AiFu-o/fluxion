@@ -58,7 +58,7 @@ debug('User action:', action)
 ### 监控 Effect 执行
 
 ```javascript
-import { effect, signal } from 'fluxion'
+import { effect, signal } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -78,7 +78,7 @@ count.set(1)
 ### 追踪依赖
 
 ```javascript
-import { signal, computed, effect } from 'fluxion'
+import { signal, computed, effect } from '@fluxion-ui/fluxion'
 
 const firstName = signal('John')
 const lastName = signal('Doe')
@@ -101,7 +101,7 @@ firstName.set('Jane')
 ### 检查 Signal 状态
 
 ```javascript
-import { signal, getQueueStatus } from 'fluxion'
+import { signal, getQueueStatus } from '@fluxion-ui/fluxion'
 
 const count = signal(0)
 
@@ -121,7 +121,7 @@ console.log(getQueueStatus())
 ### 查看组件实例
 
 ```javascript
-import { getCurrentInstance } from 'fluxion'
+import { getCurrentInstance } from '@fluxion-ui/fluxion'
 
 const MyComponent = {
     setup(props) {
@@ -144,7 +144,7 @@ import {
     onBeforeUpdate,
     onUpdated,
     onUnmounted
-} from 'fluxion'
+} from '@fluxion-ui/fluxion'
 
 const MyComponent = {
     setup() {
@@ -357,7 +357,7 @@ emit('update:item', { ...props.item, name: 'new name' })
 ### 检测不必要的渲染
 
 ```javascript
-import { effect } from 'fluxion'
+import { effect } from '@fluxion-ui/fluxion'
 
 let renderCount = 0
 
@@ -371,7 +371,7 @@ effect(() => {
 ### 使用 Performance API
 
 ```javascript
-import { signal, nextTick } from 'fluxion'
+import { signal, nextTick } from '@fluxion-ui/fluxion'
 
 const items = signal([])
 
@@ -445,7 +445,7 @@ const ErrorBoundary = {
 ### 创建调试 Signal
 
 ```javascript
-import { signal } from 'fluxion'
+import { signal } from '@fluxion-ui/fluxion'
 
 function createDebugSignal(initialValue, name) {
     const s = signal(initialValue)
@@ -468,7 +468,7 @@ count.set(5)  // [count] Setting: 5
 ### 追踪 Signal 读取
 
 ```javascript
-import { effect } from 'fluxion'
+import { effect } from '@fluxion-ui/fluxion'
 
 function trackSignalDeps(signal, name) {
     const deps = new Set()

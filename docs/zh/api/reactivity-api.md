@@ -12,7 +12,7 @@ import {
   watch,
   reactive,
   asyncSignal
-} from 'fluxion'
+} from '@fluxion-ui/fluxion'
 ```
 
 ---

@@ -83,7 +83,7 @@ form @submit=handleSubmit
 ### Form with Validation
 
 ```nui
-import { computed } from 'fluxion'
+import { computed } from '@fluxion-ui/fluxion'
 
 username = signal("")
 email = signal("")
@@ -247,7 +247,7 @@ div.list-manager
 ### Data Fetching
 
 ```nui
-import { asyncSignal } from 'fluxion'
+import { asyncSignal } from '@fluxion-ui/fluxion'
 
 users = asyncSignal(() =>
     fetch('/api/users').then(r => r.json())
@@ -277,7 +277,7 @@ div.user-list
 ### Paginated Loading
 
 ```nui
-import { asyncSignal, signal, computed } from 'fluxion'
+import { asyncSignal, signal, computed } from '@fluxion-ui/fluxion'
 
 page = signal(1)
 pageSize = signal(10)
@@ -329,7 +329,7 @@ div.paginated-list
 
 ```nui
 // store.nui
-import { signal, computed } from 'fluxion'
+import { signal, computed } from '@fluxion-ui/fluxion'
 
 // Global state
 user = signal(null)
@@ -496,7 +496,7 @@ form
 ## Debounce and Throttle Pattern
 
 ```nui
-import { signal, computed } from 'fluxion'
+import { signal, computed } from '@fluxion-ui/fluxion'
 
 searchTerm = signal("")
 debouncedSearch = signal("")

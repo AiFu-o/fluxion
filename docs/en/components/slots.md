@@ -196,7 +196,7 @@ Table columns={columns} data={data}
 ### Accessing Slots in JavaScript
 
 ```javascript
-import { h } from 'fluxion'
+import { h } from '@fluxion-ui/fluxion'
 
 export const Card = {
     setup(props, { slots }) {

@@ -3,9 +3,9 @@ name: Sync to Gitee
 on:
   push:
     branches:
-      - '*'
+      - '**'
     tags:
-      - '*'
+      - '**'
 
 jobs:
   sync:

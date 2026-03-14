@@ -1,5 +1,7 @@
 # Fluxion Documentation
 
+[![npm version](https://img.shields.io/npm/v/@fluxion-ui/fluxion?color=blue)](https://www.npmjs.com/package/@fluxion-ui/fluxion)
+[![npm downloads](https://img.shields.io/npm/dm/@fluxion-ui/fluxion)](https://www.npmjs.com/package/@fluxion-ui/fluxion)
 [![GitHub stars](https://img.shields.io/github/stars/AiFu-o/fluxion?style=social)](https://github.com/AiFu-o/fluxion)
 [![star](https://gitee.com/wang-weichen/fluxion/badge/star.svg?theme=dark)](https://gitee.com/wang-weichen/fluxion/stargazers)
 
@@ -20,11 +22,11 @@ Fluxion is a lightweight JavaScript UI framework designed with two goals:
 ## Quick Start
 
 ```bash
-# Install
-pnpm add fluxion
+# Install core package
+pnpm add @fluxion-ui/fluxion
 
 # Install Vite plugin
-pnpm add -D vite-plugin-fluxion
+pnpm add -D @fluxion-ui/vite-plugin-fluxion
 ```
 
 ## Documentation

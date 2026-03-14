@@ -3,8 +3,8 @@
  * 支持多种参数签名，简化 VNode 创建
  */
 
-import { createVNode, isVNode, VNode } from './vnode'
-import { VNodeType, VNodeProps, VNodeChildren, Component } from './types'
+import { createVNode, isVNode } from './vnode'
+import { VNode, VNodeType, VNodeProps, VNodeChildren, Component } from './types'
 import { isArray, isString, isObject } from '@fluxion/shared'
 import { warn } from '@fluxion/shared'
 

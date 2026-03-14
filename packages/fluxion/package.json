@@ -13,16 +13,16 @@
             "types": "./dist/fluxion.d.ts"
         },
         "./runtime": {
-            "import": "./dist/runtime.js",
-            "require": "./dist/runtime.cjs",
-            "types": "./dist/runtime.d.ts"
+            "import": "./dist/fluxion-runtime.js",
+            "require": "./dist/fluxion-runtime.cjs",
+            "types": "./dist/fluxion-runtime.d.ts"
         }
     },
     "files": [
         "dist"
     ],
     "scripts": {
-        "build": "rollup -c ../../build/rollup.config.js --configPlugin typescript",
+        "build": "rollup -c ../../build/rollup.config.mjs --configPlugin typescript",
         "test": "vitest run"
     },
     "dependencies": {

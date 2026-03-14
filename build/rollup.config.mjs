@@ -177,21 +177,41 @@ const createFluxionConfig = (format) => {
     inlineDynamicImports: format === 'iife'
   }))
 
-  // compiler 入口
-  configs.push(defineConfig({
-    input: 'packages/fluxion/src/compiler.ts',
-    output: {
-      file: `packages/fluxion/dist/fluxion-compiler.${format === 'iife' ? 'iife' : format === 'cjs' ? 'cjs' : 'js'}`,
-      format: format,
-      name: 'Fluxion',
-      sourcemap: true
-    },
-    plugins: createPlugins(true, 'fluxion'),
-    external: format !== 'iife' ? [/@fluxion\//] : [],
-    inlineDynamicImports: format === 'iife'
-  }))
-
   return configs
+}
+
+// fluxion 主包的类型定义构建配置
+const createFluxionDtsConfigs = () => {
+  return [
+    // 主入口类型定义
+    defineConfig({
+      input: 'packages/fluxion/src/index.ts',
+      output: {
+        file: 'packages/fluxion/dist/fluxion.d.ts',
+        format: 'esm'
+      },
+      plugins: [
+        dts({
+          tsconfig: './tsconfig.json'
+        })
+      ],
+      external: [/@fluxion\//]
+    }),
+    // runtime 入口类型定义
+    defineConfig({
+      input: 'packages/fluxion/src/runtime.ts',
+      output: {
+        file: 'packages/fluxion/dist/fluxion-runtime.d.ts',
+        format: 'esm'
+      },
+      plugins: [
+        dts({
+          tsconfig: './tsconfig.json'
+        })
+      ],
+      external: [/@fluxion\//]
+    })
+  ]
 }
 
 // 生成所有构建配置
@@ -219,6 +239,8 @@ export function createBuildConfigs(formats = ['esm', 'cjs']) {
   for (const format of formats) {
     configs.push(...createFluxionConfig(format))
   }
+  // fluxion 类型定义
+  configs.push(...createFluxionDtsConfigs())
 
   // vite-plugin-fluxion
   if (formats.includes('esm')) {

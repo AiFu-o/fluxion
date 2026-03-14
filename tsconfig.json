@@ -26,7 +26,8 @@
 			"@fluxion-ui/compiler-core": ["./packages/compiler-core/src"],
 			"@fluxion-ui/compiler-dom": ["./packages/compiler-dom/src"],
 			"@fluxion-ui/compiler-nui": ["./packages/compiler-nui/src"],
-			"fluxion": ["./packages/fluxion/src"]
+			"@fluxion-ui/fluxion": ["./packages/fluxion/src"],
+			"@fluxion-ui/fluxion/runtime": ["./packages/fluxion/src/runtime.ts"]
 		}
 	},
 	"include": [

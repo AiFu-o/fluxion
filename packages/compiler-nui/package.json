@@ -1,6 +1,6 @@
 {
 	"name": "@fluxion-ui/compiler-nui",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "Fluxion compiler for NUI DSL - .nui file parser and compiler",
 	"type": "module",
 	"main": "./dist/compiler-nui.cjs",

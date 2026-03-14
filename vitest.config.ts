@@ -1,6 +1,9 @@
 import { defineConfig } from 'vitest/config'
 import path from 'path'
 
+// @ts-ignore - vitest 运行时可用
+const __dirname = path.dirname(new URL(import.meta.url).pathname)
+
 export default defineConfig({
     test: {
         globals: true,
@@ -15,7 +18,8 @@ export default defineConfig({
             '@fluxion-ui/compiler-core': path.resolve(__dirname, 'packages/compiler-core/src'),
             '@fluxion-ui/compiler-dom': path.resolve(__dirname, 'packages/compiler-dom/src'),
             '@fluxion-ui/compiler-nui': path.resolve(__dirname, 'packages/compiler-nui/src'),
-            'fluxion': path.resolve(__dirname, 'packages/fluxion/src')
+            '@fluxion-ui/fluxion': path.resolve(__dirname, 'packages/fluxion/src'),
+            '@fluxion-ui/fluxion/runtime': path.resolve(__dirname, 'packages/fluxion/src/runtime.ts')
         }
     }
 })

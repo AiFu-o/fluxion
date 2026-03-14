@@ -29,6 +29,23 @@ pnpm add @fluxion-ui/fluxion
 pnpm add -D @fluxion-ui/vite-plugin-fluxion
 ```
 
+### 配置 Vite 插件
+
+```typescript
+// vite.config.ts
+import { defineConfig } from 'vite'
+import { fluxionPlugin } from '@fluxion-ui/vite-plugin-fluxion'
+
+export default defineConfig({
+    plugins: [
+        fluxionPlugin()
+    ],
+    server: {
+        port: 3000
+    }
+})
+```
+
 ## 文档目录
 
 ### 快速开始

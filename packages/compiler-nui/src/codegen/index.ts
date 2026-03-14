@@ -94,15 +94,8 @@ function genRuntimeImports(
 		imports.add('h')
 	}
 
-	// emit 相关（检查函数体是否包含 emit）
-	for (const fn of functions) {
-		if (fn.body.includes('emit(')) {
-			imports.add('emit')
-		}
-	}
-
 	if (imports.size > 0) {
-		ctx.code += `import { ${Array.from(imports).join(', ')} } from "fluxion-runtime"\n`
+		ctx.code += `import { ${Array.from(imports).join(', ')} } from "@fluxion-ui/fluxion/runtime"\n`
 	}
 }
 

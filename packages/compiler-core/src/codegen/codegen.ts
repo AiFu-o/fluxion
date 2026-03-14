@@ -123,7 +123,7 @@ function genFunctionPreamble(ast: RootNode, context: CodegenContext) {
 		}
 
 		if (imports.length > 0) {
-			context.push(`import { ${imports.join(', ')} } from 'fluxion/runtime'\n`)
+			context.push(`import { ${imports.join(', ')} } from '@fluxion-ui/fluxion/runtime'\n`)
 		}
 	}
 

@@ -27,7 +27,7 @@ describe('integration', () => {
 			const result = compile(source)
 
 			expect(result.code).toContain('const count = signal(0)')
-			expect(result.code).toContain('import { signal } from "fluxion-runtime"')
+			expect(result.code).toContain('import { signal } from "@fluxion-ui/fluxion/runtime"')
 		})
 
 		it('应该编译只有 function 的文件', () => {

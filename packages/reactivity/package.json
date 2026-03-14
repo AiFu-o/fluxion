@@ -1,6 +1,6 @@
 {
 	"name": "@fluxion-ui/reactivity",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "Fluxion reactivity system",
 	"type": "module",
 	"main": "./dist/reactivity.cjs",

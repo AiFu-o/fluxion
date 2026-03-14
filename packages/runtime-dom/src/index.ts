@@ -83,7 +83,9 @@ export {
     cloneVNode,
     isVNode,
     isElementVNode,
-    isComponentVNode
+    isComponentVNode,
+    nextTick,
+    queueJob
 } from '@fluxion-ui/runtime-core'
 
 export type {

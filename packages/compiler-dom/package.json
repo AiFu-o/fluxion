@@ -1,6 +1,6 @@
 {
 	"name": "@fluxion-ui/compiler-dom",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "Fluxion compiler for DOM - DOM-specific compilation transforms",
 	"type": "module",
 	"main": "./dist/compiler-dom.cjs",

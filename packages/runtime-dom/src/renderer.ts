@@ -7,11 +7,11 @@ import {
     createRenderer,
     setAppRenderer,
     setRenderRenderer
-} from '@fluxion/runtime-core'
+} from '@fluxion-ui/runtime-core'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
 import { isSVGTag, createSVGElement } from './modules/svg'
-import type { RendererOptions } from '@fluxion/runtime-core'
+import type { RendererOptions } from '@fluxion-ui/runtime-core'
 
 /**
  * 扩展的渲染器选项

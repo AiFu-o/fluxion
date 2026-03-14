@@ -26,7 +26,7 @@ import {
 	JSChildNode,
 	TemplateChildNode
 } from './types'
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 // ==================== 位置相关 ====================
 

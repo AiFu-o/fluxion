@@ -1,5 +1,5 @@
 {
-	"name": "@fluxion/shared",
+	"name": "@fluxion-ui/shared",
 	"version": "0.0.1",
 	"description": "Fluxion shared utilities",
 	"type": "module",

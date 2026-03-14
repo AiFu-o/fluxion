@@ -3,7 +3,7 @@
  * 使用 invoker 模式避免频繁 addEventListener/removeEventListener
  */
 
-import { warn, isFunction, isArray } from '@fluxion/shared'
+import { warn, isFunction, isArray } from '@fluxion-ui/shared'
 
 /**
  * Invoker 缓存键

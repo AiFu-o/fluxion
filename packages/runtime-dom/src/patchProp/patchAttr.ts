@@ -3,7 +3,7 @@
  * 使用 setAttribute/removeAttribute 处理 HTML 属性
  */
 
-import { warn, isString, isBoolean } from '@fluxion/shared'
+import { warn, isString, isBoolean } from '@fluxion-ui/shared'
 
 /**
  * 布尔属性列表

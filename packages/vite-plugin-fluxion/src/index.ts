@@ -4,8 +4,8 @@
  */
 
 import { Plugin, ResolvedConfig } from 'vite'
-import { compile, NuiCompileResult } from '@fluxion/compiler-nui'
-import { warn } from '@fluxion/shared'
+import { compile, NuiCompileResult } from '@fluxion-ui/compiler-nui'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * 插件选项

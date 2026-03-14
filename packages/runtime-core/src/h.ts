@@ -5,8 +5,8 @@
 
 import { createVNode, isVNode } from './vnode'
 import { VNode, VNodeType, VNodeProps, VNodeChildren, Component } from './types'
-import { isArray, isString, isObject } from '@fluxion/shared'
-import { warn } from '@fluxion/shared'
+import { isArray, isString, isObject } from '@fluxion-ui/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * h 函数重载签名

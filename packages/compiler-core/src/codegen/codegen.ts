@@ -23,7 +23,7 @@ import {
 	ForNode
 } from '../types'
 import { isRuntimeHelper, runtimeHelpers, getRuntimeHelperName } from '../runtimeHelpers'
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 // ==================== 代码生成上下文 ====================
 

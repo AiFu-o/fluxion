@@ -1,5 +1,5 @@
 {
-	"name": "@fluxion/runtime-dom",
+	"name": "@fluxion-ui/runtime-dom",
 	"version": "0.0.1",
 	"description": "Fluxion DOM runtime renderer",
 	"type": "module",
@@ -29,10 +29,10 @@
 	"author": "Fluxion Team",
 	"license": "MIT",
 	"dependencies": {
-		"@fluxion/runtime-core": "workspace:*",
-		"@fluxion/shared": "workspace:*"
+		"@fluxion-ui/runtime-core": "workspace:*",
+		"@fluxion-ui/shared": "workspace:*"
 	},
 	"devDependencies": {
-		"@fluxion/reactivity": "workspace:*"
+		"@fluxion-ui/reactivity": "workspace:*"
 	}
 }

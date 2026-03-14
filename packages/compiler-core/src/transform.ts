@@ -13,7 +13,7 @@ import {
 	CompilerError
 } from './types'
 import { createRoot, getNodeChildren } from './ast'
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * 创建转换上下文

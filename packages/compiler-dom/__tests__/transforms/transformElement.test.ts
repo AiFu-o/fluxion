@@ -4,9 +4,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { transformElement, isDOMProperty, isBooleanDOMProperty } from '../../src/transforms/transformElement'
-import { createElementNode, createTextNode, createAttributeNode, createDirectiveNode, createInterpolationNode } from '@fluxion/compiler-core'
-import { NodeTypes } from '@fluxion/compiler-core'
-import { createTransformContext } from '@fluxion/compiler-core'
+import { createElementNode, createTextNode, createAttributeNode, createDirectiveNode, createInterpolationNode } from '@fluxion-ui/compiler-core'
+import { NodeTypes } from '@fluxion-ui/compiler-core'
+import { createTransformContext } from '@fluxion-ui/compiler-core'
 
 describe('transformElement', () => {
 	it('应该忽略非元素节点', () => {

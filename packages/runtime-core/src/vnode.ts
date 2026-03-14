@@ -6,8 +6,8 @@
 import { ShapeFlags, VNode, VNodeType, VNodeProps, VNodeChildren, Component } from './types'
 import { VNODE_SYMBOL, isVNode as checkVNode } from './symbols'
 import { normalizeChildren } from './utils/normalize'
-import { isArray, isString, isFunction, isObject } from '@fluxion/shared'
-import { warn } from '@fluxion/shared'
+import { isArray, isString, isFunction, isObject } from '@fluxion-ui/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * 当前 VNode ID

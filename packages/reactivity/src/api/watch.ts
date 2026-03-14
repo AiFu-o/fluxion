@@ -3,7 +3,7 @@
  * 监听响应式数据变化
  */
 
-import { warn, isFunction, isObject, isArray } from '@fluxion/shared'
+import { warn, isFunction, isObject, isArray } from '@fluxion-ui/shared'
 import type { WatchCallback, WatchSource, WatchOptions } from '../types'
 import { effect, stop } from './effect'
 import { toRaw } from './reactive'

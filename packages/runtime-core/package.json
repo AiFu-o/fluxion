@@ -1,5 +1,5 @@
 {
-	"name": "@fluxion/runtime-core",
+	"name": "@fluxion-ui/runtime-core",
 	"version": "0.0.1",
 	"description": "Fluxion platform-independent runtime core",
 	"type": "module",
@@ -29,7 +29,7 @@
 	"author": "Fluxion Team",
 	"license": "MIT",
 	"dependencies": {
-		"@fluxion/reactivity": "workspace:*",
-		"@fluxion/shared": "workspace:*"
+		"@fluxion-ui/reactivity": "workspace:*",
+		"@fluxion-ui/shared": "workspace:*"
 	}
 }

@@ -1,5 +1,5 @@
 {
-	"name": "@fluxion/reactivity",
+	"name": "@fluxion-ui/reactivity",
 	"version": "0.0.1",
 	"description": "Fluxion reactivity system",
 	"type": "module",
@@ -29,6 +29,6 @@
 	"author": "Fluxion Team",
 	"license": "MIT",
 	"dependencies": {
-		"@fluxion/shared": "workspace:*"
+		"@fluxion-ui/shared": "workspace:*"
 	}
 }

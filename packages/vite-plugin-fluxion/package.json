@@ -1,5 +1,5 @@
 {
-	"name": "@fluxion/vite-plugin-fluxion",
+	"name": "@fluxion-ui/vite-plugin-fluxion",
 	"version": "0.0.1",
 	"description": "Vite plugin for Fluxion framework - compile .nui files",
 	"type": "module",
@@ -29,8 +29,8 @@
 	"author": "Fluxion Team",
 	"license": "MIT",
 	"dependencies": {
-		"@fluxion/compiler-nui": "workspace:*",
-		"@fluxion/shared": "workspace:*"
+		"@fluxion-ui/compiler-nui": "workspace:*",
+		"@fluxion-ui/shared": "workspace:*"
 	},
 	"peerDependencies": {
 		"vite": "^5.0.0"

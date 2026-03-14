@@ -4,7 +4,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { compile, getDefaultDOMTransforms, createDOMTransformContext } from '../src/index'
-import { createRoot, createElementNode, createTextNode, createDirectiveNode, NodeTypes } from '@fluxion/compiler-core'
+import { createRoot, createElementNode, createTextNode, createDirectiveNode, NodeTypes } from '@fluxion-ui/compiler-core'
 
 describe('compile', () => {
 	it('应该编译空的 AST', () => {

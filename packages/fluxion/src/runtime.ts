@@ -15,7 +15,7 @@ export {
     stop,
     watch,
     watchEffect
-} from '@fluxion/reactivity'
+} from '@fluxion-ui/reactivity'
 
 // ==================== 运行时 API ====================
 export {
@@ -30,7 +30,7 @@ export {
     isVNode,
     nextTick,
     queueJob
-} from '@fluxion/runtime-dom'
+} from '@fluxion-ui/runtime-dom'
 
 // 导出类型
 export type {
@@ -42,4 +42,4 @@ export type {
     ComponentInstance,
     ComponentProps,
     App
-} from '@fluxion/runtime-core'
+} from '@fluxion-ui/runtime-core'

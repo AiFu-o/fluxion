@@ -14,8 +14,8 @@ import {
 import {
 	SourceLocation,
 	Position
-} from '@fluxion/compiler-core'
-import { warn } from '@fluxion/shared'
+} from '@fluxion-ui/compiler-core'
+import { warn } from '@fluxion-ui/shared'
 
 // ==================== 常量 ====================
 

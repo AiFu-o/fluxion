@@ -1,5 +1,5 @@
 {
-	"name": "@fluxion/compiler-nui",
+	"name": "@fluxion-ui/compiler-nui",
 	"version": "0.0.1",
 	"description": "Fluxion compiler for NUI DSL - .nui file parser and compiler",
 	"type": "module",
@@ -29,8 +29,8 @@
 	"author": "Fluxion Team",
 	"license": "MIT",
 	"dependencies": {
-		"@fluxion/compiler-core": "workspace:*",
-		"@fluxion/compiler-dom": "workspace:*",
-		"@fluxion/shared": "workspace:*"
+		"@fluxion-ui/compiler-core": "workspace:*",
+		"@fluxion-ui/compiler-dom": "workspace:*",
+		"@fluxion-ui/shared": "workspace:*"
 	}
 }

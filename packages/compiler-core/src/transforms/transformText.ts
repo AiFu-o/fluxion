@@ -19,7 +19,7 @@ import {
 	isInterpolationNode,
 	isElementNode
 } from '../ast'
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * 文本转换插件

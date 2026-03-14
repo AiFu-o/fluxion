@@ -3,7 +3,7 @@
  * 使 IDE 能够正确识别 .nui 文件导入的类型
  */
 
-import { Component } from '@fluxion/runtime-core'
+import { Component } from '@fluxion-ui/runtime-core'
 
 declare module '*.nui' {
     const component: Component

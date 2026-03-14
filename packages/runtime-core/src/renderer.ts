@@ -17,9 +17,9 @@ import {
     invokeLifecycleHook
 } from './component'
 import { renderComponentRoot } from './componentRenderUtils'
-import { effect, Effect } from '@fluxion/reactivity'
+import { effect, Effect } from '@fluxion-ui/reactivity'
 import { queueJob, nextTick } from './scheduler'
-import { warn, isString, isArray, isFunction } from '@fluxion/shared'
+import { warn, isString, isArray, isFunction } from '@fluxion-ui/shared'
 import { normalizeVNode } from './utils/normalize'
 
 // Text 类型的 Symbol

@@ -2,7 +2,7 @@
  * Reactivity 包类型定义
  */
 
-import type { AnyFunction } from '@fluxion/shared'
+import type { AnyFunction } from '@fluxion-ui/shared'
 
 // ==================== Signal 类型 ====================
 

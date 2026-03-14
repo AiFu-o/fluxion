@@ -22,9 +22,9 @@ import {
 	TemplateChildNode,
 	RootNode,
 	createRoot
-} from '@fluxion/compiler-core'
-import { isNativeTag } from '@fluxion/compiler-dom'
-import { warn } from '@fluxion/shared'
+} from '@fluxion-ui/compiler-core'
+import { isNativeTag } from '@fluxion-ui/compiler-dom'
+import { warn } from '@fluxion-ui/shared'
 
 // ==================== 代码生成上下文 ====================
 

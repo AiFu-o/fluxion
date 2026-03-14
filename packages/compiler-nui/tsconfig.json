@@ -16,9 +16,9 @@
 		"composite": true,
 		"baseUrl": ".",
 		"paths": {
-			"@fluxion/shared": ["../shared/src"],
-			"@fluxion/compiler-core": ["../compiler-core/src"],
-			"@fluxion/compiler-dom": ["../compiler-dom/src"]
+			"@fluxion-ui/shared": ["../shared/src"],
+			"@fluxion-ui/compiler-core": ["../compiler-core/src"],
+			"@fluxion-ui/compiler-dom": ["../compiler-dom/src"]
 		}
 	},
 	"include": ["src/**/*"],

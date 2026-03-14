@@ -5,7 +5,7 @@
 import { describe, it, expect } from 'vitest'
 import { generateModule } from '../src/codegen'
 import { NuiNodeTypes, NuiRootNode, ViewBlock } from '../src/types'
-import { createRoot, createElementNode, createTextNode } from '@fluxion/compiler-core'
+import { createRoot, createElementNode, createTextNode } from '@fluxion-ui/compiler-core'
 
 describe('codegen', () => {
 	describe('import 生成', () => {

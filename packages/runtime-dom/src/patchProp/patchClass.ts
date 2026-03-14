@@ -3,7 +3,7 @@
  * 支持字符串、数组、对象三种形式
  */
 
-import { warn, isString, isArray, isObject } from '@fluxion/shared'
+import { warn, isString, isArray, isObject } from '@fluxion-ui/shared'
 
 /**
  * class 值类型

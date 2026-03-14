@@ -27,7 +27,7 @@ import {
 	AttributeNode,
 	DirectiveNode,
 	SimpleExpressionNode
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 import {
 	createPosition,
 	createSourceLocation,
@@ -40,8 +40,8 @@ import {
 	createIfNode,
 	createIfBranchNode,
 	createForNode
-} from '@fluxion/compiler-core'
-import { isNativeTag } from '@fluxion/compiler-dom'
+} from '@fluxion-ui/compiler-core'
+import { isNativeTag } from '@fluxion-ui/compiler-dom'
 import {
 	initParserState,
 	currentToken,

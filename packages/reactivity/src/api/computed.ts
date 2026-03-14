@@ -3,7 +3,7 @@
  * 根据依赖自动计算值并缓存结果
  */
 
-import { warn, isFunction } from '@fluxion/shared'
+import { warn, isFunction } from '@fluxion-ui/shared'
 import type { Computed } from '../types'
 import { effect, stop } from './effect'
 

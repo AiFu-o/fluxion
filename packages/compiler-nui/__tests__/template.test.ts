@@ -5,7 +5,7 @@
 import { describe, it, expect } from 'vitest'
 import { tokenize } from '../src/tokenizer'
 import { parseViewBlock } from '../src/parser/template'
-import { NodeTypes } from '@fluxion/compiler-core'
+import { NodeTypes } from '@fluxion-ui/compiler-core'
 
 describe('template parser', () => {
 	describe('基础元素解析', () => {

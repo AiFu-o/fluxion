@@ -13,8 +13,8 @@ import {
     LifecycleHook
 } from './types'
 import { COMPONENT_SYMBOL } from './symbols'
-import { effect, Effect } from '@fluxion/reactivity'
-import { warn, isFunction, isArray, isObject, hasOwn } from '@fluxion/shared'
+import { effect, Effect } from '@fluxion-ui/reactivity'
+import { warn, isFunction, isArray, isObject, hasOwn } from '@fluxion-ui/shared'
 import { normalizePropsOptions } from './utils/normalize'
 
 /**

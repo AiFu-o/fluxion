@@ -3,7 +3,7 @@
  * 自动追踪依赖并响应变化
  */
 
-import { warn, isFunction } from '@fluxion/shared'
+import { warn, isFunction } from '@fluxion-ui/shared'
 import {
     getCurrentEffect,
     setCurrentEffect,

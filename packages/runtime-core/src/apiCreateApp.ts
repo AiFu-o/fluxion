@@ -4,7 +4,7 @@
  */
 
 import { App, Plugin, Component } from './types'
-import { warn, isString, isFunction } from '@fluxion/shared'
+import { warn, isString, isFunction } from '@fluxion-ui/shared'
 
 // 存储渲染器实例
 let renderer: {

@@ -34,13 +34,13 @@ const entries = packages.map(name => ({
 const createPlugins = (isProduction) => [
   alias({
     entries: [
-      { find: '@fluxion/shared', replacement: path.resolve(__dirname, 'packages/shared/src') },
-      { find: '@fluxion/reactivity', replacement: path.resolve(__dirname, 'packages/reactivity/src') },
-      { find: '@fluxion/runtime-core', replacement: path.resolve(__dirname, 'packages/runtime-core/src') },
-      { find: '@fluxion/runtime-dom', replacement: path.resolve(__dirname, 'packages/runtime-dom/src') },
-      { find: '@fluxion/compiler-core', replacement: path.resolve(__dirname, 'packages/compiler-core/src') },
-      { find: '@fluxion/compiler-dom', replacement: path.resolve(__dirname, 'packages/compiler-dom/src') },
-      { find: '@fluxion/compiler-nui', replacement: path.resolve(__dirname, 'packages/compiler-nui/src') },
+      { find: '@fluxion-ui/shared', replacement: path.resolve(__dirname, 'packages/shared/src') },
+      { find: '@fluxion-ui/reactivity', replacement: path.resolve(__dirname, 'packages/reactivity/src') },
+      { find: '@fluxion-ui/runtime-core', replacement: path.resolve(__dirname, 'packages/runtime-core/src') },
+      { find: '@fluxion-ui/runtime-dom', replacement: path.resolve(__dirname, 'packages/runtime-dom/src') },
+      { find: '@fluxion-ui/compiler-core', replacement: path.resolve(__dirname, 'packages/compiler-core/src') },
+      { find: '@fluxion-ui/compiler-dom', replacement: path.resolve(__dirname, 'packages/compiler-dom/src') },
+      { find: '@fluxion-ui/compiler-nui', replacement: path.resolve(__dirname, 'packages/compiler-nui/src') },
       { find: 'fluxion', replacement: path.resolve(__dirname, 'packages/fluxion/src') }
     ]
   }),
@@ -82,7 +82,7 @@ const createEsmConfig = (packageName) => defineConfig({
   },
   plugins: createPlugins(true),
   external: [
-    /@fluxion\//,
+    /@fluxion-ui\//,
     /^vue$/
   ]
 })
@@ -98,7 +98,7 @@ const createCjsConfig = (packageName) => defineConfig({
   },
   plugins: createPlugins(true),
   external: [
-    /@fluxion\//,
+    /@fluxion-ui\//,
     /^vue$/
   ]
 })
@@ -112,12 +112,12 @@ const createIifeConfig = (packageName) => defineConfig({
     name: 'Fluxion',
     sourcemap: true,
     global: {
-      '@fluxion/reactivity': 'Fluxion',
-      '@fluxion/runtime-core': 'Fluxion',
-      '@fluxion/runtime-dom': 'Fluxion',
-      '@fluxion/compiler-core': 'Fluxion',
-      '@fluxion/compiler-dom': 'Fluxion',
-      '@fluxion/compiler-nui': 'Fluxion',
+      '@fluxion-ui/reactivity': 'Fluxion',
+      '@fluxion-ui/runtime-core': 'Fluxion',
+      '@fluxion-ui/runtime-dom': 'Fluxion',
+      '@fluxion-ui/compiler-core': 'Fluxion',
+      '@fluxion-ui/compiler-dom': 'Fluxion',
+      '@fluxion-ui/compiler-nui': 'Fluxion',
       'vue': 'Vue'
     }
   },
@@ -141,7 +141,7 @@ const createDtsConfig = (packageName) => defineConfig({
     })
   ],
   external: [
-    /@fluxion\//
+    /@fluxion-ui\//
   ]
 })
 
@@ -159,7 +159,7 @@ const createFluxionConfig = (format) => {
       sourcemap: true
     },
     plugins: createPlugins(true),
-    external: format !== 'iife' ? [/@fluxion\//] : [],
+    external: format !== 'iife' ? [/@fluxion-ui\//] : [],
     inlineDynamicImports: format === 'iife'
   }))
 
@@ -173,7 +173,7 @@ const createFluxionConfig = (format) => {
       sourcemap: true
     },
     plugins: createPlugins(true),
-    external: format !== 'iife' ? [/@fluxion\//] : [],
+    external: format !== 'iife' ? [/@fluxion-ui\//] : [],
     inlineDynamicImports: format === 'iife'
   }))
 
@@ -195,7 +195,7 @@ const createFluxionDtsConfigs = () => {
           tsconfig: './tsconfig.json'
         })
       ],
-      external: [/@fluxion\//]
+      external: [/@fluxion-ui\//]
     }),
     // runtime 入口类型定义
     defineConfig({
@@ -209,7 +209,7 @@ const createFluxionDtsConfigs = () => {
           tsconfig: './tsconfig.json'
         })
       ],
-      external: [/@fluxion\//]
+      external: [/@fluxion-ui\//]
     })
   ]
 }

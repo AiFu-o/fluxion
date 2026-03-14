@@ -21,7 +21,7 @@ import {
 	isElementNode
 } from '../ast'
 import { runtimeHelpers } from '../runtimeHelpers'
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * 元素转换插件

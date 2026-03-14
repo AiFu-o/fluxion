@@ -3,7 +3,7 @@
  * 支持字符串和对象两种形式
  */
 
-import { warn, isString, isObject, hasOwn } from '@fluxion/shared'
+import { warn, isString, isObject, hasOwn } from '@fluxion-ui/shared'
 
 /**
  * CSS 属性名映射（用于处理简写属性）

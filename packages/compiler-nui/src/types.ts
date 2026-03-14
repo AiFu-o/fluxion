@@ -9,7 +9,7 @@ import {
 	Position,
 	TemplateChildNode,
 	RootNode
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 // ==================== Token 类型 ====================
 

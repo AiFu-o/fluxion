@@ -12,16 +12,16 @@ import {
 	JSObjectExpression,
 	DirectiveNode,
 	AttributeNode
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 import {
 	createCallExpression,
 	createObjectExpression,
 	createSimpleExpression,
 	createArrayExpression,
 	isElementNode
-} from '@fluxion/compiler-core'
-import { runtimeHelpers } from '@fluxion/compiler-core'
-import { warn } from '@fluxion/shared'
+} from '@fluxion-ui/compiler-core'
+import { runtimeHelpers } from '@fluxion-ui/compiler-core'
+import { warn } from '@fluxion-ui/shared'
 import { isHTMLTag, isSVGTag, isComponentTag } from '../tagConfig'
 import {
 	DOM_RUNTIME_HELPERS,

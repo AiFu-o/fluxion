@@ -3,7 +3,7 @@
  * 提供 RendererOptions 所需的基础 DOM 操作方法
  */
 
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * 创建 HTML 元素

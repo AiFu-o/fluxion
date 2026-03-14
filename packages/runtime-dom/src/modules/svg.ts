@@ -3,7 +3,7 @@
  * 提供 SVG 元素的创建和属性处理
  */
 
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * SVG 命名空间

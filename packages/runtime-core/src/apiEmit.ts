@@ -4,7 +4,7 @@
  */
 
 import { ComponentInstance, EmitFunction } from './types'
-import { warn, isFunction, hasOwn } from '@fluxion/shared'
+import { warn, isFunction, hasOwn } from '@fluxion-ui/shared'
 
 /**
  * 创建 emit 函数

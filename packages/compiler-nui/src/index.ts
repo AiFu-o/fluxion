@@ -79,7 +79,7 @@ import {
 import { tokenize } from './tokenizer'
 import { parseStatements, parseViewBlock } from './parser'
 import { generateModule } from './codegen'
-import { createSourceLocation, Position } from '@fluxion/compiler-core'
+import { createSourceLocation, Position } from '@fluxion-ui/compiler-core'
 
 /**
  * 解析 NUI 源码为 AST

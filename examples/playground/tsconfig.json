@@ -11,14 +11,14 @@
         "types": ["node"],
         "baseUrl": ".",
         "paths": {
-            "@fluxion/shared": ["../../packages/shared/src"],
-            "@fluxion/reactivity": ["../../packages/reactivity/src"],
-            "@fluxion/runtime-core": ["../../packages/runtime-core/src"],
-            "@fluxion/runtime-dom": ["../../packages/runtime-dom/src"],
-            "@fluxion/compiler-core": ["../../packages/compiler-core/src"],
-            "@fluxion/compiler-dom": ["../../packages/compiler-dom/src"],
-            "@fluxion/compiler-nui": ["../../packages/compiler-nui/src"],
-            "@fluxion/vite-plugin-fluxion": ["../../packages/vite-plugin-fluxion/src"],
+            "@fluxion-ui/shared": ["../../packages/shared/src"],
+            "@fluxion-ui/reactivity": ["../../packages/reactivity/src"],
+            "@fluxion-ui/runtime-core": ["../../packages/runtime-core/src"],
+            "@fluxion-ui/runtime-dom": ["../../packages/runtime-dom/src"],
+            "@fluxion-ui/compiler-core": ["../../packages/compiler-core/src"],
+            "@fluxion-ui/compiler-dom": ["../../packages/compiler-dom/src"],
+            "@fluxion-ui/compiler-nui": ["../../packages/compiler-nui/src"],
+            "@fluxion-ui/vite-plugin-fluxion": ["../../packages/vite-plugin-fluxion/src"],
             "fluxion": ["../../packages/fluxion/src"],
             "fluxion-runtime": ["../../packages/runtime-dom/src"]
         }

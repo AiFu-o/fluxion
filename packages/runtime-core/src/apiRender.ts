@@ -4,7 +4,7 @@
  */
 
 import { VNode } from './types'
-import { warn, isString } from '@fluxion/shared'
+import { warn, isString } from '@fluxion-ui/shared'
 
 // 存储渲染器实例
 let renderer: {

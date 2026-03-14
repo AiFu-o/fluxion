@@ -3,7 +3,7 @@
  * 深层响应式代理
  */
 
-import { warn, isObject } from '@fluxion/shared'
+import { warn, isObject } from '@fluxion-ui/shared'
 import { ReactiveFlags } from '../types'
 import { getCurrentEffect } from '../state'
 

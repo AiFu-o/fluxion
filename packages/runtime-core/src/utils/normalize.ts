@@ -5,7 +5,7 @@
 
 import type { VNode, VNodeChildren } from '../types'
 import { ShapeFlags } from '../types'
-import { isArray, isString } from '@fluxion/shared'
+import { isArray, isString } from '@fluxion-ui/shared'
 
 /**
  * 规范化事件名

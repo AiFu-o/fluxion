@@ -1,5 +1,5 @@
 {
-    "name": "fluxion",
+    "name": "@fluxion-ui/fluxion",
     "version": "0.0.1",
     "type": "module",
     "description": "A lightweight AI-friendly UI framework",
@@ -22,10 +22,10 @@
         "dist"
     ],
     "dependencies": {
-        "@fluxion/runtime-dom": "workspace:*",
-        "@fluxion/runtime-core": "workspace:*",
-        "@fluxion/reactivity": "workspace:*",
-        "@fluxion/shared": "workspace:*"
+        "@fluxion-ui/runtime-dom": "workspace:*",
+        "@fluxion-ui/runtime-core": "workspace:*",
+        "@fluxion-ui/reactivity": "workspace:*",
+        "@fluxion-ui/shared": "workspace:*"
     },
     "repository": {
         "type": "git",

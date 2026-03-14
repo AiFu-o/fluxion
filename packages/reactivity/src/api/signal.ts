@@ -3,7 +3,7 @@
  * 提供响应式数据封装
  */
 
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 import type { Signal, SignalGetter } from '../types'
 import { getCurrentEffect, setCurrentEffect } from '../state'
 

@@ -17,7 +17,7 @@ import {
 import {
 	SourceLocation,
 	Position
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 // ==================== 工具函数 ====================
 

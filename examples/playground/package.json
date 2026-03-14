@@ -8,12 +8,12 @@
         "preview": "vite preview"
     },
     "dependencies": {
-       "@fluxion/reactivity": "workspace:*",
-       "@fluxion/runtime-core": "workspace:*",
-       "@fluxion/runtime-dom": "workspace:*",
-       "@fluxion/compiler-core": "workspace:*",
-       "@fluxion/compiler-nui": "workspace:*",
-       "@fluxion/vite-plugin-fluxion": "workspace:*"
+       "@fluxion-ui/reactivity": "workspace:*",
+       "@fluxion-ui/runtime-core": "workspace:*",
+       "@fluxion-ui/runtime-dom": "workspace:*",
+       "@fluxion-ui/compiler-core": "workspace:*",
+       "@fluxion-ui/compiler-nui": "workspace:*",
+       "@fluxion-ui/vite-plugin-fluxion": "workspace:*"
     },
     "devDependencies": {
         "vite": "^5.0.0"

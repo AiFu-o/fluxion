@@ -91,7 +91,7 @@ export {
 	runtimeHelpers,
 	getRuntimeHelperName,
 	isRuntimeHelper
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 // 标签配置
 export {
@@ -136,10 +136,10 @@ import {
 	generate,
 	TransformFn,
 	createTransformContext
-} from '@fluxion/compiler-core'
-import { warn } from '@fluxion/shared'
+} from '@fluxion-ui/compiler-core'
+import { warn } from '@fluxion-ui/shared'
 import { transformElement } from './transforms'
-import { transformIf, transformFor, transformText } from '@fluxion/compiler-core'
+import { transformIf, transformFor, transformText } from '@fluxion-ui/compiler-core'
 
 /**
  * DOM 编译器选项

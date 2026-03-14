@@ -3,7 +3,7 @@
  * 支持异步数据获取和加载状态
  */
 
-import { warn, isFunction } from '@fluxion/shared'
+import { warn, isFunction } from '@fluxion-ui/shared'
 import type { Signal, AsyncSignal } from '../types'
 import { signal } from './signal'
 

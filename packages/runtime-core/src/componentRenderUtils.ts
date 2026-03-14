@@ -4,7 +4,7 @@
  */
 
 import { ComponentInstance, VNode } from './types'
-import { warn, isFunction } from '@fluxion/shared'
+import { warn, isFunction } from '@fluxion-ui/shared'
 
 /**
  * 渲染组件根节点

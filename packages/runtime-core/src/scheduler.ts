@@ -4,7 +4,7 @@
  */
 
 import { SchedulerJob } from './types'
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * 任务队列

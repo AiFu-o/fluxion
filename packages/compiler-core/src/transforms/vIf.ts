@@ -17,7 +17,7 @@ import {
 	createSimpleExpression,
 	isIfNode
 } from '../ast'
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * if 转换插件

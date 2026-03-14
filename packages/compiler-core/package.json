@@ -1,5 +1,5 @@
 {
-	"name": "@fluxion/compiler-core",
+	"name": "@fluxion-ui/compiler-core",
 	"version": "0.0.1",
 	"description": "Fluxion compiler core - platform-independent AST transforms and codegen",
 	"type": "module",
@@ -29,6 +29,6 @@
 	"author": "Fluxion Team",
 	"license": "MIT",
 	"dependencies": {
-		"@fluxion/shared": "workspace:*"
+		"@fluxion-ui/shared": "workspace:*"
 	}
 }

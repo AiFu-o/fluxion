@@ -16,8 +16,8 @@
 		"composite": true,
 		"baseUrl": ".",
 		"paths": {
-			"@fluxion/shared": ["../shared/src"],
-			"@fluxion/compiler-core": ["../compiler-core/src"]
+			"@fluxion-ui/shared": ["../shared/src"],
+			"@fluxion-ui/compiler-core": ["../compiler-core/src"]
 		}
 	},
 	"include": ["src/**/*"],

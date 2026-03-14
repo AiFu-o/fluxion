@@ -1,5 +1,5 @@
 /**
- * @fluxion/runtime-dom
+ * @fluxion-ui/runtime-dom
  * DOM 平台的渲染器实现
  */
 
@@ -64,13 +64,13 @@ export {
     watchEffect,
     reactive,
     effect
-} from '@fluxion/reactivity'
+} from '@fluxion-ui/reactivity'
 
 export type {
     Signal,
     Computed,
     Effect
-} from '@fluxion/reactivity'
+} from '@fluxion-ui/reactivity'
 
 // ==================== runtime-core 重导出 ====================
 // 为了方便使用，重导出 runtime-core 的常用 API
@@ -84,7 +84,7 @@ export {
     isVNode,
     isElementVNode,
     isComponentVNode
-} from '@fluxion/runtime-core'
+} from '@fluxion-ui/runtime-core'
 
 export type {
     VNode,
@@ -94,4 +94,4 @@ export type {
     Component,
     ComponentInstance,
     ComponentProps
-} from '@fluxion/runtime-core'
+} from '@fluxion-ui/runtime-core'

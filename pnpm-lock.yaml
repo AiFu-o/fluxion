@@ -53,22 +53,22 @@ importers:
 
   examples/playground:
     dependencies:
-      '@fluxion/compiler-core':
+      '@fluxion-ui/compiler-core':
         specifier: workspace:*
         version: link:../../packages/compiler-core
-      '@fluxion/compiler-nui':
+      '@fluxion-ui/compiler-nui':
         specifier: workspace:*
         version: link:../../packages/compiler-nui
-      '@fluxion/reactivity':
+      '@fluxion-ui/reactivity':
         specifier: workspace:*
         version: link:../../packages/reactivity
-      '@fluxion/runtime-core':
+      '@fluxion-ui/runtime-core':
         specifier: workspace:*
         version: link:../../packages/runtime-core
-      '@fluxion/runtime-dom':
+      '@fluxion-ui/runtime-dom':
         specifier: workspace:*
         version: link:../../packages/runtime-dom
-      '@fluxion/vite-plugin-fluxion':
+      '@fluxion-ui/vite-plugin-fluxion':
         specifier: workspace:*
         version: link:../../packages/vite-plugin-fluxion
     devDependencies:
@@ -78,71 +78,71 @@ importers:
 
   packages/compiler-core:
     dependencies:
-      '@fluxion/shared':
+      '@fluxion-ui/shared':
         specifier: workspace:*
         version: link:../shared
 
   packages/compiler-dom:
     dependencies:
-      '@fluxion/compiler-core':
+      '@fluxion-ui/compiler-core':
         specifier: workspace:*
         version: link:../compiler-core
-      '@fluxion/shared':
+      '@fluxion-ui/shared':
         specifier: workspace:*
         version: link:../shared
 
   packages/compiler-nui:
     dependencies:
-      '@fluxion/compiler-core':
+      '@fluxion-ui/compiler-core':
         specifier: workspace:*
         version: link:../compiler-core
-      '@fluxion/compiler-dom':
+      '@fluxion-ui/compiler-dom':
         specifier: workspace:*
         version: link:../compiler-dom
-      '@fluxion/shared':
+      '@fluxion-ui/shared':
         specifier: workspace:*
         version: link:../shared
 
   packages/fluxion:
     dependencies:
-      '@fluxion/reactivity':
+      '@fluxion-ui/reactivity':
         specifier: workspace:*
         version: link:../reactivity
-      '@fluxion/runtime-core':
+      '@fluxion-ui/runtime-core':
         specifier: workspace:*
         version: link:../runtime-core
-      '@fluxion/runtime-dom':
+      '@fluxion-ui/runtime-dom':
         specifier: workspace:*
         version: link:../runtime-dom
-      '@fluxion/shared':
+      '@fluxion-ui/shared':
         specifier: workspace:*
         version: link:../shared
 
   packages/reactivity:
     dependencies:
-      '@fluxion/shared':
+      '@fluxion-ui/shared':
         specifier: workspace:*
         version: link:../shared
 
   packages/runtime-core:
     dependencies:
-      '@fluxion/reactivity':
+      '@fluxion-ui/reactivity':
         specifier: workspace:*
         version: link:../reactivity
-      '@fluxion/shared':
+      '@fluxion-ui/shared':
         specifier: workspace:*
         version: link:../shared
 
   packages/runtime-dom:
     dependencies:
-      '@fluxion/runtime-core':
+      '@fluxion-ui/runtime-core':
         specifier: workspace:*
         version: link:../runtime-core
-      '@fluxion/shared':
+      '@fluxion-ui/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
-      '@fluxion/reactivity':
+      '@fluxion-ui/reactivity':
         specifier: workspace:*
         version: link:../reactivity
 
@@ -150,10 +150,10 @@ importers:
 
   packages/vite-plugin-fluxion:
     dependencies:
-      '@fluxion/compiler-nui':
+      '@fluxion-ui/compiler-nui':
         specifier: workspace:*
         version: link:../compiler-nui
-      '@fluxion/shared':
+      '@fluxion-ui/shared':
         specifier: workspace:*
         version: link:../shared
       vite:

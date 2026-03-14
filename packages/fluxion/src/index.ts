@@ -23,7 +23,7 @@ export {
     // Watch
     watch,
     watchEffect
-} from '@fluxion/reactivity'
+} from '@fluxion-ui/reactivity'
 
 // 导出类型
 export type {
@@ -33,7 +33,7 @@ export type {
     Effect,
     WatchOptions,
     ComputedOptions
-} from '@fluxion/reactivity'
+} from '@fluxion-ui/reactivity'
 
 // ==================== 运行时 API ====================
 // 从 runtime-dom 导出（包含 DOM 渲染器）
@@ -67,7 +67,7 @@ export {
     // SVG
     createSVGElement,
     isSVGTag
-} from '@fluxion/runtime-dom'
+} from '@fluxion-ui/runtime-dom'
 
 // 导出类型
 export type {
@@ -79,7 +79,7 @@ export type {
     ComponentInstance,
     ComponentProps,
     App
-} from '@fluxion/runtime-core'
+} from '@fluxion-ui/runtime-core'
 
 // ==================== 编译器 API ====================
 // 通常用户不需要直接使用编译器 API
@@ -92,14 +92,14 @@ export {
     // Token 类型
     TokenType,
     NuiNodeTypes
-} from '@fluxion/compiler-nui'
+} from '@fluxion-ui/compiler-nui'
 
 // 导出类型
 export type {
     NuiParseResult,
     NuiCompileResult,
     NuiRootNode
-} from '@fluxion/compiler-nui'
+} from '@fluxion-ui/compiler-nui'
 
 // ==================== 工具函数 ====================
 export {
@@ -111,4 +111,4 @@ export {
     isFunction,
     isPromise,
     hasOwn
-} from '@fluxion/shared'
+} from '@fluxion-ui/shared'

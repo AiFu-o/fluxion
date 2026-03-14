@@ -4,7 +4,7 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { createApp, h, render } from '../src/index'
-import { signal } from '@fluxion/reactivity'
+import { signal } from '@fluxion-ui/reactivity'
 
 describe('render', () => {
     let container: HTMLDivElement

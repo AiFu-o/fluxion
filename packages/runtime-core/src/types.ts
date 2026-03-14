@@ -2,7 +2,7 @@
  * runtime-core 核心类型定义
  */
 
-import type { Effect } from '@fluxion/reactivity'
+import type { Effect } from '@fluxion-ui/reactivity'
 
 // ==================== VNode 类型 ====================
 

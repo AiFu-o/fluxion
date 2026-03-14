@@ -3,7 +3,7 @@
  * 处理需要直接设置到 DOM 对象的属性（不能使用 setAttribute）
  */
 
-import { warn, isString } from '@fluxion/shared'
+import { warn, isString } from '@fluxion-ui/shared'
 
 /**
  * 需要直接设置的 DOM 属性列表

@@ -21,7 +21,7 @@ import {
 	isForNode
 } from '../ast'
 import { runtimeHelpers } from '../runtimeHelpers'
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * for 转换插件

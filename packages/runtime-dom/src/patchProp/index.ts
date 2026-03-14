@@ -8,7 +8,7 @@ import { patchDOMProp, isDOMProp } from './patchDOMProp'
 import { patchClass } from './patchClass'
 import { patchStyle } from './patchStyle'
 import { patchAttr } from './patchAttr'
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 /**
  * 处理元素属性

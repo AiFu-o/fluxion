@@ -11,17 +11,17 @@ import {
   transform,
   generate,
   compile
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 // NUI DSL compiler
 import {
   parse as parseNui,
   compile as compileNui,
   tokenize
-} from '@fluxion/compiler-nui'
+} from '@fluxion-ui/compiler-nui'
 
 // DOM compiler
-import { compile as compileDom } from '@fluxion/compiler-dom'
+import { compile as compileDom } from '@fluxion-ui/compiler-dom'
 ```
 
 ---
@@ -73,7 +73,7 @@ Returns the compilation result containing generated code, AST, and error list.
 **Example**
 
 ```javascript
-import { compile } from '@fluxion/compiler-nui'
+import { compile } from '@fluxion-ui/compiler-nui'
 
 const source = `
 count = signal(0)
@@ -127,7 +127,7 @@ interface NuiRootNode {
 **Example**
 
 ```javascript
-import { parse } from '@fluxion/compiler-nui'
+import { parse } from '@fluxion-ui/compiler-nui'
 
 const source = `
 import { MyComponent } from './MyComponent.nui'
@@ -209,7 +209,7 @@ enum TokenType {
 **Example**
 
 ```javascript
-import { tokenize, TokenType } from '@fluxion/compiler-nui'
+import { tokenize, TokenType } from '@fluxion-ui/compiler-nui'
 
 const source = 'count = signal(0)'
 const { tokens, errors } = tokenize(source)
@@ -274,7 +274,7 @@ type TransformFn = (
 **Example**
 
 ```javascript
-import { parse, transform, createTransform, NodeTypes } from '@fluxion/compiler-core'
+import { parse, transform, createTransform, NodeTypes } from '@fluxion-ui/compiler-core'
 
 // Custom transform plugin
 const myTransform = createTransform([NodeTypes.ELEMENT], (node, context) => {
@@ -360,7 +360,7 @@ function createTransform(
 **Example**
 
 ```javascript
-import { createTransform, NodeTypes } from '@fluxion/compiler-core'
+import { createTransform, NodeTypes } from '@fluxion-ui/compiler-core'
 
 // Create transform plugin that only handles text nodes
 const textTransform = createTransform([NodeTypes.TEXT], (node, context) => {
@@ -390,7 +390,7 @@ interface CodegenResult {
 **Example**
 
 ```javascript
-import { parse, transform, generate } from '@fluxion/compiler-core'
+import { parse, transform, generate } from '@fluxion-ui/compiler-core'
 
 // 1. Parse source
 const ast = parse(source)

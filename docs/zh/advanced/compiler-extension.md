@@ -28,7 +28,7 @@ Fluxion 编译器采用插件化架构，你可以：
 ### 基本结构
 
 ```typescript
-import { TransformFn, TransformContext, TemplateChildNode } from '@fluxion/compiler-core'
+import { TransformFn, TransformContext, TemplateChildNode } from '@fluxion-ui/compiler-core'
 
 const myTransform: TransformFn = (node, context) => {
     // 处理节点...
@@ -80,7 +80,7 @@ import {
     ElementNode,
     createCallExpression,
     createSimpleExpression
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 // 为元素添加日志功能
 function createLoggingTransform(): TransformFn {
@@ -112,7 +112,7 @@ function createLoggingTransform(): TransformFn {
 ### 示例：自动 Key 生成
 
 ```typescript
-import { TransformFn, NodeTypes, ForNode, ElementNode } from '@fluxion/compiler-core'
+import { TransformFn, NodeTypes, ForNode, ElementNode } from '@fluxion-ui/compiler-core'
 
 // 为 v-for 元素自动生成 key
 function createAutoKeyTransform(): TransformFn {
@@ -178,8 +178,8 @@ import {
     DirectiveNode,
     createSimpleExpression,
     createCallExpression
-} from '@fluxion/compiler-core'
-import { runtimeHelpers } from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
+import { runtimeHelpers } from '@fluxion-ui/compiler-core'
 
 function createFocusDirectiveTransform(): TransformFn {
     return (node, context) => {
@@ -229,7 +229,7 @@ import {
     RootNode,
     NodeTypes,
     ElementNode
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 function customGenerate(ast: RootNode): CodegenResult {
     let code = ''
@@ -296,8 +296,8 @@ import {
     generate,
     RootNode,
     CompilerOptions
-} from '@fluxion/compiler-core'
-import { getDefaultTransforms } from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
+import { getDefaultTransforms } from '@fluxion-ui/compiler-core'
 
 interface CustomCompileOptions extends CompilerOptions {
     // 自定义选项
@@ -349,7 +349,7 @@ import {
     NuiRootNode,
     tokenize,
     TokenType
-} from '@fluxion/compiler-nui'
+} from '@fluxion-ui/compiler-nui'
 
 // 自定义解析
 function parseWithCustomDirectives(source: string): NuiRootNode {
@@ -380,7 +380,7 @@ function parseWithCustomDirectives(source: string): NuiRootNode {
 // 支持新的声明类型
 // 例如：state = reactive({ ... })
 
-import { NuiRootNode, NuiNodeTypes, Token, TokenType } from '@fluxion/compiler-nui'
+import { NuiRootNode, NuiNodeTypes, Token, TokenType } from '@fluxion-ui/compiler-nui'
 
 interface StateDeclaration {
     type: NuiNodeTypes
@@ -478,7 +478,7 @@ function safeTransform(node, context) {
 ### 1. 打印 AST
 
 ```typescript
-import { parse } from '@fluxion/compiler-core'
+import { parse } from '@fluxion-ui/compiler-core'
 
 const ast = parse(source)
 console.log(JSON.stringify(ast, null, 2))
@@ -499,7 +499,7 @@ function debugTransform(node, context) {
 ### 3. 检查生成代码
 
 ```typescript
-import { compile } from '@fluxion/compiler-nui'
+import { compile } from '@fluxion-ui/compiler-nui'
 
 const result = compile(source)
 console.log(result.code)

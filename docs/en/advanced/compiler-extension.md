@@ -28,7 +28,7 @@ Source → Tokenization → Token stream → Parsing → AST → Transform → C
 ### Basic Structure
 
 ```typescript
-import { TransformFn, TransformContext, TemplateChildNode } from '@fluxion/compiler-core'
+import { TransformFn, TransformContext, TemplateChildNode } from '@fluxion-ui/compiler-core'
 
 const myTransform: TransformFn = (node, context) => {
     // Process node...
@@ -80,7 +80,7 @@ import {
     ElementNode,
     createCallExpression,
     createSimpleExpression
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 // Add logging functionality to elements
 function createLoggingTransform(): TransformFn {
@@ -112,7 +112,7 @@ function createLoggingTransform(): TransformFn {
 ### Example: Auto Key Generation
 
 ```typescript
-import { TransformFn, NodeTypes, ForNode, ElementNode } from '@fluxion/compiler-core'
+import { TransformFn, NodeTypes, ForNode, ElementNode } from '@fluxion-ui/compiler-core'
 
 // Auto-generate keys for v-for elements
 function createAutoKeyTransform(): TransformFn {
@@ -178,8 +178,8 @@ import {
     DirectiveNode,
     createSimpleExpression,
     createCallExpression
-} from '@fluxion/compiler-core'
-import { runtimeHelpers } from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
+import { runtimeHelpers } from '@fluxion-ui/compiler-core'
 
 function createFocusDirectiveTransform(): TransformFn {
     return (node, context) => {
@@ -229,7 +229,7 @@ import {
     RootNode,
     NodeTypes,
     ElementNode
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 function customGenerate(ast: RootNode): CodegenResult {
     let code = ''
@@ -296,8 +296,8 @@ import {
     generate,
     RootNode,
     CompilerOptions
-} from '@fluxion/compiler-core'
-import { getDefaultTransforms } from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
+import { getDefaultTransforms } from '@fluxion-ui/compiler-core'
 
 interface CustomCompileOptions extends CompilerOptions {
     // Custom options
@@ -349,7 +349,7 @@ import {
     NuiRootNode,
     tokenize,
     TokenType
-} from '@fluxion/compiler-nui'
+} from '@fluxion-ui/compiler-nui'
 
 // Custom parsing
 function parseWithCustomDirectives(source: string): NuiRootNode {
@@ -380,7 +380,7 @@ function parseWithCustomDirectives(source: string): NuiRootNode {
 // Support new declaration types
 // Example: state = reactive({ ... })
 
-import { NuiRootNode, NuiNodeTypes, Token, TokenType } from '@fluxion/compiler-nui'
+import { NuiRootNode, NuiNodeTypes, Token, TokenType } from '@fluxion-ui/compiler-nui'
 
 interface StateDeclaration {
     type: NuiNodeTypes
@@ -478,7 +478,7 @@ function safeTransform(node, context) {
 ### 1. Print AST
 
 ```typescript
-import { parse } from '@fluxion/compiler-core'
+import { parse } from '@fluxion-ui/compiler-core'
 
 const ast = parse(source)
 console.log(JSON.stringify(ast, null, 2))
@@ -499,7 +499,7 @@ function debugTransform(node, context) {
 ### 3. Check Generated Code
 
 ```typescript
-import { compile } from '@fluxion/compiler-nui'
+import { compile } from '@fluxion-ui/compiler-nui'
 
 const result = compile(source)
 console.log(result.code)

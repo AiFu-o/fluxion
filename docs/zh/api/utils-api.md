@@ -19,7 +19,7 @@ import {
   warn,
   error,
   debug
-} from '@fluxion/shared'
+} from '@fluxion-ui/shared'
 ```
 
 ---
@@ -416,7 +416,7 @@ interface Options {
 ### 参数验证
 
 ```javascript
-import { isFunction, isObject, isString } from '@fluxion/shared'
+import { isFunction, isObject, isString } from '@fluxion-ui/shared'
 
 function createComponent(options) {
     if (!isObject(options)) {
@@ -436,7 +436,7 @@ function createComponent(options) {
 ### 属性检查
 
 ```javascript
-import { hasOwn, isString } from '@fluxion/shared'
+import { hasOwn, isString } from '@fluxion-ui/shared'
 
 function getProp(obj, key, defaultValue) {
     if (hasOwn(obj, key)) {
@@ -450,7 +450,7 @@ function getProp(obj, key, defaultValue) {
 ### 数据规范化
 
 ```javascript
-import { toArray, isArray } from '@fluxion/shared'
+import { toArray, isArray } from '@fluxion-ui/shared'
 
 function normalizeChildren(children) {
     if (!children) return []
@@ -466,7 +466,7 @@ function normalizeChildren(children) {
 ### 条件判断
 
 ```javascript
-import { isPromise, isFunction } from '@fluxion/shared'
+import { isPromise, isFunction } from '@fluxion-ui/shared'
 
 async function resolveValue(value) {
     if (isPromise(value)) {
@@ -494,7 +494,7 @@ async function resolveValue(value) {
 这些类型检查函数可以作为 TypeScript 的类型守卫使用：
 
 ```typescript
-import { isString, isObject } from '@fluxion/shared'
+import { isString, isObject } from '@fluxion-ui/shared'
 
 function process(value: unknown) {
     if (isString(value)) {
@@ -514,7 +514,7 @@ function process(value: unknown) {
 使用类型检查函数进行防御性编程：
 
 ```typescript
-import { isFunction, warn } from '@fluxion/shared'
+import { isFunction, warn } from '@fluxion-ui/shared'
 
 function safeCall(fn: unknown, ...args: unknown[]) {
     if (!isFunction(fn)) {

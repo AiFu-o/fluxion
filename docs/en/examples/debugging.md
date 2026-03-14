@@ -48,7 +48,7 @@ button @click=increment Count: {count}
 ### Using debug Function
 
 ```javascript
-import { debug } from '@fluxion/shared'
+import { debug } from '@fluxion-ui/shared'
 
 // Only outputs in development environment
 debug('Current state:', state())
@@ -164,7 +164,7 @@ const MyComponent = {
 ### Viewing AST
 
 ```javascript
-import { parse } from '@fluxion/compiler-nui'
+import { parse } from '@fluxion-ui/compiler-nui'
 
 const source = `
 count = signal(0)
@@ -182,7 +182,7 @@ console.log('Errors:', errors)
 ### Viewing Generated Code
 
 ```javascript
-import { compile } from '@fluxion/compiler-nui'
+import { compile } from '@fluxion-ui/compiler-nui'
 
 const source = `
 count = signal(0)
@@ -209,7 +209,7 @@ import {
     transform,
     generate,
     NodeTypes
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 const source = '<div>{count}</div>'
 
@@ -397,7 +397,7 @@ async function measureUpdate() {
 ### Global Error Handling
 
 ```javascript
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 // Set up global error handling
 window.onerror = (message, source, lineno, colno, error) => {

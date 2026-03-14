@@ -48,7 +48,7 @@ button @click=increment Count: {count}
 ### 使用 debug 函数
 
 ```javascript
-import { debug } from '@fluxion/shared'
+import { debug } from '@fluxion-ui/shared'
 
 // 仅在开发环境输出
 debug('Current state:', state())
@@ -164,7 +164,7 @@ const MyComponent = {
 ### 查看 AST
 
 ```javascript
-import { parse } from '@fluxion/compiler-nui'
+import { parse } from '@fluxion-ui/compiler-nui'
 
 const source = `
 count = signal(0)
@@ -182,7 +182,7 @@ console.log('Errors:', errors)
 ### 查看生成的代码
 
 ```javascript
-import { compile } from '@fluxion/compiler-nui'
+import { compile } from '@fluxion-ui/compiler-nui'
 
 const source = `
 count = signal(0)
@@ -209,7 +209,7 @@ import {
     transform,
     generate,
     NodeTypes
-} from '@fluxion/compiler-core'
+} from '@fluxion-ui/compiler-core'
 
 const source = '<div>{count}</div>'
 
@@ -397,7 +397,7 @@ async function measureUpdate() {
 ### 全局错误处理
 
 ```javascript
-import { warn } from '@fluxion/shared'
+import { warn } from '@fluxion-ui/shared'
 
 // 设置全局错误处理
 window.onerror = (message, source, lineno, colno, error) => {

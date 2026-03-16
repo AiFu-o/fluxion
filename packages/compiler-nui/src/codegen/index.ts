@@ -25,6 +25,7 @@ import {
 } from '@fluxion-ui/compiler-core'
 import { isNativeTag } from '@fluxion-ui/compiler-dom'
 import { warn } from '@fluxion-ui/shared'
+import { transformNuiStyle } from '../style'
 
 // ==================== 代码生成上下文 ====================
 
@@ -480,8 +481,11 @@ function genStyleBlock(
 		return
 	}
 
+	// 将 NUI 样式语法转换为标准 CSS
+	const transformedCss = transformNuiStyle(style.content)
+
 	// 生成一个唯一的 style ID（基于内容 hash）
-	const styleId = `style_${Buffer.from(style.content).toString('base64').slice(0, 8)}`
+	const styleId = `style_${Buffer.from(transformedCss).toString('base64').slice(0, 8)}`
 
 	// 生成注入样式表的代码
 	ctx.code += `\n// 注入样式\n`
@@ -491,7 +495,7 @@ function genStyleBlock(
 	ctx.code += `\t\tif (!style) {\n`
 	ctx.code += `\t\t\tconst el = document.createElement('style')\n`
 	ctx.code += `\t\t\tel.id = '${styleId}'\n`
-	ctx.code += `\t\t\tel.textContent = \`${style.content.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`\n`
+	ctx.code += `\t\t\tel.textContent = \`${transformedCss.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`\n`
 	ctx.code += `\t\t\tdocument.head.appendChild(el)\n`
 	ctx.code += `\t\t}\n`
 	ctx.code += `\t}\n`

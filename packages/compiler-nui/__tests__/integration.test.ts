@@ -251,5 +251,35 @@ style`
 			// style 块存在但内容为空
 			expect(result.ast.style).not.toBeNull()
 		})
+
+		it('应该将 NUI 样式语法转换为标准 CSS', () => {
+			const source = `view
+div
+
+style
+.button {
+	padding 8px 16px
+	background-color #007bff
+}`
+			const result = compile(source)
+
+			expect(result.code).toContain('padding: 8px 16px;')
+			expect(result.code).toContain('background-color: #007bff;')
+		})
+
+		it('应该转换多值属性', () => {
+			const source = `view
+div
+
+style
+.container {
+	margin 0 auto
+	padding 20px 40px
+}`
+			const result = compile(source)
+
+			expect(result.code).toContain('margin: 0 auto;')
+			expect(result.code).toContain('padding: 20px 40px;')
+		})
 	})
 })

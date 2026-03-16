@@ -1,6 +1,6 @@
 {
 	"name": "@fluxion-ui/runtime-dom",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Fluxion DOM runtime renderer",
 	"type": "module",
 	"main": "./dist/runtime-dom.cjs",

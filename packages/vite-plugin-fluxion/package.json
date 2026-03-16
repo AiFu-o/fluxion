@@ -1,6 +1,6 @@
 {
 	"name": "@fluxion-ui/vite-plugin-fluxion",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Vite plugin for Fluxion framework - compile .nui files",
 	"type": "module",
 	"main": "./dist/vite-plugin-fluxion.cjs",

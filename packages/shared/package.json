@@ -1,6 +1,6 @@
 {
 	"name": "@fluxion-ui/shared",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Fluxion shared utilities",
 	"type": "module",
 	"main": "./dist/shared.cjs",

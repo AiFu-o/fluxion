@@ -1,6 +1,6 @@
 {
     "name": "@fluxion-ui/fluxion",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "type": "module",
     "description": "A lightweight AI-friendly UI framework",
     "main": "./dist/fluxion.cjs",

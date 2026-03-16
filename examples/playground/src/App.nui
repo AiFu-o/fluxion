@@ -7,8 +7,14 @@ function test() {
 }
 
 view
-	div
+	div class="test"
 		p Count:
 		h1 class="123"
 			qq:
 		Counter
+
+style 
+ .test{
+ color red;
+ border 1px solid;
+}

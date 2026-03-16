@@ -62,6 +62,55 @@ describe('tokenizer', () => {
 			const dedentTokens = result.tokens.filter(t => t.type === TokenType.DEDENT)
 			expect(dedentTokens).toHaveLength(2) // 一个在 span 前，一个在文件结束
 		})
+
+		it('应该支持 2 空格缩进', () => {
+			const source = `view
+  div`
+			const result = tokenize(source, 2)
+
+			const indentTokens = result.tokens.filter(t => t.type === TokenType.INDENT)
+			expect(indentTokens).toHaveLength(1)
+
+			const dedentTokens = result.tokens.filter(t => t.type === TokenType.DEDENT)
+			expect(dedentTokens).toHaveLength(1)
+		})
+
+		it('应该支持 4 空格缩进', () => {
+			const source = `view
+    div
+        p`
+			const result = tokenize(source, 4)
+
+			const indentTokens = result.tokens.filter(t => t.type === TokenType.INDENT)
+			expect(indentTokens).toHaveLength(2)
+
+			const dedentTokens = result.tokens.filter(t => t.type === TokenType.DEDENT)
+			expect(dedentTokens).toHaveLength(2)
+		})
+
+		it('应该正确处理空格缩进的多层嵌套', () => {
+			const source = `view
+    div
+        p
+    span`
+			const result = tokenize(source, 4)
+
+			const indentTokens = result.tokens.filter(t => t.type === TokenType.INDENT)
+			expect(indentTokens).toHaveLength(2)
+
+			const dedentTokens = result.tokens.filter(t => t.type === TokenType.DEDENT)
+			expect(dedentTokens).toHaveLength(2)
+		})
+
+		it('Tab 应被视为指定数量的空格', () => {
+			// Tab 按 2 空格计算
+			const source = `view
+	div`
+			const result = tokenize(source, 2)
+
+			const indentTokens = result.tokens.filter(t => t.type === TokenType.INDENT)
+			expect(indentTokens).toHaveLength(1)
+		})
 	})
 
 	describe('关键词识别', () => {

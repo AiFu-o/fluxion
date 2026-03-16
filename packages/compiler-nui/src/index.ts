@@ -86,7 +86,7 @@ import { createSourceLocation, Position } from '@fluxion-ui/compiler-core'
  */
 export function parse(source: string, options: NuiParseOptions = {}): NuiParseResult {
 	// 1. 词法分析
-	const { tokens, errors: tokenErrors } = tokenize(source)
+	const { tokens, errors: tokenErrors } = tokenize(source, options.indentSize)
 
 	if (options.onError) {
 		for (const error of tokenErrors) {

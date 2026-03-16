@@ -55,7 +55,44 @@ export default defineConfig({
 interface FluxionPluginOptions {
   isProduction?: boolean   // 生产模式标记
   include?: string[]       // 包含的文件扩展名，默认 ['.nui']
+  indentSize?: number      // 缩进大小（空格数量），默认 2
 }
+```
+
+##### indentSize 缩进配置
+
+NUI 文件使用缩进来表示代码层级结构。`indentSize` 用于配置每个缩进级别对应的空格数量：
+
+- **默认值**: `2`（2 个空格为一级缩进）
+- **Tab 处理**: Tab 字符会被视为 `indentSize` 个空格
+
+**配置示例**：
+
+```javascript
+// 使用 2 空格缩进（默认）
+fluxionPlugin({ indentSize: 2 })
+
+// 使用 4 空格缩进
+fluxionPlugin({ indentSize: 4 })
+
+// 使用 Tab 缩进（设置 Tab 宽度，如 4）
+fluxionPlugin({ indentSize: 4 })
+```
+
+**NUI 文件示例**（4 空格缩进）：
+
+```nui
+view
+    div
+        p Hello
+```
+
+**NUI 文件示例**（2 空格缩进）：
+
+```nui
+view
+  div
+    p Hello
 ```
 
 示例：
@@ -68,7 +105,8 @@ export default defineConfig({
   plugins: [
     fluxionPlugin({
       isProduction: process.env.NODE_ENV === 'production',
-      include: ['.nui']
+      include: ['.nui'],
+      indentSize: 4  // 使用 4 空格缩进
     })
   ]
 })

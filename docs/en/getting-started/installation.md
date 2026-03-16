@@ -55,7 +55,44 @@ export default defineConfig({
 interface FluxionPluginOptions {
   isProduction?: boolean   // Production mode flag
   include?: string[]       // File extensions to include, default: ['.nui']
+  indentSize?: number      // Indent size (spaces count), default: 2
 }
+```
+
+##### indentSize Configuration
+
+NUI files use indentation to represent code hierarchy. `indentSize` configures the number of spaces per indentation level:
+
+- **Default**: `2` (2 spaces per indent level)
+- **Tab Handling**: Tab characters are treated as `indentSize` spaces
+
+**Configuration Examples**:
+
+```javascript
+// Use 2-space indentation (default)
+fluxionPlugin({ indentSize: 2 })
+
+// Use 4-space indentation
+fluxionPlugin({ indentSize: 4 })
+
+// Use Tab indentation (set Tab width, e.g., 4)
+fluxionPlugin({ indentSize: 4 })
+```
+
+**NUI File Example** (4-space indent):
+
+```nui
+view
+    div
+        p Hello
+```
+
+**NUI File Example** (2-space indent):
+
+```nui
+view
+  div
+    p Hello
 ```
 
 Example:
@@ -68,7 +105,8 @@ export default defineConfig({
   plugins: [
     fluxionPlugin({
       isProduction: process.env.NODE_ENV === 'production',
-      include: ['.nui']
+      include: ['.nui'],
+      indentSize: 4  // Use 4-space indentation
     })
   ]
 })

@@ -197,6 +197,8 @@ export interface NuiParseOptions {
 	isBrowser?: boolean
 	// 错误回调
 	onError?: (error: NuiCompilerError) => void
+	// 缩进大小（空格数量，默认 2；Tab 会被视为 size 个空格）
+	indentSize?: number
 }
 
 // ==================== 解析结果 ====================
@@ -282,6 +284,8 @@ export interface TokenizerState {
 	tokens: Token[]
 	// 错误列表
 	errors: NuiCompilerError[]
+	// 缩进大小（每个缩进级别的空格数量）
+	indentSize: number
 }
 
 // ==================== 解析器状态 ====================

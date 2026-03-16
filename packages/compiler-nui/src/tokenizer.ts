@@ -93,7 +93,10 @@ function createToken(
 /**
  * 初始化词法分析器状态
  */
-export function initTokenizerState(source: string): TokenizerState {
+export function initTokenizerState(
+	source: string,
+	indentSize: number = 2
+): TokenizerState {
 	return {
 		source,
 		offset: 0,
@@ -101,7 +104,8 @@ export function initTokenizerState(source: string): TokenizerState {
 		column: 1,
 		indentStack: [0],
 		tokens: [],
-		errors: []
+		errors: [],
+		indentSize
 	}
 }
 
@@ -153,17 +157,31 @@ function skipWhitespace(state: TokenizerState): void {
 }
 
 /**
- * 计算当前行的缩进（Tab 数量）
+ * 计算当前行的缩进级别
  * 仅在行首调用
+ * 返回缩进级别（对于 Tab，每个 Tab = 1 级；对于空格，N 个空格 = 1 级）
+ * Tab 在空格模式下会被视为 indentSize 个空格
  */
 function countIndent(state: TokenizerState): number {
-	let indent = 0
-	const startOffset = state.offset
+	let spaceCount = 0
 
-	while (currentChar(state) === TAB) {
-		indent++
-		advance(state)
+	// 统计缩进字符，Tab 统一换算为空格
+	while (true) {
+		const char = currentChar(state)
+		if (char === TAB) {
+			// Tab 视为 indentSize 个空格（或者 1 个缩进级别）
+			spaceCount += state.indentSize
+			advance(state)
+		} else if (char === SPACE) {
+			spaceCount++
+			advance(state)
+		} else {
+			break
+		}
 	}
+
+	// 计算缩进级别
+	const indentCount = Math.floor(spaceCount / state.indentSize)
 
 	// 如果这一行是空行或注释行，返回 -1 表示忽略
 	const char = currentChar(state)
@@ -171,7 +189,7 @@ function countIndent(state: TokenizerState): number {
 		return -1
 	}
 
-	return indent
+	return indentCount
 }
 
 /**
@@ -204,7 +222,7 @@ function handleIndent(
 		if (state.indentStack[state.indentStack.length - 1] !== currentIndent) {
 			state.errors.push(createError(
 				NuiErrorCodes.INCONSISTENT_INDENT,
-				`缩进不一致：期望 ${state.indentStack[state.indentStack.length - 1]} 个 Tab，但得到 ${currentIndent} 个`,
+				`缩进不一致：期望 ${state.indentStack[state.indentStack.length - 1]} 级缩进，但得到 ${currentIndent} 级`,
 				loc
 			))
 		}
@@ -407,11 +425,14 @@ export function readUntilNewline(state: TokenizerState): string {
 /**
  * 词法分析主函数
  */
-export function tokenize(source: string): {
+export function tokenize(
+	source: string,
+	indentSize: number = 2
+): {
 	tokens: Token[]
 	errors: NuiCompilerError[]
 } {
-	const state = initTokenizerState(source)
+	const state = initTokenizerState(source, indentSize)
 	let atLineStart = true
 	let pendingIndent = 0
 

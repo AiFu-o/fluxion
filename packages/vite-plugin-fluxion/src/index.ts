@@ -4,7 +4,7 @@
  */
 
 import { Plugin, ResolvedConfig } from 'vite'
-import { compile, NuiCompileResult } from '@fluxion-ui/compiler-nui'
+import { compile } from '@fluxion-ui/compiler-nui'
 import { warn } from '@fluxion-ui/shared'
 
 /**
@@ -15,13 +15,15 @@ export interface FluxionPluginOptions {
 	isProduction?: boolean
 	// 自定义 .nui 文件扩展名
 	include?: string[]
+	// 缩进大小（空格数量，默认 2；Tab 会被视为 indentSize 个空格）
+	indentSize?: number
 }
 
 /**
  * 创建 Fluxion Vite 插件
  */
 export function fluxionPlugin(options: FluxionPluginOptions = {}): Plugin {
-	const { include = ['.nui'] } = options
+	const { include = ['.nui'], indentSize } = options
 
 	let config: ResolvedConfig
 
@@ -57,7 +59,8 @@ export function fluxionPlugin(options: FluxionPluginOptions = {}): Plugin {
 				// 编译 .nui 文件
 				const result = compile(code, {
 					filename: id,
-					isBrowser: true
+					isBrowser: true,
+					indentSize
 				})
 
 				// 报告编译错误
